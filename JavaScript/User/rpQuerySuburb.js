@@ -12,9 +12,12 @@
 
     //The array to hold all the establishments and their specials
     var masterEstablishments = [];
-    var markers = [];
-
-
+    //The array to hold all the markers
+    var masterMarkers = [];
+    var filteredMarkers = [];
+    //The bool to decide if the markers should be unfiltered or filtered
+    var boolFilteredMarkers = true;
+    
     //Coords - Set to 0 by default
     var lat = 0;
     var lng = 0;
@@ -29,40 +32,16 @@
             //Retrieve suburb from local storage
             const suburb = localStorage.getItem("usersSuburb");
 
-            // var queryBuilder = Backendless.DataQueryBuilder.create();
-    
-            // // queryBuilder.setWhereClause( "Suburb = '1'" );
-    
-            // Backendless.Data.of( "Special" ).find()
-            // .then( function( objectArray ) {
-            //     console.log(objectArray);
-            // })
-            // .catch( function( error ) {
-            // });
-    
             //RETRIEVE SPECIALS FROM THE DB BASED ON USER'S SUBURB
             var queryBuilder = Backendless.DataQueryBuilder.create();
-    
-            // var query = "'" + suburb + "'"
-            // console.log(query);
     
             queryBuilder.setWhereClause( "Suburb = " + "'" + suburb + "'");//, {"suburb": suburb}; //( "Suburb = 'Rose Bay'" );
     
             Backendless.Data.of( "Establishment" ).find( queryBuilder )
-    
-            // set query builder properties
-            // queryBuilder.setWhereClause( "Suburb = 'Rose Bay'" );
-    
-            // Backendless.Data.of( "Establishment" ).find( queryBuilder )
             .then( function( objectArray ) {
 
                 //Clear the list
                 document.getElementById('rpList').innerHTML = "";
-                
-    
-                //Display how many specials currently found
-                //document.getElementById('rpNumOfSpecialsFound').innerHTML = "<br>" + "There is " + count + " specials in " + suburb + "!";
-                //console.log(objectArray);
     
                 //For every establishment
                 for(var i=0;i<objectArray.length;i++){
@@ -97,29 +76,10 @@
 
                 //Display the user's suburb
                 document.getElementById('rpDisplaySuburb').innerHTML = "Displaying specials in " + suburb.fontcolor("#FF3399") + " (postcode)";
+                console.log("1. Populate list");
             })
             .catch( function( error ) {
             });
-            
-            // console.log("3. hi");
-            // //Display the establishment and special's details
-            // document.getElementById('rpList').innerHTML +=
-            // //"Establishment ID: " + objectArray[i].EstablishmentID + "<br>" +
-            // "<hr style='width:20%'>" +
-            // // "<b>" + "Establishment" + "</b>" + "<br>" +
-            // "<b>" + objectArray[a].Establishment_Type + "</b>" + "<br>" +
-            // objectArray[i].establishmentSpecials.Name + "<br>" +
-            // objectArray[i].Address + "<br>" +
-            // // "Suburb: " + objectArray[a].Suburb + "<br>" +
-            // // "Country: " + objectArray[a].Country + "<br>" +
-            // objectArray[i].Cuisine_Type + "<br>" + "<br>" +
-            // // "Establishment type: " + objectArray[a].Establishment_Type + "<br>" + "<br>" + 
-            // "<b>" + "Special" + "</b>" + "<br>"  +
-            // objectArray[i].establishmentSpecials[i].Category + "<br>" +
-            // // "Type of special: " + objectArray[a].establishmentSpecials[i].Type_Of_Special + "<br>" +
-            // objectArray[i].establishmentSpecials[i].Description + "<br>" +
-            // "<hr style='width:20%'>";  
-    
     
             //GET COORDS FOR USER'S SUBURB
             // Store the user's location
@@ -136,12 +96,67 @@
                 //Store the geometry (lat and lng) variables for when the map is initialised
                 lat = response.data.results[0].geometry.location.lat;
                 lng = response.data.results[0].geometry.location.lng;
+
+                console.log("2. Get suburb coords");
                 
             })
+
             //CREATE THE MAP MARKERS
-            //Cycle through the specials collection based on user's suburb - query1
-            .then(() => {
-                //Initailise the map with users's location and map markers as just declared
+            var queryBuilder = Backendless.DataQueryBuilder.create();
+    
+            queryBuilder.setWhereClause( "Suburb = " + "'" + suburb + "'");//, {"suburb": suburb}; //( "Suburb = 'Rose Bay'" );
+    
+            Backendless.Data.of( "Establishment" ).find() //queryBuilder 
+            .then( function( objectArray ) {
+                console.log("3. Start map markers creation");
+                //For every establishment
+                for(var i=0;i<objectArray.length;i++){
+                    //console.log(objectArray);
+                    //console.log(objectArray[i].establishmentSpecials[0].Type_Of_Special);
+                    console.log("4.1 Start creating a single marker");
+                    //Apply relevant marker image (restaurant/bar)
+                    var img;
+                    if(objectArray[i].Establishment_Type == "Restaurant"){
+                        img = 'images/restaurant.png'
+                    }else if(objectArray[i].Establishment_Type == "Bar") {
+                        img = 'images/bar.png'
+                    }
+                    
+                    //Add the marker object to the markers array (unfiltered)
+                    masterMarkers.push({
+                        coords:{lat: objectArray[i].Location.y, lng: objectArray[i].Location.x},
+                        iconImage: img,
+                        content: objectArray[i].Suburb + "<br>" + "(description)",
+                        //Custom special data for filtering
+                        category: objectArray[i].establishmentSpecials[0].Category,
+                        cusine_type: objectArray[i].Cuisine_Type,
+                        establishment_type: objectArray[i].Establishment_Type,
+                        type_of_special: objectArray[i].establishmentSpecials[0].Type_Of_Special
+                    });
+                    console.log("4.2 Finish creating a single marker");
+
+                    //Add the marker to the filtered array if the suburb is that of the user's suburb
+                    if(objectArray[i].Suburb == suburb){
+                        filteredMarkers.push({
+                            coords:{lat: objectArray[i].Location.y, lng: objectArray[i].Location.x},
+                            iconImage: img,
+                            content: objectArray[i].Suburb + "<br>" + "(description)",
+                            //Custom special data for filtering
+                            category: objectArray[i].establishmentSpecials[0].Category,
+                            cusine_type: objectArray[i].Cuisine_Type,
+                            establishment_type: objectArray[i].Establishment_Type,
+                            type_of_special: objectArray[i].establishmentSpecials[0].Type_Of_Special
+                        })
+                    }
+                    
+                } 
+                //return masterMarkers;
+                console.log("5. Finish map markers creation");
+            })
+            .catch( function( error ) {
+            })
+            .then(() => { 
+                console.log("6. Initialize map");
                 initMap();
             })
     
@@ -153,22 +168,80 @@
     //Google map init function
     function initMap(){
 
+        console.log("7. Map Initialization started");
+
         //Map options - zoom and center
         var options = {
             zoom: 13,
             center: {lat: lat, lng: lng} //lat -36.8785  lng 174.7633
         }
 
+        // masterMarkers.push({
+        //     coords:{lat: -33.870461, lng: 151.268311},
+        //     iconImage: 'images/restaurant.png',
+        //     content: + "<br>" + "(description)",
+        //     //Custom special data for filtering
+        //     category: "special.data().category",
+        //     cusine_type: "special.data().cusine_type",
+        //     establishment_type: "special.data().establishment_type",
+        //     type_of_special: "special.data().type_of_special"
+        // });
+        // console.log(masterMarkers.length);
+
+        console.log("8. Start print markers");
+        //log markers
+        for(var i=0;i<masterMarkers.length;i++){
+            console.log(masterMarkers[i]);
+        }
+        console.log("9. End print markers");
+
+
+        // masterMarkers.push({
+        //     coords:{lat: -36.879, lng: 174.764},
+        //     iconImage: 'images/restaurant.png',
+        //     content: + "<br>" + "(description)",
+        //     //Custom special data for filtering
+        //     category: "special.data().category",
+        //     cusine_type: "special.data().cusine_type",
+        //     establishment_type: "special.data().establishment_type",
+        //     type_of_special: "special.data().type_of_special"
+        // });
+
+        // for(var i=0;i<masterMarkers.length;i++){
+        //     console.log(masterMarkers[i]);
+        // }
+
+        //console.log("masterMarkers");
+
         //Initialise the map object
         var map = new 
         google.maps.Map(document.getElementById('rpGoogleMap'), options);
 
+        console.log("10. Map created");
+
         //Loop through 'markers' array and add markers to map
         //For filtered markers
-        for(var i=0;i<markers.length;i++){
-            //Add marker
-            addMarker(markers[i]);
+        if(boolFilteredMarkers == true){
+            for(var i=0;i<filteredMarkers.length;i++){
+                //Add marker
+                addMarker(filteredMarkers[i]);
+            }
+        }else if(boolFilteredMarkers == false){ //For markers (unfiltered)
+            for(var i=0;i<masterMarkers.length;i++){ //markers
+                //Add marker
+                addMarker(masterMarkers[i]); //markers
+            }
         }
+
+        // //Loop through 'markers' array and add markers to map
+        // //For filtered markers
+        // for(var i=0;i<filteredMarkers.length;i++){
+        //     //Add marker
+        //     addMarker(filteredMarkers[i]);
+        // }
+
+        console.log("11. Markers added");
+
 
         //Function to add a marker
         function addMarker(props){
@@ -648,6 +721,37 @@
         document.getElementById("rpBtnMapRevealSuburbs").style.display = "block";
      }
 
+    //Function for revealing all suburb markers on the map
+    function btnRevealSuburbMarkers(){
+        //The reveal btn
+        btnReveal = document.getElementById('rpBtnMapRevealSuburbs');
+
+        //Reveal all markers - Show all marker specials
+        if(btnReveal.value == "show"){
+            //Flip button text
+            btnReveal.innerHTML = "Filter suburbs";
+            //Change value
+            btnReveal.value = "hide"
+
+            //Use the markers array
+            boolFilteredMarkers = false;
+
+            //Initalise the map with the new set of markers. Specific marker set is decided in initMap()
+            initMap();
+        }else if(btnReveal.value == "hide"){ //Filter suburbs - Filter marker specials to the user's suburb
+            //Flip button text
+            btnReveal.innerHTML = "Reveal all suburbs";    
+            //Change value
+            btnReveal.value = "show"    
+
+            //Use the markers (unfiltered) array
+            boolFilteredMarkers = true;
+
+            //Initalise the map with the new set of markers. Specific marker set is decided in initMap()
+            initMap();
+        }
+    }
+
      //Function to research a suburb
      function research(){
          //Re-assign suburb
@@ -657,11 +761,14 @@
         //Store the suburb in localStorage
         localStorage.setItem("usersSuburb", suburb);
 
+        //Reset the markers
+        masterMarkers = [];
+        filteredMarkers = [];
+
          //Re-load the page
          pageOnLoad();
 
          console.log(suburb);
-
      }
 
 

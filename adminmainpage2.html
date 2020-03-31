@@ -100,7 +100,18 @@
             <!-- Establishment -->
             <div class="listbox">
                 <div id="headingLstBoxEstablishments">Establishments - Australia</div>
-                <select class="browser-default chosen" multiple style="width: 350px; height: 517px;" id="establishmentListBox" onclick="displaySpecials()"></select>
+                <!-- <select class="browser-default chosen" multiple style="width: 350px; height: 517px;" id="establishmentListBox" onclick="displaySpecials()"></select> -->
+                <input id="myInput" type="text" placeholder="Search..">
+                <br><br>
+                <table id='tbl' border=5>
+                    <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Address</th>
+                        </tr>
+                        </thead>
+                        <tbody id="myTable"></tbody>
+                </table>
             </div>
             <!-- Special -->
             <div class="listbox">
@@ -213,7 +224,7 @@
                     <div class="row"> 
                         <form class="col s12" id="addspecial-form">
                             <!-- Add to an existing establishment heading -->
-                            <div class="addSpecialSubHeading"><h5>Add special to an existing establishment?</h5></div>
+                            <div class="addSpecialSubHeading"><h5>Add special to the existing establishment?</h5></div>
                             <!-- Add to an existing establishment options-->
                             <div class="row">
                                 <!-- <div class="input-field col s5" style="max-height: 65px;">
@@ -235,8 +246,8 @@
                                     <div class="row">
                                         <div class="input-field col s10">
                                         <!-- <i class="material-icons prefix">textsms</i> -->
-                                        <input type="text" id="addToExistingEstablishment" name="" placeholder="Search name or address" class="autocomplete">
-                                        <label for="addToExistingEstablishment">Search name or address</label>
+                                        <input type="text" id="addToExistingEstablishment" name="" placeholder="Search name or address" class="autocomplete" disabled>
+                                        <!-- <label for="addToExistingEstablishment">Search name or address</label> -->
                                         </div>
                                     </div>
                                 </div>
@@ -441,18 +452,26 @@
             </div> -->
             
         </div>
-        <div class="adminSearch">
+        <!-- <div class="adminSearch">
             <div class="searchHeading">Search by</div>
             <input id="searchEstablishmentID" placeholder="Establishment ID" type="text" class="validate">
             <input id="searchSpecialID" placeholder="Special ID" type="text" class="validate">
             <input id="searchAddress" placeholder="Address" type="text" class="validate">
             <input id="searchName" placeholder="Name" type="text" class="validate"><br>
             <button id="btnAdminSearch" class="waves-effect waves-light btn" onclick="adminSearch()">Search</button>
-        </div>
+        </div> -->
         
-        <input id="myInput" type="text" placeholder="Search..">
+        <!-- <input id="myInput" type="text" placeholder="Search..">
         <br><br>
-        <table id='tbl' border=5></table>
+        <table id='tbl' border=5>
+            <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                </tr>
+                </thead>
+                <tbody id="myTable"></tbody>
+        </table> -->
         
         <script src="//api.backendless.com/sdk/js/latest/backendless.min.js"></script>
         <script src="JavaScript/Admin2/adminFunctions.js"></script>

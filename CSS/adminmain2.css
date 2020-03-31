@@ -46,6 +46,7 @@
 /* List boxes */
 .listbox{
     /* margin-left: 30px; */
+    vertical-align: top;
     display: inline-block;
 
     
@@ -174,7 +175,7 @@ left: 100px; */
 /* Table */
 #tbl{
     overflow-y:scroll;
-    height:100px;
+    height:440px;
     display:block;
 
     width: 500px;

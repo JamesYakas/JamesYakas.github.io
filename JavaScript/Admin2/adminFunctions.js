@@ -14,8 +14,12 @@ var masterEstablishmentsNewZealand = [];
 
 var cellID;
 
+
+
 //Function for when the page loads
 $(document).ready(function () {
+
+
     //Get the table
     // tbl = document.getElementById('tbl');
     
@@ -28,7 +32,7 @@ $(document).ready(function () {
     //Add row handlers
     //addRowHandlers();
     
-    onPageLoad();
+    //onPageLoad();
     // $('select').material_select();
     $('.tabs').tabs();
     $('select').formSelect();
@@ -50,8 +54,10 @@ $(document).ready(function () {
 });
 //Function for function of when the page loads for the table
 function onPageLoadTable(){
+    //Clear the table 
+    $("#myTable tr").remove(); 
     //Get the table
-    tbl = document.getElementById('tbl');
+    tbl = document.getElementById('myTable');//document.getElementById('tbl');
 
     //Retrieve establishments from the db
     var queryBuilder = Backendless.DataQueryBuilder.create();
@@ -61,6 +67,7 @@ function onPageLoadTable(){
 
     Backendless.Data.of( "Establishment" ).find( queryBuilder )
     .then( function( objectArray ) {
+        //console.log(objectArray[1].Location.x);
         console.log(objectArray);
         for(var i=0;i<objectArray.length;i++){
             //Populate the list box
@@ -79,7 +86,7 @@ function onPageLoadTable(){
     //Table filter
     $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
-        $("#tbl tr").filter(function() {
+        $("#myTable tr").filter(function() { //tbl
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
@@ -153,7 +160,7 @@ function addRowHandlers() {
                                         var id = cell.id;//cell.innerHTML;
                                         cellID = id;
                                         displaySpecials();
-                                        alert("id:" + id);
+                                        //alert("id:" + id);
                                  };
             };
         currentRow.onclick = createClickHandler(currentRow);
@@ -164,13 +171,24 @@ function addRowHandlers() {
 addBtn.addEventListener('click', e => {
     e.preventDefault();
 
-    //Get the text of the selected establishment in the establishment listbox
-    var establishmentListBoxText = document.getElementById('establishmentListBox').options[establishmentListBox.selectedIndex].innerHTML;
+    // //Get the text of the selected establishment in the establishment listbox
+    // var establishmentListBoxText = document.getElementById('establishmentListBox').options[establishmentListBox.selectedIndex].innerHTML;
+    //Get the text of the selected establishment in the table
+    var establishmentNameAndAddress = document.getElementById('name').value + " | " +  document.getElementById('address').value;
+    //If establishmentNameAndAddress empty
+    if(establishmentNameAndAddress == " | "){
+        establishmentNameAndAddress = "Please select an existing establishment.";
+    }
 
+    // //Transfer establishment selected in the establishmentListBox to the add form's "add to existing establishment?"" search feild
+    // document.getElementById('addToExistingEstablishment').value = establishmentListBoxText;
     //Transfer establishment selected in the establishmentListBox to the add form's "add to existing establishment?"" search feild
-    document.getElementById('addToExistingEstablishment').value = establishmentListBoxText;
+    document.getElementById('addToExistingEstablishment').value = establishmentNameAndAddress;
+
+    // //Set name of the input to the establishment's objectID
+    // document.getElementById('addToExistingEstablishment').name = document.getElementById('establishmentListBox').options[establishmentListBox.selectedIndex].value;
     //Set name of the input to the establishment's objectID
-    document.getElementById('addToExistingEstablishment').name = document.getElementById('establishmentListBox').options[establishmentListBox.selectedIndex].value;
+    document.getElementById('addToExistingEstablishment').name = document.getElementById('establishmentId').value;
 });
 
 //Add confirm button 
@@ -240,12 +258,26 @@ addConfirmBtn.addEventListener('click', e => {
             console.log(coords[0]);
             console.log(coords[1]);
 
-            //Create point
-            var point = new Backendless.GeoPoint();
-            point.latitude = 40.7148;
-            point.longitude = -74.0059;
-            point.categories = [ "location" ];
-            point.metadata = { service_area : "NYC" }
+            // const order = {
+            //     orderName      : 'Fun times',
+            //     pickupLocation : new Backendless.Data.Point().setLatitude(55.782309).setLongitude(37.578639),
+            //     dropoffLocation: new Backendless.Data.Point().setLatitude(55.752917).setLongitude(37.618900)
+            //    }
+               
+            //    Backendless.Data.of('Order').save(order)
+            //     .then(savedOrder => {
+            //       const { objectId } = savedOrder
+            //     })
+            //     .catch(error => {
+            //       console.log(error)
+            //     })
+
+            // //Create point
+            // var point = new Backendless.GeoPoint();
+            // point.latitude = 40.7148;
+            // point.longitude = -74.0059;
+            // point.categories = [ "location" ];
+            // point.metadata = { service_area : "NYC" }
 
             //Get the add form data
             var addName = document.getElementById('add_name');
@@ -255,6 +287,7 @@ addConfirmBtn.addEventListener('click', e => {
 
             //Create establishment from user's entries
             var establishment = {
+                Location: new Backendless.Data.Point().setLatitude(coords[0]).setLongitude(coords[1]),
                 Name: addName.value,
                 Address: addAddress.value,
                 Suburb: addSuburb.value,
@@ -264,7 +297,7 @@ addConfirmBtn.addEventListener('click', e => {
             }
 
             //Link the geopoint with the establishment
-            establishment.location = point;
+            //establishment.location = point;
 
             //Save establishment to db (return to wait until saved and an objectId can be retrieved)
             return Backendless.Data.of('Establishment').save( establishment )
@@ -308,7 +341,7 @@ addConfirmBtn.addEventListener('click', e => {
             });
         })
         .then(() => {console.log('Data Successfully Written');})
-        .then(() => {onPageLoad();})
+        .then(() => {onPageLoadTable();})
         .then(() => {document.querySelector('#addspecial-form').reset();})
         .then(() => {M.updateTextFields();})
         .catch(error => {console.error(error)})
@@ -363,7 +396,7 @@ addConfirmBtn.addEventListener('click', e => {
             });
         })
         .then(() => {console.log('Data Successfully Written');})
-        .then(() => {onPageLoad();})
+        .then(() => {onPageLoadTable();})
         .then(() => {document.querySelector('#addspecial-form').reset();})
         .then(() => {M.updateTextFields();})
         .catch(error => {console.error(error)});
@@ -411,7 +444,7 @@ function checkBoxAddToEstablishmentFunc(){
 
     //If checked but no establishment is selected or an invalid establishment is used
     if(document.getElementById('establishmentId').value == ""){
-        alert("Either you need to select or search for a valid establishment");
+        alert("You need to select a valid establishment");
         //Set the checkbox to false
         document.getElementById('chkBoxAddToEstablishment').checked = false
     }
@@ -564,7 +597,7 @@ updateConfirmBtn.addEventListener('click', e =>{
         .catch( function( error ) {
           console.log( "an error has occurred " + error.message );
         })
-        .then(() => {return onPageLoad();})
+        .then(() => {return onPageLoadTable();})
         .then(() =>{ 
             //Update the establishment form to reflect the recent changes. Normally updated via listbox click but no click is present on 'Update'
             document.getElementById('name').value = document.getElementById('update_name').value;
@@ -592,7 +625,7 @@ updateConfirmBtn.addEventListener('click', e =>{
           .catch( function( error ) {
             console.log( "an error has occurred " + error.message );
           })
-          .then(() => {return onPageLoad();})
+          .then(() => {return onPageLoadTable();})
           .then(() =>{ 
               //Update the special form to reflect the recent changes. Normally updated via listbox click but no click is present on 'Update'
               document.getElementById('category').value = document.getElementById('update_category').value;
@@ -656,7 +689,7 @@ deleteBtn.addEventListener('click', e =>{
                         .catch( function( error ) {
                             console.log( "an error has occurred " + error.message );
                         })
-                        .then(() => {onPageLoad();})
+                        .then(() => {onPageLoadTable();})
                         .then(() => {removeLastOption(establishmentListBox);})
                         .then(() => {
                             //Clear the specialListBox
@@ -693,7 +726,7 @@ deleteBtn.addEventListener('click', e =>{
                 displayEstablishmentandSpecialForm.reset();
 
             })
-            .then(() => {onPageLoad();}) 
+            .then(() => {onPageLoadTable();}) 
             .catch(error => {console.error(error)});
         }
     }
@@ -740,7 +773,7 @@ function displaySpecials(){
     var establishmentListBox = document.getElementById('establishmentListBox');
 
     //Get the establishmentID of the item selected in the establishmentListBox
-    var establishmentID = establishmentListBox.options[establishmentListBox.selectedIndex].value; //cellID
+    var establishmentID = cellID; //establishmentListBox.options[establishmentListBox.selectedIndex].value; //cellID
 
 
     //When establishment object found in masterEstablishments populate the display form
@@ -756,7 +789,7 @@ function displaySpecials(){
          }
     }
 
-    //DISPLAY SPECIALS IN THE SPECIAL LISTBOX
+    //DISPLAY SPECIALS IN THE SPECIAL LISTBOX 
     //Get the specials listbox
     var specialsListBox = document.getElementById('specialListBox');
     //Clear the specials listbox
