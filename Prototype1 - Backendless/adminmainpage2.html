@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- For geocoding -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <title>Admin</title>
+        <script src="jquery-3.4.1.min.js"></script>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+        <link rel="stylesheet" href="CSS/materialize.min.css">
+        <link rel="stylesheet" href="CSS/adminmain2.css">
+    </head>
+
+    <body>
+        <!-- NAVBAR -->
+        <nav class="z-depth-0 grey lighten-4">
+            <div class="nav-wrapper container">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="static" style="display: none;">
+                        <a href="index.html" class="grey-text modal-trigger" data-target="">Home</a>
+                    </li>
+                    <li class="logged-in" style="display: none;">
+                        <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+                    </li>
+                    <li class="logged-in" style="display: none;">
+                        <a href="#" class="grey-text" id="logout">Logout</a>
+                    </li>
+                    <li class="logged-in" style="display: none;">
+                        <a href="adminmainpage2.html" class="grey-text modal-trigger" data-target="modal-create">Admin</a>
+                      </li>
+                    <li class="logged-out" style="display: none;">
+                        <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+                    </li>
+                    <li class="logged-out" style="display: none;">
+                        <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    
+        <!-- SIGN UP MODAL -->
+        <div id="modal-signup" class="modal">
+            <div class="modal-content">
+                <h4>Sign up</h4><br />
+                <form id="signup-form">
+                    <div class="input-field">
+                        <input type="email" id="signup-email" required />
+                        <label for="signup-email">Email address</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="signup-password" required />
+                        <label for="signup-password">Choose password</label>
+                    </div>
+                    <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+                </form>
+            </div>
+        </div>
+  
+        <!-- LOGIN MODAL -->
+        <div id="modal-login" class="modal">
+            <div class="modal-content">
+                <h4>Login</h4><br />
+                <form id="login-form">
+                    <div class="input-field">
+                        <input type="email" id="login-email" required />
+                        <label for="login-email">Email address</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="login-password" required />
+                        <label for="login-password">Your password</label>
+                    </div>
+                    <button class="btn yellow darken-2 z-depth-0">Login</button>
+                </form>
+            </div>
+        </div>
+  
+        <!-- ACCOUNT MODAL -->
+        <div id="modal-account" class="modal">
+            <div class="modal-content center-align">
+                <h4>Account details</h4><br />
+                <div class="account-details"></div>
+            </div>
+        </div>
+
+        <h3 class="adminHeading">Admin v2</h3>
+
+        <!-- Tabs - Australia/New Zealand -->
+        <div class="country-tab-big-wrapper">
+            <div class="row country-tab-wrapper">
+                <div class="col s12 tabs-fixed-width country-tab">
+                <ul class="tabs country-tab">
+                    <li class="tab col s3 country-tab"><a href="#test2" onclick="displayAus()">Australia</a></li>
+                    <li class="tab col s3 country-tab"><a href="#test1"  onclick="displayNZ()">New Zealand</a></li>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- List boxes -->
+        <div class="listboxesAndFormWrapper">
+            <!-- Establishment -->
+            <div class="listbox">
+                <div id="headingLstBoxEstablishments">Establishments - Australia</div>
+                <select class="browser-default chosen" multiple style="width: 350px; height: 517px;" id="establishmentListBox" onclick="displaySpecials()"></select>
+            </div>
+            <!-- Special -->
+            <div class="listbox">
+                <div>Specials</div>
+                <select class="browser-default" multiple style="width: 250px; height: 517px;" id="specialListBox" onclick="getSpecial()"></select>
+            </div>
+
+                <!-- Display specials form -->
+                <main id="displaySpecialsForm">
+                    <div class="row">
+                        <form class="col s12" id="displayEstablishmentandSpecial-form">
+                            <!-- Form heading -->
+                            <div id="formHeading" >Establishment details</div>
+                            <div id="formEstablishmentDetails">
+                                <!-- Establishment ID -->
+                                <div class="row">
+                                    <div class="input-field col s6 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="establishmentId">Establishment ID</label><br>
+                                        <input class="input" type="text" name="establishmentId" id="establishmentId" class="validate" disabled>
+                                    </div>
+                                </div>
+                                <!-- Name -->
+                                <div class="row">
+                                    <div class="input-field col s4 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="name">Name</label><br>
+                                        <input class="input" type="text" name="name" id="name" class="validate" disabled>
+                                    </div>
+                                </div>
+                                <!-- Address -->
+                                <div class="row">
+                                    <div class="input-field col s6 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="address">Address</label><br>
+                                        <input class="input" type="text" name="address" id="address" class="validate" disabled>
+                                    </div>
+                                </div>
+                                <!-- Suburb/epsom/should be address? -->
+                                <div class="row">
+                                    <div class="input-field col s4 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="suburb">Suburb</label><br>
+                                        <input class="input" type="text" name="suburb" id="suburb" class="validate" disabled>
+                                    </div>
+                                </div>
+                                <!-- Establishment type and Cusine type -->
+                                <div class="row">
+                                    <div class="input-field col s4 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="establishmentType">Establishment Type</label><br>
+                                        <input class="input" type="text" name="establishmentType" id="establishmentType" class="validate" disabled>
+                                    </div>
+                                <div class="row">
+                                    <div class="input-field col s4 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="cusineType">Cusine type</label><br>
+                                        <input class="input" type="text" name="cusineType" id="cusineType" class="validate" disabled>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div id="formSpecialDetails" style="display: none;">
+                                <!-- Establishment ID and Special ID-->
+                                <div class="row">
+                                    <div class="input-field col s6 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="establishmentIdSpecial">Establishment ID</label><br>
+                                        <input class="input" type="text" name="establishmentIdSpecial" id="establishmentIdSpecial" class="validate" disabled>
+                                    </div>
+                                    <div class="input-field col s6 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="specialId">Special ID</label><br>
+                                        <input class="input" type="text" name="specialId" id="specialId" class="validate" disabled>
+                                    </div>
+                                </div>
+                                <!-- Category -->
+                                <div class="row">
+                                    <div class="input-field col s4 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="category">Special Category</label><br>
+                                        <input class="input" type="text" name="category" id="category" class="validate" disabled>
+                                    </div>
+                                </div>
+                            <!-- Type of special -->
+                                <div class="row">
+                                    <div class="input-field col s4 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="typeOfSpecial">Type Of Special</label><br>
+                                        <input class="input" type="text" name="typeOfSpecial" id="typeOfSpecial" class="validate" disabled>
+                                    </div>
+                                </div>
+                            <!-- Description -->
+                            <div class="row">
+                                <div class="input-field col s10 admin-input">
+                                    <label style="font-size: 12px;" class="label1" for="description">Description</label><br>
+                                    <textarea id="description" class="materialize-textarea" disabled></textarea>
+                                </div>
+                            </div>
+                            </div>
+                            <br>
+                            
+
+
+                            <!-- Modal Trigger -->
+                            <button class="waves-effect waves-light btn modal-trigger" id="addBtn" href="#modal1">Add</button>
+                            <button class="waves-effect waves-light btn modal-trigger" id="updateBtn" href="#modal2">Update</button>
+                            <button class="waves-effect waves-light btn" id="deleteBtn">Delete</button>
+
+                        </form>
+                    </div>
+                </main>
+        </div>
+
+        <!-- Modal Structure - ADD -->
+        <div id="modal1" class="modal modal-admin">
+            <div class="modal-content">
+            <h4>Add a special</h4>
+                <main >
+                    <div class="row"> 
+                        <form class="col s12" id="addspecial-form">
+                            <!-- Add to an existing establishment heading -->
+                            <div class="addSpecialSubHeading"><h5>Add special to an existing establishment?</h5></div>
+                            <!-- Add to an existing establishment options-->
+                            <div class="row">
+                                <!-- <div class="input-field col s5" style="max-height: 65px;">
+                                    <select style="max-height: 65px;">
+                                        <option value="1" disabled selected>Select an establishment</option>
+                                    <optgroup label="Australia" style="max-height: 65px;">
+                                        <option value="Toko Sydney">Toko Sydney</option>
+                                        <option value="Jewel on the Bay">Jewel on the Bay</option>
+                                    </optgroup>
+                                    <optgroup label="New Zealand" style="max-height: 65px;">
+                                        <option value="3">Option 3</option>
+                                        <option value="4">Option 4</option>
+                                    </optgroup>
+                                    </select>
+                                    <label>Establishments</label>
+                                </div> -->
+                                <!-- Search establishment by name or address -->
+                                <div class="col s6"> 
+                                    <div class="row">
+                                        <div class="input-field col s10">
+                                        <!-- <i class="material-icons prefix">textsms</i> -->
+                                        <input type="text" id="addToExistingEstablishment" name="" placeholder="Search name or address" class="autocomplete">
+                                        <label for="addToExistingEstablishment">Search name or address</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Confirm - check box -->
+                                <div id="checkBoxAddToEstablishment">
+                                    <label>
+                                      <input type="checkbox" class="filled-in" id="chkBoxAddToEstablishment" onclick="checkBoxAddToEstablishmentFunc()"/>
+                                      <span>Add special</span> <!-- Add special to establishment? -->
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Create for a new establishment heading -->
+                            <div class="addSpecialSubHeading" id="addSpecialSubHeading"><h5>Create for a new establishment</h5></div>
+                            <!-- Name -->
+                            <div class="row">
+                                <div class="input-field col s10">
+                                    <input id="add_name" type="text" class="validate">
+                                    <label for="add_name">Name</label>
+                                </div>
+                            </div>
+                            <!-- Address -->
+                            <div class="row">
+                                <div class="input-field col s10">
+                                    <input id="add_address" type="text" class="validate">
+                                    <label for="add_address">Address</label>                  
+                                </div>
+                            </div>
+                            <!-- Suburb and Country -->
+                            <div class="row">
+                                <div class="input-field col s5">
+                                    <input id="add_suburb" type="text" class="validate">
+                                    <label for="add_suburb">Suburb</label>
+                                </div>
+                                <!-- <div class="input-field col s5">
+                                    <input id="add_country" type="text" class="validate">
+                                    <label for="add_country">Country</label>
+                                </div> -->
+                                <div class="input-field col s4">
+                                    <select id="add_country">
+                                        <option value="" disabled selected>Choose your country</option>
+                                        <option value="Australia">Australia</option>
+                                        <option value="New Zealand">New Zealand</option>
+                                    </select>
+                                    <label>Country</label>
+                              </div>
+                            </div>
+                            <!-- Establishment type -->
+                            <div class="row">
+                                <div class="input-field col s10">
+                                    <input id="add_establishment_type" type="text" class="validate">
+                                    <label for="add_establishment_type">Establishment Type</label>                  
+                                </div>
+                            </div>
+                            <!-- Cusine type/chinese -->
+                            <div class="row">
+                                <div class="input-field col s10">
+                                    <input id="add_cusine_type" type="text" class="validate">
+                                    <label for="add_cusine_type">Cusine type</label>                  
+                                </div>
+                            </div>
+                            <!-- Special Details -->
+                            <div class="addSpecialSubHeading"><h5>Special details</h5></div>
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <select id="add_category">
+                                        <option value="" disabled selected>Choose your category</option>
+                                        <option value="Happy Hour">Happy Hour</option>
+                                        <option value="Dinner Special">Dinner Special</option>
+                                        <option value="Lunch Special">Lunch Special</option>
+                                        <option value="Breakfast Special">Breakfast Special</option>
+                                    </select>
+                                    <label>Category</label>
+                              </div>
+                            </div>
+                            <!-- Type of special -->
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <select id="add_type_of_special">
+                                        <option value="" disabled selected>Choose your type of special</option>
+                                        <option value="Food">Food</option>
+                                        <option value="Drink">Drink</option>
+                                    </select>
+                                    <label>Type of special</label>
+                              </div>
+                            </div>
+                            <!-- Description -->
+                            <div class="row" style="margin-left: 4px;">
+                                <div class="row">
+                                    <div class="input-field col s5">
+                                        <textarea id="add_description" class="materialize-textarea" data-length="120"></textarea>
+                                        <label for="add_description">Description</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Cancel or Confirm -->
+                        <div class="modal-footer">
+                            <button id="addCancelBtn" class="modal-close waves-effect waves-red btn-flat">Cancel</button> <!-- href="#!" -->
+                            <button id="addConfirmBtn" class="modal-close waves-effect waves-green btn-flat">Confirm</button> <!-- href="#!"  -->
+                        </div>
+                    </div>
+                </main>
+
+                <!-- <button id="addConfirmBtn">Confirm</button>
+                            <button id="addCancelBtn">Cancel</button> -->
+
+            </div>
+            <!-- <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div> -->
+        </div>
+
+        <!-- Modal Structure - UPDATE -->
+        <div id="modal2" class="modal modal-admin">
+            <div class="modal-content">
+            <h4 id="updateHeading" >Update Establishment</h4>
+                <main>
+                    <div class="row"> 
+                        <form class="col s12" id="updatespecial-form">
+                            <div id="formUpdateEstablishmentDetails">
+                                <!-- Establishment ID -->
+                                <div class="row">
+                                    <div class="input-field col s10">
+                                        <input id="update_establishmentId" type="text" class="validate" disabled>
+                                        <label for="update_establishmentId">Establishment ID</label>
+                                    </div>
+                                </div>
+                                <!-- Name -->
+                                <div class="row">
+                                    <div class="input-field col s10">
+                                        <input id="update_name" type="text" class="validate"> <!-- //Update text feilds so label is reset M.updateTextFields(); -->
+                                        <label for="update_name">Name</label>
+                                    </div>
+                                </div>
+                                <!-- Address -->
+                                <div class="row">
+                                    <div class="input-field col s10">
+                                        <input id="update_address" type="text" class="validate">
+                                        <label for="update_address">Address</label>                  
+                                    </div>
+                                </div>
+                                <!-- Suburb -->
+                                <div class="row">
+                                    <div class="input-field col s10">
+                                        <input id="update_suburb" type="text" class="validate">
+                                        <label for="update_suburb">Suburb</label>
+                                    </div>
+                                </div>
+                                <!-- Establishment type -->
+                                <div class="row">
+                                    <div class="input-field col s5">
+                                        <input id="update_establishment_type" type="text" class="validate">
+                                        <label for="update_establishment_type">Establishment Type</label>                  
+                                    </div>
+                                    <!-- Cusine type-->
+                                    <div class="input-field col s5">
+                                        <input id="update_cusine_type" type="text" class="validate">
+                                        <label for="update_cusine_type">Cusine type</label>                  
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="formUpdateSpecialDetails" style="display: none;">
+                                <!-- Category/time -->
+                                <div class="row">
+                                    <div class="input-field col s10">
+                                        <input id="update_category" type="text" class="validate">
+                                        <label for="update_category">Special Category</label>
+                                    </div>
+                                </div>
+                                <!-- Type of special -->
+                                <div class="row">
+                                    <div class="input-field col s10">
+                                        <input id="update_type_of_special" type="text" class="validate">
+                                        <label for="update_type_of_special">Type of Special</label>                  
+                                    </div>
+                                </div>
+                                <!-- Description -->
+                                <div class="row" style="margin-left: 4px;">
+                                    <div class="row">
+                                        <div class="input-field col s5">
+                                            <textarea id="update_description" class="materialize-textarea" data-length="120"></textarea>
+                                            <label for="update_description">Description</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Cancel or Confirm -->
+                        <div class="modal-footer">
+                            <button id="updateCancelBtn" class="modal-close waves-effect waves-red btn-flat">Cancel</button> <!-- href="#!" -->
+                            <button id="updateConfirmBtn" class="modal-close waves-effect waves-green btn-flat">Confirm</button> <!-- href="#!"  -->
+                        </div>
+                    </div>
+                </main>
+
+                <!-- <button id="addConfirmBtn">Confirm</button>
+                            <button id="addCancelBtn">Cancel</button> -->
+
+            </div>
+            <!-- <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div> -->
+            
+        </div>
+        <div class="adminSearch">
+            <div class="searchHeading">Search by</div>
+            <input id="searchEstablishmentID" placeholder="Establishment ID" type="text" class="validate">
+            <input id="searchSpecialID" placeholder="Special ID" type="text" class="validate">
+            <input id="searchAddress" placeholder="Address" type="text" class="validate">
+            <input id="searchName" placeholder="Name" type="text" class="validate"><br>
+            <button id="btnAdminSearch" class="waves-effect waves-light btn" onclick="adminSearch()">Search</button>
+        </div>
+        
+        <input id="myInput" type="text" placeholder="Search..">
+        <br><br>
+        <table id='tbl' border=5></table>
+        
+        <script src="//api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+        <script src="JavaScript/Admin2/adminFunctions.js"></script>
+        <script src="JavaScript/Materialize/materialize.min.js"></script>
+    </body>
+
+
+    </script>
+
+
+    
+
+
+</html>

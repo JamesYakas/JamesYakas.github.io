@@ -1,0 +1,108 @@
+.displayBox{
+    /* background: black!important;
+    width: 40px!important;
+    height: 100px!important;  */
+
+}
+
+/* #suburb{
+    color: black;
+} */
+
+#specialListBox{
+    position: relative;
+    top: 100px;
+    left: -10%;
+
+    margin: auto;
+
+
+
+    border: solid;
+    border-width: 1px;
+    border-color: black; 
+} 
+/* Admin heading */
+#adminHeading{
+    text-align: center;
+    margin : 0 auto;
+}
+/* Display specials form */
+#displaySpecialsForm{
+    position: relative;
+    top: -400px;
+    left: 350px;
+
+    width: 500px;
+    
+    border: solid;
+    border-width: 1px;
+    border-color: black;  
+
+    text-align: center;
+    /* display: inline-block; */
+
+    margin: auto;
+    
+
+    /* left: 80%;  */
+    
+
+    
+}
+.col{
+    /* width: 500px; */
+
+     /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
+    /* position: relative;
+    margin-top: -1px;   */
+}
+/* Each row */
+.row{
+    /* width: 500px; */
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
+
+    
+
+    /* position: relative;
+    margin-top: -20px; */
+}
+.admin-input{
+     /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
+    /* width: 500px; */
+
+    position: relative;
+    margin-bottom: -27px;
+    
+}
+
+.label1{
+    /* width: 500px; */
+    font-size: 30px;
+   
+
+}
+
+.input{
+    /* width: 500px; */
+    
+
+    
+}
+#displayNumFound{
+    border: solid;
+    border-width: 1px;
+    border-color: black; 
+}
+
+.modal { max-height: 100%; overflow: visible}

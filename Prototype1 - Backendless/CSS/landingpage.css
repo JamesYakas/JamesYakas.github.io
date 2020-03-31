@@ -1,0 +1,108 @@
+/* Nav bar */
+#navBar{
+    margin-bottom: 100px;
+
+    border: solid;
+    border-width: 1px;
+    border-color: black; 
+}
+/* Main section */
+#lpMainSection{
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+}
+/* Heading */
+#lpHeading{
+    /* position: relative;
+    top: -20px; */
+    
+    /* Set a margin for the bottom for the outer div box */
+    margin-bottom: 50px; 
+
+    text-align: center;
+
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    font-size: 20px;
+}
+/* Search outer div */
+#lpSearchOuterDiv{
+    margin: 0 auto;
+
+    height: 150px;
+    width: 300px;
+
+    border: solid;
+    background-color: whitesmoke;
+}
+#lpSearchContents{
+    margin-top: 10px;
+
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+}
+/* Input Search Suburb */
+#lpInputSearchSuburb{
+    /* position: relative;
+    top: 10px; */
+    /* Set a margin for the bottom of the input search for the procedding button 
+    Note: some reason doesn't work, so put margin on image instead  */
+
+    
+    /* Center */
+    margin : 0 auto;
+    display: block;
+
+    height: 30px;
+    width: 210px;
+
+    padding-left: 10px;
+
+    background-color: white
+    ;
+}
+/* Input img magnifying glass */
+#lpImgMagnifyingGlass{
+    position: relative;
+    left: 210px;
+    top:-27px; 
+    /* Set a margin for the bottom for the search button */
+
+
+    height: 26px;
+
+    /* Disable pointer/click through image */
+    pointer-events: none;
+}
+/* Search button */
+#lpSearchButton{
+
+    /* Center */
+    margin:auto;
+    display:block;
+
+    height: 50px;
+    width: 183px;
+
+    border: 0; 
+    outline:none;
+    -webkit-appearance: none;
+
+    color: white;
+    background-color: black;
+}
+#box{
+    width: 100%;
+    height: 750px;
+
+    margin-bottom: 500px;
+
+    
+
+    border: solid;
+    border-width: 1px;
+    border-color: black; 
+}

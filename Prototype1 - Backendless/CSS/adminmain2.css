@@ -1,0 +1,204 @@
+/* Admin heading */
+.adminHeading{
+    text-align: center;
+    /* margin : 0 auto; */
+    margin-bottom: 50px;
+
+    border: solid;
+    border-width: 1px;
+    border-color: black; 
+}
+.country-tab-big-wrapper{
+
+    margin-left: 33%;
+
+   
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+
+
+}
+.country-tab-wrapper{
+
+
+}
+.country-tab{
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+    
+}
+/* List boxes wrapper */
+.listboxesAndFormWrapper{
+    text-align: center;
+    /* position: relative;
+    left: -15%; */
+    /* margin-left: -10%; */
+    margin-bottom: 5px;
+
+
+
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+}
+/* List boxes */
+.listbox{
+    /* margin-left: 30px; */
+    display: inline-block;
+
+    
+    border: solid;
+    border-width: 1px;
+    border-color: black; 
+}
+/* #specialListBox{
+    position: relative;
+    top: 100px;
+    left: -10%;
+
+    margin: auto;
+
+
+
+    border: solid;
+    border-width: 1px;
+    border-color: black; 
+}  */
+/* Display specials form */
+#displaySpecialsForm{
+    /* position: relative;
+    top: -400px;
+    left: 350px; */
+    display: inline-block;
+    vertical-align: top;
+
+/* margin-left: 35%; */
+/* position: relative;
+left: 100px; */
+    
+    width: 500px;
+    
+    border: solid;
+    border-width: 1px;
+    border-color: black;  
+
+    /* text-align: center; */
+    /* display: inline-block; */
+
+    /* margin: auto; */
+    
+
+    /* left: 80%;  */
+    
+
+    
+}
+/* The special details form */
+#formSpecialDetails{
+    /* vertical-align: bottom; */
+}
+
+.admin-input{
+     /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
+    /* width: 500px; */
+
+    position: relative;
+    margin-bottom: -27px;
+    
+}
+
+.label1{
+    /* width: 500px; */
+    font-size: 30px;
+   
+
+}
+#displayNumFound{
+    border: solid;
+    border-width: 1px;
+    border-color: black; 
+}
+
+/* .modal { max-height: 100%; overflow: visible} */
+
+/* Add special sub heading */
+.addSpecialSubHeading{
+    text-align: center;
+}
+/* Add to establishment */
+#checkBoxAddToEstablishment{
+    position: relative;
+    margin-top: 20px;
+    margin-left: -10px;
+
+    display: inline-block;
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+/* Admin Search*/
+.adminSearch{
+    text-align: center;
+    margin-bottom: 40px;
+
+    font-size: 20px;
+    
+}
+/* Search establishment ID */
+#searchEstablishmentID{
+    width: 200px;
+}
+/* Search special ID */
+#searchSpecialID{
+    width: 200px;
+}
+/* Search address */
+#searchAddress{
+    width: 200px;
+}
+/* Search name */
+#searchName{
+    width: 200px;
+}
+.modal-admin{
+    zoom: 80%;
+}
+
+
+/* Table */
+#tbl{
+    overflow-y:scroll;
+    height:100px;
+    display:block;
+
+    width: 500px;
+    margin-left: 50px;
+    border: 1px solid black;
+}
+
+table#tbl {
+    border-collapse: collapse;   
+}
+#tbl tr {
+    background-color: #eee;
+    border-top: 1px solid #fff;
+}
+#tbl tr:hover {
+    background-color: #ccc;
+}
+#tblth {
+    background-color: #fff;
+}
+#tbl th, #tbl td {
+    padding: 3px 5px;
+    width: 400px; /* Maybe delete */
+}
+#tbl td:hover {
+    cursor: pointer;
+}

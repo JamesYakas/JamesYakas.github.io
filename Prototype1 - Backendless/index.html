@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Landing page</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <link rel="stylesheet" href="CSS/materialize.min.css">
+    <link rel="stylesheet" href="CSS/landingpage.css">
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <nav class="z-depth-0 grey lighten-4" id="navBar">
+      <div class="nav-wrapper container">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="static" style="display: none;">
+              <a href="index.html" class="grey-text modal-trigger" data-target="">Home</a>
+            </li>
+            <li class="logged-in" style="display: none;">
+              <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+            </li>
+            <li class="logged-in" style="display: none;">
+              <a href="#" class="grey-text" id="logout">Logout</a>
+            </li>
+            <li class="logged-in" style="display: none;">
+              <a href="adminmainpage2.html" class="grey-text modal-trigger" data-target="modal-create">Admin</a>
+            </li>
+            <li class="logged-out" style="display: none;">
+              <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+            </li>
+            <li class="logged-out" style="display: none;">
+              <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+            </li>
+        </ul>
+      </div>
+    </nav>
+  
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+      <div class="modal-content">
+        <h4>Sign up</h4><br />
+        <form id="signup-form">
+          <div class="input-field">
+            <input type="email" id="signup-email" required />
+            <label for="signup-email">Email address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="signup-password" required />
+            <label for="signup-password">Choose password</label>
+          </div>
+          <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="modal-login" class="modal">
+      <div class="modal-content">
+        <h4>Login</h4><br />
+        <form id="login-form">
+          <div class="input-field">
+            <input type="email" id="login-email" required />
+            <label for="login-email">Email address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="login-password" required />
+            <label for="login-password">Your password</label>
+          </div>
+          <button class="btn yellow darken-2 z-depth-0">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ACCOUNT MODAL -->
+    <div id="modal-account" class="modal">
+      <div class="modal-content center-align">
+        <h4>Account details</h4><br />
+        <div class="account-details"></div>
+      </div>
+    </div>
+
+    <!-- Main section -->
+    <div id="lpMainSection">
+      <!-- Heading -->
+      <div id="lpHeading">Restaurant Specials - Your go-to<br>for all local deals at your fingertips</div>
+
+      <!-- Search -->
+      <!-- Outer div -->
+      <div id="lpSearchOuterDiv">
+        <div id="lpSearchContents">
+          <!-- Input text box -->
+          <input type="text" id="lpInputSearchSuburb" placeholder="Enter your suburb">
+          <!-- Input text box img magnifying glass -->
+          <img type="image" id="lpImgMagnifyingGlass" src="images/magnifyingglass.png">    
+        </div>
+        <button id="lpSearchButton" onclick="lpSearchSuburb();">SEARCH</button>
+      </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDGWO3eRHb2gX1o_CByKRyympjy6Vx1aR8",
+        authDomain: "restaurant-specials-3dba9.firebaseapp.com",
+        databaseURL: "https://restaurant-specials-3dba9.firebaseio.com",
+        projectId: "restaurant-specials-3dba9",
+        storageBucket: "restaurant-specials-3dba9.appspot.com",
+        messagingSenderId: "364244383449",
+        appId: "1:364244383449:web:f8aa46bfc17f0e1ca4b0c8",
+        measurementId: "G-HGPBJF9Y7B"
+      };
+      
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      //Make auth and firestore references
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+      //Update firestore settings
+      //db.settings({timestampsinSnapshots: true});
+    </script>
+  
+  </body>
+  <script src="JavaScript/User/lpSearchSuburb.js"></script>
+  <script src="JavaScript/User/auth.js"></script>
+  <script src="JavaScript/User/lpIndex.js"></script>
+  <script src="JavaScript/Materialize/materialize.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+</html>

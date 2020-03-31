@@ -1,0 +1,188 @@
+/* The nav bar */
+#navBar{
+    margin-bottom: 10px;
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
+}
+/* Heading outter wrapper */
+#rpHeadingOuterWrapper{
+    margin-bottom: 15px; 
+
+    text-align: center;
+
+
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+/* Display users suburb */
+#rpDisplaySuburb{
+    /* position: relative;
+    top: 50px; */
+    /* text-align: center; */
+    margin-left: 5%;
+    display: inline-block;
+    vertical-align: top;
+
+    font-size: 25px;
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
+  
+}
+/* Research div */
+#rpRe-Search{
+    position: relative;
+    top: -15px;
+    /* margin-left: 5%; */
+    display: inline-block;
+
+
+    width: 120px;
+    height: 50px;
+    
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
+}
+#rpRe-Search2{
+    width: 120px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+/* rpRe-SearchInputDiv */
+#rpReSearchInputDiv{
+    display: inline-block;
+    vertical-align: top;
+
+    
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+/* img magnifying glass */
+#rpImgMagnifyingGlass{
+     /* position: relative;
+    top: 10px;
+    left: 275px; */
+    /* position: relative;
+    left: -20%; */
+    text-align: center;
+    vertical-align: top;
+    /* Center */
+    /* margin : 0 auto; */
+    display: inline-block;
+    /* display: block; */
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+/* Filter Wrapper */
+.bigFilterWrapper{
+    text-align: center;
+    
+   
+
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+
+    
+}
+.filterWrapper{
+        /* Center */
+        /* position: relative;
+        left: 50%; */
+        /* margin : 0 auto;
+        display:block; */
+        /* position: relative;
+        margin : 0 auto;
+        display:block;
+        text-align: center;
+        display:inline-block; */
+        /* justify-content:center; */
+        
+
+        margin : 0 auto;
+        display:block;
+        display:inline-block;
+        
+
+        /* border: solid;
+        border-width: 1px;
+        border-color: black; */
+        
+}
+/* Filters */
+.filter{
+    float: left;
+    margin-left: 20px;
+    /* width: 200px; */
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+
+}
+/* Number of specials found */
+#rpNumOfSpecialsFound{
+    text-align: center;
+
+}
+/* Results/Specials */
+#rpList{
+    text-align: center;
+}
+/* Map Button to reveal all suburbs */
+#rpBtnMapRevealSuburbs{
+    text-align: center;
+    margin : 0 auto;  
+}
+/* Google Map */
+#rpGoogleMap{
+    text-align: center;
+    margin : 0 auto;
+
+    margin-top: 20px;
+
+    height: 700px;
+    width: 70%;
+
+    /* Hidden by default */
+    /* display: none; */
+}
+/* Map button wrapper */
+#rpMapBtnsWrapper{
+    margin-bottom: 50px;;
+
+    text-align: center;
+}
+/* Button list image */
+.btnListImg{
+    position: relative;
+    top: 3px;
+    left: -8px;
+    
+    width: 15px;
+}
+/* Button map image */
+.btnMapImg{
+    position: relative;
+    top: 3px;
+    left: -8px;
+
+    width: 15px;
+
+}
+
+
