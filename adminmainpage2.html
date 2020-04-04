@@ -81,7 +81,7 @@
             </div>
         </div>
 
-        <h3 class="adminHeading">Admin v2</h3>
+        <h3 class="adminHeading">Establishment & Special Management</h3>
 
         <!-- Tabs - Australia/New Zealand -->
         <div class="country-tab-big-wrapper">
@@ -101,22 +101,28 @@
             <div class="listbox">
                 <div id="headingLstBoxEstablishments">Establishments - Australia</div>
                 <!-- <select class="browser-default chosen" multiple style="width: 350px; height: 517px;" id="establishmentListBox" onclick="displaySpecials()"></select> -->
-                <input id="myInput" type="text" placeholder="Search..">
-                <br><br>
-                <table id='tbl' border=5>
-                    <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Address</th>
-                        </tr>
-                        </thead>
-                        <tbody id="myTable"></tbody>
-                </table>
+                <!-- <input class="search-establishment" id="myInput" type="text" placeholder="Search.."> -->
+                <div class="row search-establishment-table">
+                    <div class="input-field col s6">
+                        <input class="search-establishment" id="myInput" type="text" placeholder="Search for a name or address...">
+                    </div>
+                </div>
+                <!-- <div class="tbl-wrapper"> -->
+                    <table id='tbl' border=5>
+                        <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Address</th>
+                            </tr>
+                            </thead>
+                            <tbody id="myTable"></tbody>
+                    </table>
+                <!-- </div> -->
             </div>
             <!-- Special -->
             <div class="listbox">
-                <div>Specials</div>
-                <select class="browser-default" multiple style="width: 250px; height: 517px;" id="specialListBox" onclick="getSpecial()"></select>
+                <div class="specials-heading">Specials</div>
+                <select class="browser-default" multiple id="specialListBox" onclick="getSpecial()"></select>
             </div>
 
                 <!-- Display specials form -->
@@ -127,7 +133,7 @@
                             <div id="formHeading" >Establishment details</div>
                             <div id="formEstablishmentDetails">
                                 <!-- Establishment ID -->
-                                <div class="row">
+                                <div class="row" style="display: none;">
                                     <div class="input-field col s6 admin-input">
                                         <label style="font-size: 12px;" class="label1" for="establishmentId">Establishment ID</label><br>
                                         <input class="input" type="text" name="establishmentId" id="establishmentId" class="validate" disabled>
@@ -170,7 +176,7 @@
                             </div>
                             <div id="formSpecialDetails" style="display: none;">
                                 <!-- Establishment ID and Special ID-->
-                                <div class="row">
+                                <div class="row" style="display: none;">
                                     <div class="input-field col s6 admin-input">
                                         <label style="font-size: 12px;" class="label1" for="establishmentIdSpecial">Establishment ID</label><br>
                                         <input class="input" type="text" name="establishmentIdSpecial" id="establishmentIdSpecial" class="validate" disabled>
@@ -180,6 +186,31 @@
                                         <input class="input" type="text" name="specialId" id="specialId" class="validate" disabled>
                                     </div>
                                 </div>
+                                <!-- Day of week -->
+
+                                <!-- Time period -->
+                                <div class="row">
+                                    <div class="input-field col s6 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="startTime">Start Time</label><br>
+                                        <input class="input" type="text" name="startTime" id="startTime" class="validate" disabled>
+                                    </div>
+                                    <div class="input-field col s6 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="endTime">End Time</label><br>
+                                        <input class="input" type="text" name="endTime" id="endTime" class="validate" disabled>
+                                    </div>
+                                </div>
+                                <!-- Time period<br>
+                                <div class="row">
+                                    <div class="input-field col s2">
+                                        <input type="time" id="startTime" style="width: 100px;" disabled>
+                                        <label for="startTime">Starts:</label>                  
+                                    </div>
+                                    <div class="input-field col s2">
+                                        <input type="time" id="endTime" style="width: 100px;" disabled>
+                                        <label for="endTime">Ends:</label>                  
+                                    </div>
+                                </div> -->
+
                                 <!-- Category -->
                                 <div class="row">
                                     <div class="input-field col s4 admin-input">
@@ -187,20 +218,20 @@
                                         <input class="input" type="text" name="category" id="category" class="validate" disabled>
                                     </div>
                                 </div>
-                            <!-- Type of special -->
+                                <!-- Type of special -->
                                 <div class="row">
                                     <div class="input-field col s4 admin-input">
                                         <label style="font-size: 12px;" class="label1" for="typeOfSpecial">Type Of Special</label><br>
                                         <input class="input" type="text" name="typeOfSpecial" id="typeOfSpecial" class="validate" disabled>
                                     </div>
                                 </div>
-                            <!-- Description -->
-                            <div class="row">
-                                <div class="input-field col s10 admin-input">
-                                    <label style="font-size: 12px;" class="label1" for="description">Description</label><br>
-                                    <textarea id="description" class="materialize-textarea" disabled></textarea>
+                                <!-- Description -->
+                                <div class="row">
+                                    <div class="input-field col s10 admin-input">
+                                        <label style="font-size: 12px;" class="label1" for="description">Description</label><br>
+                                        <textarea id="description" class="materialize-textarea" disabled></textarea>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                             <br>
                             
@@ -217,7 +248,7 @@
         </div>
 
         <!-- Modal Structure - ADD -->
-        <div id="modal1" class="modal modal-admin">
+        <div id="modal1" class="modal modal-admin modal-add">
             <div class="modal-content">
             <h4>Add a special</h4>
                 <main >
@@ -226,7 +257,7 @@
                             <!-- Add to an existing establishment heading -->
                             <div class="addSpecialSubHeading"><h5>Add special to the existing establishment?</h5></div>
                             <!-- Add to an existing establishment options-->
-                            <div class="row">
+                            <div class="row add-special-to-existing-establishment">
                                 <!-- <div class="input-field col s5" style="max-height: 65px;">
                                     <select style="max-height: 65px;">
                                         <option value="1" disabled selected>Select an establishment</option>
@@ -259,6 +290,7 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="or"><b>or</b></div>
                             <!-- Create for a new establishment heading -->
                             <div class="addSpecialSubHeading" id="addSpecialSubHeading"><h5>Create for a new establishment</h5></div>
                             <!-- Name -->
@@ -281,10 +313,6 @@
                                     <input id="add_suburb" type="text" class="validate">
                                     <label for="add_suburb">Suburb</label>
                                 </div>
-                                <!-- <div class="input-field col s5">
-                                    <input id="add_country" type="text" class="validate">
-                                    <label for="add_country">Country</label>
-                                </div> -->
                                 <div class="input-field col s4">
                                     <select id="add_country">
                                         <option value="" disabled selected>Choose your country</option>
@@ -296,20 +324,84 @@
                             </div>
                             <!-- Establishment type -->
                             <div class="row">
-                                <div class="input-field col s10">
+                                <!-- <div class="input-field col s10">
                                     <input id="add_establishment_type" type="text" class="validate">
                                     <label for="add_establishment_type">Establishment Type</label>                  
+                                </div> -->
+                                <div class="input-field col s4">
+                                    <select id="add_establishment_type">
+                                        <option value="" disabled selected>Choose your establishment type</option>
+                                        <option value="Restaurant">Restaurant</option>
+                                        <option value="Bar">Bar</option>
+                                    </select>
+                                    <label>Establishment Type</label>
                                 </div>
                             </div>
                             <!-- Cusine type/chinese -->
                             <div class="row">
-                                <div class="input-field col s10">
+                                <!-- <div class="input-field col s10">
                                     <input id="add_cusine_type" type="text" class="validate">
                                     <label for="add_cusine_type">Cusine type</label>                  
+                                </div> -->
+                                <div class="input-field col s4">
+                                    <select id="add_cusine_type" size="5">
+                                        <option value="" disabled selected>Choose your cuisine type</option>
+                                        <option value="Australian">Australian</option>
+                                        <option value="American">American</option>
+                                        <option value="British">British</option>
+                                        <option value="Carribean">Carribean</option>
+                                        <option value="Chinese">Chinese</option>
+                                        <option value="French">French</option>
+                                        <option value="Greek">Greek</option>
+                                        <option value="Indian">Indian</option>
+                                        <option value="Italian">Italian</option>
+                                        <option value="Japanese">Japanese</option>
+                                        <option value="Mediterranean">Mediterranean</option>
+                                        <option value="Mexican">Mexican</option>
+                                        <option value="Moroccan">Moroccan</option>
+                                        <option value="Spanish">Spanish</option>
+                                        <option value="Thai">Thai</option>
+                                        <option value="Turkish">Turkish</option>
+                                        <option value="Vietnamese">Vietnamese</option>
+                                    </select>
+                                    <label>Cuisine Type</label>
                                 </div>
                             </div>
                             <!-- Special Details -->
-                            <div class="addSpecialSubHeading"><h5>Special details</h5></div>
+                            <div class="addSpecialSubHeading"><h5>Enter your special details</h5></div>
+
+                            <h6><i>Skip special details for now and create establishment. (Todo - Disappears when adding special to existing establishment)</i></h6>
+                            <button class="waves-effect waves-light btn-small">Skip</button><br><br>
+
+                            <!-- Days of the week -->
+                            <div class="row">
+                                <div class="input-field col s6 days-of-week">
+                                    <select id="add_days_of_the_week" multiple>
+                                    <option value="" disabled selected>Choose your days of the week</option>
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                    </select>
+                                    <label>Days of the week</label>
+                                </div>
+                            </div>
+                            <!-- Time period -->
+                            Time period<br>
+                            <div class="row">
+                                <div class="input-field col s2">
+                                    <input type="time" id="add_start_time" style="width: 100px;">
+                                    <label for="add_start_time">Starts:</label>                  
+                                </div>
+                                <div class="input-field col s2">
+                                    <input type="time" id="add_end_time" style="width: 100px;">
+                                    <label for="add_end_time">Ends:</label>                  
+                                </div>
+                            </div>
+                            <!-- Category -->
                             <div class="row">
                                 <div class="input-field col s4">
                                     <select id="add_category">
@@ -334,13 +426,23 @@
                               </div>
                             </div>
                             <!-- Description -->
-                            <div class="row" style="margin-left: 4px;">
+                            <!-- <div class="row" style="margin-left: 4px;">
                                 <div class="row">
                                     <div class="input-field col s5">
-                                        <textarea id="add_description" class="materialize-textarea" data-length="120"></textarea>
+                                        <textarea id="add_description" class="materialize-textarea" data-length="120" placeholder="Enter your description"></textarea>
                                         <label for="add_description">Description</label>
                                     </div>
                                 </div>
+                            </div> -->
+                            <div class="row" style="margin-left: 4px;">
+                                <form class="col s12">
+                                  <div class="row">
+                                    <div class="input-field col s5">
+                                      <textarea id="add_description" class="materialize-textarea" data-length="120" placeholder="Enter your description"></textarea>
+                                      <label for="add_description">Description</label>
+                                    </div>
+                                  </div>
+                                </form>
                             </div>
                         </form>
                         <!-- Cancel or Confirm -->
@@ -361,7 +463,7 @@
         </div>
 
         <!-- Modal Structure - UPDATE -->
-        <div id="modal2" class="modal modal-admin">
+        <div id="modal2" class="modal modal-admin modal-update">
             <div class="modal-content">
             <h4 id="updateHeading" >Update Establishment</h4>
                 <main>
@@ -369,7 +471,7 @@
                         <form class="col s12" id="updatespecial-form">
                             <div id="formUpdateEstablishmentDetails">
                                 <!-- Establishment ID -->
-                                <div class="row">
+                                <div class="row" style="display: none;">
                                     <div class="input-field col s10">
                                         <input id="update_establishmentId" type="text" class="validate" disabled>
                                         <label for="update_establishmentId">Establishment ID</label>
@@ -398,30 +500,93 @@
                                 </div>
                                 <!-- Establishment type -->
                                 <div class="row">
-                                    <div class="input-field col s5">
+                                    <!-- <div class="input-field col s5">
                                         <input id="update_establishment_type" type="text" class="validate">
                                         <label for="update_establishment_type">Establishment Type</label>                  
+                                    </div> -->
+                                    <div class="input-field col s4">
+                                        <select id="update_establishment_type">
+                                            <option value="" disabled selected>Choose your establishment type</option>
+                                            <option value="Restaurant">Restaurant</option>
+                                            <option value="Bar">Bar</option>
+                                        </select>
+                                        <label>Establishment Type</label>
                                     </div>
                                     <!-- Cusine type-->
-                                    <div class="input-field col s5">
+                                    <!-- <div class="input-field col s5">
                                         <input id="update_cusine_type" type="text" class="validate">
                                         <label for="update_cusine_type">Cusine type</label>                  
+                                    </div> -->
+                                    <div class="input-field col s4 filter" >
+                                        <select id="update_cusine_type">
+                                            <option value="" disabled selected>Choose your cuisine type</option>
+                                            <option value="Australian">Australian</option>
+                                            <option value="American">American</option>
+                                            <option value="British">British</option>
+                                            <option value="Carribean">Carribean</option>
+                                            <option value="Chinese">Chinese</option>
+                                            <option value="French">French</option>
+                                            <option value="Greek">Greek</option>
+                                            <option value="Indian">Indian</option>
+                                            <option value="Italian">Italian</option>
+                                            <option value="Japanese">Japanese</option>
+                                            <option value="Mediterranean">Mediterranean</option>
+                                            <option value="Mexican">Mexican</option>
+                                            <option value="Moroccan">Moroccan</option>
+                                            <option value="Spanish">Spanish</option>
+                                            <option value="Thai">Thai</option>
+                                            <option value="Turkish">Turkish</option>
+                                            <option value="Vietnamese">Vietnamese</option>
+                                        </select>
+                                        <label>Cuisine type</label>
                                     </div>
                                 </div>
                             </div>
                             <div id="formUpdateSpecialDetails" style="display: none;">
-                                <!-- Category/time -->
+                                <!-- Time peroid -->
+                                Time period<br>
                                 <div class="row">
-                                    <div class="input-field col s10">
+                                    <div class="input-field col s2">
+                                        <input type="time" id="update_start_time" style="width: 100px;">
+                                        <label for="update_start_time">Starts:</label>                  
+                                    </div>
+                                    <div class="input-field col s2">
+                                        <input type="time" id="update_end_time" style="width: 100px;">
+                                        <label for="update_end_time">Ends:</label>                  
+                                    </div>
+                                </div>
+                                <!-- Category/time -->
+                                <!-- <div class="row"> -->
+                                    <!-- <div class="input-field col s10">
                                         <input id="update_category" type="text" class="validate">
                                         <label for="update_category">Special Category</label>
+                                    </div>
+                                </div> -->
+                                <div class="row">
+                                    <div class="input-field col s4">
+                                        <select id="update_category">
+                                            <option value="" disabled selected>Choose your category</option>
+                                            <option value="Happy Hour">Happy Hour</option>
+                                            <option value="Dinner Special">Dinner Special</option>
+                                            <option value="Lunch Special">Lunch Special</option>
+                                            <option value="Breakfast Special">Breakfast Special</option>
+                                        </select>
+                                        <label>Category</label>
                                     </div>
                                 </div>
                                 <!-- Type of special -->
                                 <div class="row">
-                                    <div class="input-field col s10">
+                                    <!-- <div class="input-field col s10">
                                         <input id="update_type_of_special" type="text" class="validate">
                                         <label for="update_type_of_special">Type of Special</label>                  
+                                    </div> -->
+                                    <div class="input-field col s4">
+                                        <select id="update_type_of_special">
+                                            <option value="" disabled selected>Choose your type of special</option>
+                                            <option value="Food">Food</option>
+                                            <option value="Drink">Drink</option>
+                                        </select>
+                                        <label>Type of special</label>
                                     </div>
                                 </div>
                                 <!-- Description -->
@@ -450,8 +615,20 @@
             <!-- <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
             </div> -->
+
             
         </div>
+
+        <!-- <button class="waves-effect waves-light btn" onclick="getTimePeroid()">Get time</button>
+        Time period<br>
+        <div class="row">
+            <div class="input-field col s2">
+                <input type="time" id="add_time_start2" style="width: 100px;">
+                <label for="add_time_start2">Starts:</label>                  
+            </div>
+        </div>
+        <input type="text" class="timepicker" id="test"> -->
+        
         <!-- <div class="adminSearch">
             <div class="searchHeading">Search by</div>
             <input id="searchEstablishmentID" placeholder="Establishment ID" type="text" class="validate">
@@ -472,7 +649,7 @@
                 </thead>
                 <tbody id="myTable"></tbody>
         </table> -->
-        
+
         <script src="//api.backendless.com/sdk/js/latest/backendless.min.js"></script>
         <script src="JavaScript/Admin2/adminFunctions.js"></script>
         <script src="JavaScript/Materialize/materialize.min.js"></script>

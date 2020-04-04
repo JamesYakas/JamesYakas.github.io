@@ -101,6 +101,18 @@
     <!-- Filters -->
     <div class="bigFilterWrapper">
       <div class="filterWrapper">
+        <!-- Time period -->
+        <div class="row filter">
+          <!-- Time period<br> -->
+            <div class="input-field col s6">
+                <input type="time" id="add_start_time">
+                <label for="add_start_time">Start time:</label>                  
+            </div>
+            <div class="input-field col s6">
+                <input type="time" id="add_end_time">
+                <label for="add_end_time">End time:</label>                  
+            </div>
+        </div>
         <!-- Special Category -->
         <div class="input-field col s12 filter" >
           <select id="specialCategoryFilter" multiple onchange="specialCategoryFilter()">
@@ -116,8 +128,6 @@
         <!-- Cuisine Type -->
         <div class="input-field col s12 filter" >
           <select id="cusineTypeFilter" multiple onchange="cusineTypeFilter()">
-            <!-- <option value="" disabled selected>All</option> -->
-            <!-- <option value="Any Cuisine" >All Cuisines</option> -->
             <option value="Australian">Australian</option>
             <option value="American">American</option>
             <option value="British">British</option>

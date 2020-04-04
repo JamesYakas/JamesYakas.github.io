@@ -4,9 +4,9 @@
     /* margin : 0 auto; */
     margin-bottom: 50px;
 
-    border: solid;
+    /* border: solid;
     border-width: 1px;
-    border-color: black; 
+    border-color: black;  */
 }
 .country-tab-big-wrapper{
 
@@ -39,9 +39,9 @@
 
 
 
-    border: solid;
+    /* border: solid;
     border-width: 1px;
-    border-color: black;
+    border-color: black; */
 }
 /* List boxes */
 .listbox{
@@ -50,23 +50,42 @@
     display: inline-block;
 
     
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+/* Establishments heading */
+#headingLstBoxEstablishments{
+
+    border: solid;
+    border-width: 1px;
+    border-color: black; 
+
+    margin-bottom: -10px;
+}
+/* Search establishment table */
+.search-establishment-table{
+    border: solid;
+    border-width: 1px;
+    border-color: black; 
+    border-top:none;
+}
+/* Specials heading */
+.specials-heading{
     border: solid;
     border-width: 1px;
     border-color: black; 
 }
-/* #specialListBox{
-    position: relative;
-    top: 100px;
-    left: -10%;
-
-    margin: auto;
-
-
+#specialListBox{
+    width: 250px;
+    height: 475px;
 
     border: solid;
     border-width: 1px;
-    border-color: black; 
-}  */
+    border-color: black;  
+    border-top: none;
+
+}
 /* Display specials form */
 #displaySpecialsForm{
     /* position: relative;
@@ -74,6 +93,7 @@
     left: 350px; */
     display: inline-block;
     vertical-align: top;
+    height: 499px;
 
 /* margin-left: 35%; */
 /* position: relative;
@@ -125,11 +145,25 @@ left: 100px; */
     border-color: black; 
 }
 
-/* .modal { max-height: 100%; overflow: visible} */
-
 /* Add special sub heading */
 .addSpecialSubHeading{
     text-align: center;
+    margin-bottom: 40px;
+}
+/* add-special-to-existing-establishment */
+.add-special-to-existing-establishment{
+    margin-bottom: 0px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+/* Or create a new establishment */
+.or{
+    text-align: center;
+    /* margin-top: -21px; */
+    position: relative;
+    top: -15px;
+    font-size: 20px;
 }
 /* Add to establishment */
 #checkBoxAddToEstablishment{
@@ -142,6 +176,10 @@ left: 100px; */
     /* border: solid;
     border-width: 1px;
     border-color: black;  */
+}
+/* Add - Days of week select */
+#add_days_of_the_week{
+
 }
 /* Admin Search*/
 .adminSearch{
@@ -169,17 +207,58 @@ left: 100px; */
 }
 .modal-admin{
     zoom: 80%;
+    /* height: 100%; */
+
+    /* overflow: visible */
+}
+
+/* Modal update */
+.modal-update{
+    overflow: visible;
+}
+
+/* Modal add */
+.modal-add{
+    max-height: 85% !important;
+    /* overflow: visible; */
+    margin-top: -75px;
+}
+
+#update_cusine_type{
+    /* height: 100%; */
+    /* max-height: 100% !important */
+    max-height: 250px !important;
+    overflow-y: auto !important;
+    backface-visibility: hidden !important;
+    overflow: auto;
+}
+
+#add_cusine_type{
+    height: 50px;
+}
+
+.modal {
+    /* height: 100%; */
+    /* overflow: visible */
+    /* max-height: 100% !important */
+} 
+
+/* Table wrapper */
+.tbl-wrapper{
+    vertical-align: top;
 }
 
 
 /* Table */
 #tbl{
+    position: relative;
+    top: -30px;
     overflow-y:scroll;
-    height:440px;
+    height:410px;
     display:block;
 
     width: 500px;
-    margin-left: 50px;
+    
     border: 1px solid black;
 }
 
@@ -187,13 +266,13 @@ table#tbl {
     border-collapse: collapse;   
 }
 #tbl tr {
-    background-color: #eee;
+    background-color: #eee; /* #eee */
     border-top: 1px solid #fff;
 }
 #tbl tr:hover {
     background-color: #ccc;
 }
-#tblth {
+#tbl th { /* #tbl th */
     background-color: #fff;
 }
 #tbl th, #tbl td {
@@ -203,3 +282,9 @@ table#tbl {
 #tbl td:hover {
     cursor: pointer;
 }
+.selected {
+    /* background: blue; */
+    color: #e54545;
+    font-weight: 400;
+  }
+

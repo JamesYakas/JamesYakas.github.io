@@ -47,10 +47,21 @@ $(document).ready(function () {
           "Google": 'https://placehold.it/250x250'
         },
       });
-      //Dynamically re-apply materialize css
-      $('input#input_text, textarea#add_description').characterCounter();
-      $('input#input_text, textarea#update_description').characterCounter();
-      M.textareaAutoResize($('#description'));
+    //Dynamically re-apply materialize css
+    $('input#input_text, textarea#add_description').characterCounter();
+    $('input#input_text, textarea#update_description').characterCounter();
+    M.textareaAutoResize($('#description'));
+    //$('.modal-add').modal('startingTop', '1%');
+    $('.modal-add').modal({
+        // dismissible: false, 
+        //opacity: 1, // Opacity of modal background
+            //inDuration: 300, // Transition in duration
+        // outDuration: 200, // Transition out duration
+        startingTop: '4%' // Starting top style attribute
+        //endingTop: '10%', // Ending top style attribute
+    });
+    //Time picker
+    $('.timepicker').timepicker();
 });
 //Function for function of when the page loads for the table
 function onPageLoadTable(){
@@ -90,6 +101,16 @@ function onPageLoadTable(){
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
+
+// delegate the event handling to the table
+document.querySelector('tbody').addEventListener('click', function(e) {
+  var closestCell = e.target.closest('tr'), // identify the closest td when the click occured
+      activeCell = e.currentTarget.querySelector('tr.selected'); // identify the already selected td
+
+  closestCell.classList.add('selected'); // add the "selected" class to the clicked td
+  if (activeCell) activeCell.classList.remove('selected'); // remove the "selected" class from the previously selected td
+
+})
 
 }
 
@@ -201,8 +222,8 @@ addConfirmBtn.addEventListener('click', e => {
         console.log("Create new establishment and special concurrently");
 
         //Get the add form data
-        var addAddress = document.getElementById('add_address');
-        var addSuburb = document.getElementById('add_suburb');
+        var addAddress = document.getElementById('add_address').value;
+        var addSuburb = document.getElementById('add_suburb').value;
 
         //Save the establishment objectId
         var establishmentObjectId;
@@ -210,7 +231,7 @@ addConfirmBtn.addEventListener('click', e => {
         var specialObjectId;
 
         //Turn address into coords
-        var location = addAddress.value + " " + addSuburb.value;
+        var location = addAddress + " " + addSuburb;
         var lat;
         var lng;
         //var coordsObj = {};
@@ -223,7 +244,6 @@ addConfirmBtn.addEventListener('click', e => {
         })
         .then(function(response){
             //Geometry
-            //console.log(response.data.results[0].formatted_address)
             lat = response.data.results[0].geometry.location.lat; //var
             lng = response.data.results[0].geometry.location.lng; //var
             console.log(lat + " : " + lng);
@@ -238,62 +258,31 @@ addConfirmBtn.addEventListener('click', e => {
             
             //return coordsObj;
             return coords;
-            //};
-
-            //Make sure lat and lng are returned before an establishment is created as an establishment must contain a lat and lng
-            //return coords;
         })
         .then(() => {
 
         
         //Save establishment and get objectId
         const getEstablishmentObjectId = () => {
-            // console.log(coordsObj);
-            // console.log(coordsObj.lat);
-            // console.log(coordsObj.lng);
-            // console.log(coordsObj.lat);
-            // console.log(coordsObj.lng);
-
             console.log(coords);
             console.log(coords[0]);
             console.log(coords[1]);
 
-            // const order = {
-            //     orderName      : 'Fun times',
-            //     pickupLocation : new Backendless.Data.Point().setLatitude(55.782309).setLongitude(37.578639),
-            //     dropoffLocation: new Backendless.Data.Point().setLatitude(55.752917).setLongitude(37.618900)
-            //    }
-               
-            //    Backendless.Data.of('Order').save(order)
-            //     .then(savedOrder => {
-            //       const { objectId } = savedOrder
-            //     })
-            //     .catch(error => {
-            //       console.log(error)
-            //     })
-
-            // //Create point
-            // var point = new Backendless.GeoPoint();
-            // point.latitude = 40.7148;
-            // point.longitude = -74.0059;
-            // point.categories = [ "location" ];
-            // point.metadata = { service_area : "NYC" }
-
             //Get the add form data
-            var addName = document.getElementById('add_name');
-            var addCountry = document.getElementById('add_country');
-            var addEstablishmentType = document.getElementById('add_establishment_type');
-            var addCuisineType = document.getElementById('add_cusine_type');
+            var addName = document.getElementById('add_name').value;
+            var addCountry = document.getElementById('add_country').value;
+            var addEstablishmentType = document.getElementById('add_establishment_type').value;
+            var addCuisineType = document.getElementById('add_cusine_type').value;
 
             //Create establishment from user's entries
             var establishment = {
                 Location: new Backendless.Data.Point().setLatitude(coords[0]).setLongitude(coords[1]),
-                Name: addName.value,
-                Address: addAddress.value,
-                Suburb: addSuburb.value,
-                Country: addCountry.value,
-                Cuisine_Type: addCuisineType.value,
-                Establishment_Type: addEstablishmentType.value
+                Name: addName,
+                Address: addAddress,
+                Suburb: addSuburb,
+                Country: addCountry,
+                Cuisine_Type: addCuisineType,
+                Establishment_Type: addEstablishmentType
             }
 
             //Link the geopoint with the establishment
@@ -306,15 +295,19 @@ addConfirmBtn.addEventListener('click', e => {
         //Save special and get objectId
         const getSpecialObjectId = () => {
             //Get the add form data
-            var addCategory = document.getElementById('add_category');
-            var addTypeOfSpecial = document.getElementById('add_type_of_special');
-            var addDescription = document.getElementById('add_description');
+            var addstartTime = document.getElementById('add_start_time').value;
+            var endstartTime = document.getElementById('add_end_time').value;
+            var addCategory = document.getElementById('add_category').value;
+            var addTypeOfSpecial = document.getElementById('add_type_of_special').value;
+            var addDescription = document.getElementById('add_description').value;
 
             //Create special from user's enteries
             var special = {
-                Category: addCategory.value,
-                Type_Of_Special: addTypeOfSpecial.value,
-                Description: addDescription.value
+                Start_Time: addstartTime,
+                End_Time: endstartTime,
+                Category: addCategory,
+                Type_Of_Special: addTypeOfSpecial,
+                Description: addDescription
             }
 
             //Save special to db (return to wait until saved and an objectId can be retrieved)
@@ -361,15 +354,19 @@ addConfirmBtn.addEventListener('click', e => {
         //Save special and get objectId
         const getSpecialObjectId = () => {
             //Get the add form data
-            var addCategory = document.getElementById('add_category');
-            var addTypeOfSpecial = document.getElementById('add_type_of_special');
-            var addDescription = document.getElementById('add_description');
+            var addstartTime = document.getElementById('add_start_time').value;
+            var endstartTime = document.getElementById('add_end_time').value;
+            var addCategory = document.getElementById('add_category').value;
+            var addTypeOfSpecial = document.getElementById('add_type_of_special').value;
+            var addDescription = document.getElementById('add_description').value;
 
             //Create special from user's enteries
             var special = {
-                Category: addCategory.value,
-                Type_Of_Special: addTypeOfSpecial.value,
-                Description: addDescription.value
+                Start_Time: addstartTime,
+                End_Time: endstartTime,
+                Category: addCategory,
+                Type_Of_Special: addTypeOfSpecial,
+                Description: addDescription
             }
 
             //Save special to db (return to wait until saved and an objectId can be retrieved)
@@ -396,19 +393,11 @@ addConfirmBtn.addEventListener('click', e => {
             });
         })
         .then(() => {console.log('Data Successfully Written');})
-        .then(() => {onPageLoadTable();})
-        .then(() => {document.querySelector('#addspecial-form').reset();})
-        .then(() => {M.updateTextFields();})
+        .then(() => {onPageLoadTable();}) //Re-load the table
+        .then(() => {document.querySelector('#addspecial-form').reset();}) //Clear the establishment fields
+        .then(() => {enableEstablishmentDetails()}) //Re-enable disabled establishment fields
+        .then(() => {M.updateTextFields();}) //Materialise - Update the text fields to fix label positioning
         .catch(error => {console.error(error)});
-
-
-
-        //Todo - 
-        // .then(() => {console.log('Data Successfully Written');})
-        // .then(() => {onPageLoad();})
-        // .then(() => {document.querySelector('#addspecial-form').reset();})
-        // .then(() => {M.updateTextFields();})
-        // .catch(error => {console.error(error)});
     }
 });
 
@@ -428,12 +417,15 @@ addCancelBtn.addEventListener('click', e => {
     document.getElementById('add_address').disabled = false;
     document.getElementById('add_suburb').disabled = false;
     document.getElementById('add_country').disabled = false;
-    //Update the add_county option
-    $('select').formSelect(); 
     document.getElementById('add_establishment_type').disabled = false;
     document.getElementById('add_cusine_type').disabled = false;
+    //Change heading to display "Create for a new establishment"
+    document.getElementById('addSpecialSubHeading').innerHTML = "<h5>" +"Create for a new establishment" + "</h5>"
 
-    //Update text feilds so label is reset
+    //Materalize - Update the 'select' add country and establishment type options
+    $('select').formSelect(); 
+
+    //Materalize - Update text feilds so label is reset
     M.updateTextFields();
     //This works without addspecialForm.reset();?
     //document.getElementById('addToExistingEstablishment').innerHTML = "";
@@ -461,24 +453,26 @@ function checkBoxAddToEstablishmentFunc(){
             document.getElementById('add_address').disabled = true;
             document.getElementById('add_suburb').value = document.getElementById('suburb').value;
             document.getElementById('add_suburb').disabled = true;
+            //Country select
             if(document.getElementById('headingLstBoxEstablishments').innerHTML == "Establishments - Australia"){
                 document.getElementById('add_country').value = "Australia";
                 document.getElementById('add_country').disabled = true;
                 //Update the add_county option
-                $('select').formSelect();
+                //$('select').formSelect();
             }else{
                 document.getElementById('add_country').value = "New Zealand";
                 document.getElementById('add_country').disabled = true;
                 //Update the add_county option
-                $('select').formSelect(); 
+                //$('select').formSelect(); 
             }
-            //document.getElementById('add_country').value = document.getElementById('country').value;
             document.getElementById('add_establishment_type').value = document.getElementById('establishmentType').value;
             document.getElementById('add_establishment_type').disabled = true;
             document.getElementById('add_cusine_type').value = document.getElementById('cusineType').value;
             document.getElementById('add_cusine_type').disabled = true;
 
-            //Update text feilds so label is reset
+            //Materalize - Update the 'select' add country and establishment type options
+            $('select').formSelect();
+            //Materalize - Update text feilds so label is reset
             M.updateTextFields();
         }else{
             //Change heading
@@ -492,14 +486,15 @@ function checkBoxAddToEstablishmentFunc(){
             document.getElementById('add_suburb').disabled = false;
             document.getElementById('add_country').value = "";
             document.getElementById('add_country').disabled = false;
-            //Update the add_county option
-            $('select').formSelect(); 
             document.getElementById('add_establishment_type').value = "";
             document.getElementById('add_establishment_type').disabled = false;
             document.getElementById('add_cusine_type').value = "";
             document.getElementById('add_cusine_type').disabled = false;
 
-            //Update text feilds so label is reset
+            //Materalize - Update the 'select' add country and establishment type options
+            $('select').formSelect(); 
+
+            //Materalize - Update text feilds so label is reset
             M.updateTextFields();
         }
     }
@@ -547,17 +542,67 @@ updateBtn.addEventListener('click', e =>{
             //Show the update special form
             document.getElementById("formUpdateSpecialDetails").style.display = "block"; //formUpdateSpecialDetails
         
+            var date = new Date();
+            var currentTime = date.getHours() + ':' + date.getMinutes();
+            //console.log(date.getHours());
+            //console.log(date.getMinutes());
+
             //Transfer special details over to the update modal from the special display form
+            document.getElementById('update_start_time').value = convertTo24Hour2('startTime'); //convertTo24Hour(document.getElementById('startTime').value); //'startTime').value); //Time picker takes 24 hour format and displays as 12 hour, so convert 12 hour to 24 hour
+            document.getElementById('update_end_time').value = convertTo24Hour2('endTime'); //convertTo24Hour(document.getElementById('endTime').value); //Time picker takes 24 hour format and displays as 12 hour, so convert 12 hour to 24 hour
             document.getElementById('update_category').value = document.getElementById('category').value;
             document.getElementById('update_type_of_special').value = document.getElementById('typeOfSpecial').value;
             document.getElementById('update_description').value = document.getElementById('description').value;
+
+            // time = document.getElementById('startTime').value;
+            // var hours = Number(time.match(/^(\d+)/)[1]);
+            // var minutes = Number(time.match(/:(\d+)/)[1]);
+            // var AMPM = time.match(/\s(.*)$/)[1];
+            // if(AMPM == " PM" && hours<12) hours = hours+12;
+            // if(AMPM == " AM" && hours==12) hours = hours-12;
+            // var sHours = hours.toString();
+            // var sMinutes = minutes.toString();
+            // if(hours<10) sHours = "0" + sHours;
+            // if(minutes<10) sMinutes = "0" + sMinutes;
+            //alert(sHours + ":" + sMinutes);
+
         }
 
-        //Update text feilds so label is reset
+        //Update text fields so label is reset
+        //Materalize - Update the 'select' establishment type and cuisine type options for the establishment and category and type of special for the special
+        $('select').formSelect(); 
         //THIS STUFFS UP LABELS WHEN CLICK UPDATE
         M.updateTextFields();
     //}
 });
+
+function convertTo24Hour(time) {
+    var hours = parseInt(time.substr(0, 2));
+    if(time.indexOf(' AM') != -1 && hours == 12) {
+        time = time.replace('12', '0');
+    }
+    if(time.indexOf(' PM')  != -1 && hours < 12) {
+        time = time.replace(hours, (hours + 12));
+    }
+    return time.replace(/( AM| PM)/, '');
+}
+
+function convertTo24Hour2(id){
+    time = document.getElementById(id).value;
+    var hours = Number(time.match(/^(\d+)/)[1]);
+    var minutes = Number(time.match(/:(\d+)/)[1]);
+    var AMPM = time.match(/\s(.*)$/)[1];
+    if(AMPM == "PM" && hours<12) hours = hours+12;
+    if(AMPM == "AM" && hours==12) hours = hours-12;
+    var sHours = hours.toString();
+    var sMinutes = minutes.toString();
+    if(hours<10) sHours = "0" + sHours;
+    if(minutes<10) sMinutes = "0" + sMinutes;
+
+    return sHours + ":" + sMinutes;
+}
+  
+ 
 
 //Update confirm button
 updateConfirmBtn.addEventListener('click', e =>{
@@ -612,6 +657,8 @@ updateConfirmBtn.addEventListener('click', e =>{
         //Create the updated special
         var special = {
             objectId:document.getElementById('specialId').value,
+            Start_Time:document.getElementById('update_start_time').value,
+            End_Time:document.getElementById('update_end_time').value,
             Category:document.getElementById('update_category').value,
             Type_Of_Special: document.getElementById('update_type_of_special').value,
             Description: document.getElementById('update_description').value
@@ -628,6 +675,8 @@ updateConfirmBtn.addEventListener('click', e =>{
           .then(() => {return onPageLoadTable();})
           .then(() =>{ 
               //Update the special form to reflect the recent changes. Normally updated via listbox click but no click is present on 'Update'
+              document.getElementById('startTime').value = tConvert(document.getElementById('update_start_time').value);
+              document.getElementById('endTime').value = tConvert(document.getElementById('update_end_time').value);
               document.getElementById('category').value = document.getElementById('update_category').value;
               document.getElementById('typeOfSpecial').value = document.getElementById('update_type_of_special').value;
               document.getElementById('description').value = document.getElementById('update_description').value;
@@ -690,7 +739,7 @@ deleteBtn.addEventListener('click', e =>{
                             console.log( "an error has occurred " + error.message );
                         })
                         .then(() => {onPageLoadTable();})
-                        .then(() => {removeLastOption(establishmentListBox);})
+                        //.then(() => {removeLastOption(establishmentListBox);})
                         .then(() => {
                             //Clear the specialListBox
                             $("#specialListBox").empty()
@@ -698,6 +747,10 @@ deleteBtn.addEventListener('click', e =>{
                             //Clear the establishment form
                             displayEstablishmentandSpecialForm = document.querySelector('#displayEstablishmentandSpecial-form');
                             displayEstablishmentandSpecialForm.reset();
+
+                            //Clear the 'Add special to the existing establishment?' input
+                            document.getElementById('addToExistingEstablishment').value = "";
+                            console.log(document.getElementById('addToExistingEstablishment').value);
                         })
                         .catch(error => {console.error(error)});
                     }
@@ -850,6 +903,8 @@ function getSpecial(){
             //Correct establishment found - Display the specials details
             document.getElementById('establishmentIdSpecial').value = masterEstablishmentsAustralia[i].objectId;
             document.getElementById('specialId').value = masterEstablishmentsAustralia[i].establishmentSpecials[specialNum].objectId;//SpecialID;
+            document.getElementById('startTime').value = tConvert(masterEstablishmentsAustralia[i].establishmentSpecials[specialNum].Start_Time);
+            document.getElementById('endTime').value = tConvert(masterEstablishmentsAustralia[i].establishmentSpecials[specialNum].End_Time);
             document.getElementById('category').value = masterEstablishmentsAustralia[i].establishmentSpecials[specialNum].Category;
             document.getElementById('typeOfSpecial').value = masterEstablishmentsAustralia[i].establishmentSpecials[specialNum].Type_Of_Special;
             document.getElementById('description').value = masterEstablishmentsAustralia[i].establishmentSpecials[specialNum].Description;
@@ -920,4 +975,41 @@ function adminSearch(){
     document.getElementById('searchName') == null){
         alert("nothing");
     }
+}
+
+//Function to enable add form establishment details when confimed and saved to db or add form canceled
+function enableEstablishmentDetails(){
+    //Change fields to enabled
+    document.getElementById('add_name').disabled = false;
+    document.getElementById('add_address').disabled = false;
+    document.getElementById('add_suburb').disabled = false;
+    document.getElementById('add_country').disabled = false;
+    document.getElementById('add_establishment_type').disabled = false;
+    document.getElementById('add_cusine_type').disabled = false;
+    //Materalize - Update the 'select' add country, establishment type and cuisine type options
+    $('select').formSelect(); 
+}
+
+//Function to convert 24 hour to 12 hour
+function tConvert (time) {
+    // Check correct time format and split into components
+    time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time]; //(:[0-5]\d)
+  
+    if (time.length > 1) { // If time format correct
+      time = time.slice (1);  // Remove full string match value
+      time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+      time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join (''); // return adjusted time or original string
+  }
+  
+
+//Debug - Function to get time
+function getTimePeroid(){
+    console.log("testt");
+    console.log(document.getElementById('add_time_start2').value);
+    //document.getElementById("add_time_start2").value = "22:53:05";
+
+    console.log(document.getElementById('test').value);
+    document.getElementById("test").value = "22:53:05";
 }
