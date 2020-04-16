@@ -143,6 +143,9 @@
 #rpList{
     text-align: center;
 }
+.rpImage{
+    border-radius: 50%;
+}
 /* Map Button to reveal all suburbs */
 #rpBtnMapRevealSuburbs{
     text-align: center;

@@ -34,6 +34,9 @@
 
             //RETRIEVE SPECIALS FROM THE DB BASED ON USER'S SUBURB
             var queryBuilder = Backendless.DataQueryBuilder.create();
+
+            //Set the relations to get
+            queryBuilder.setRelated( [ "establishmentSpecials"] );
     
             queryBuilder.setWhereClause( "Suburb = " + "'" + suburb + "'");//, {"suburb": suburb}; //( "Suburb = 'Rose Bay'" );
     
@@ -45,6 +48,7 @@
     
                 //For every establishment
                 for(var i=0;i<objectArray.length;i++){
+                    console.log(objectArray);
                     
                     //If it contains specials
                     if(objectArray[i].establishmentSpecials.length > 0){
@@ -55,7 +59,9 @@
                         "<b>" + objectArray[i].Establishment_Type + "</b>" + "<br>" + 
                         objectArray[i].Name + "<br>" + 
                         objectArray[i].Address + "<br>" + 
-                        objectArray[i].Cuisine_Type + "<br>" + "<br>";
+                        objectArray[i].Cuisine_Type + "<br>" +
+                        '<img class="rpImage" src="' + objectArray[i].Image + '"' + '>' +  "<br>" +  "<br>";
+                        // objectArray[i].Image + "<br>";
     
                         //For every special
                         for(var a=0;a<objectArray[i].establishmentSpecials.length;a++){
@@ -64,7 +70,9 @@
                             document.getElementById('rpList').innerHTML +=
                             "<b>" + "Special".fontcolor("#29a381") + "</b>" + "<br>" + 
                             objectArray[i].establishmentSpecials[a].Category + "<br>" + 
-                            objectArray[i].establishmentSpecials[a].Description + "<br>" + "<br>";
+                            objectArray[i].establishmentSpecials[a].Description + "<br>" +
+                            tConvert(objectArray[i].establishmentSpecials[a].Start_Time) + "<br>" +
+                            tConvert(objectArray[i].establishmentSpecials[a].End_Time) + "<br>" + "<br>";
                         }
     
                         //Display break point for the next establishment
@@ -275,206 +283,20 @@
         }
     }
 
+    //Function for the start time filter
+    function timePeriodFilter(){
+        // //Reference to the start time filter selections
+        // var startTime = $('#timePeriodStartFilter').val();
+        // var endTime = $('#timePeriodEndFilter').val();
+
+        // console.log(startTime);
+        // console.log(endTime);
+        applyFilters();
+    }
+
     //Function for the special category filter
     function specialCategoryFilter(){
         applyFilters();
-        // //Clear the list
-        // document.getElementById('rpList').innerHTML = "";
-
-        // //Reference to the special category, cusine type, establishment type and type of special filter selections
-        // var specialCategories = $('#specialCategoryFilter').val();
-        // var cusineTypes = $('#cusineTypeFilter').val();
-        // var establishmentTypes = $('#establishmentTypeFilter').val();
-        // var typeOfSpecials = $('#typeOfSpecialFilter').val();
-
-        // //console.log("Establishments");
-        // //console.log(masterEstablishments);
-
-        // // var establishments = {
-        // //     Address: "594 New South Head Rd",
-        // //     Establishment_Type: "Restaurant",
-        // //     establishmentSpecials: {
-        // //         Category: "Breakfast Special",
-        // //         Description: "$2 Waffles"
-        // //         },
-        // //     Address: "333 Garden Rd",
-        // //     Establishment_Type: "Restaurant",
-        // //     establishmentSpecials: {
-        // //         Category: "Dinner Special",
-        // //         Description: "$3 Chips"
-        // //         }
-        // //     }
-
-        // // var establishments = [ {address: "55 Garden rd"},
-        // //     [{Category: "Breakfast Special"}, {Category: "Dinner Special"}]
-        // //   ];
-
-
-
-        // //specials = [{Category: "Breakfast Special"}, {Category: "Dinner Special"}]
-
-        // //establishments.push(specials);
-
-
-
-    
-        // //console.log("establishmentst");
-        // //console.log(establishments);
-
-        // //Incase a filter in the sequence or all filters .length is 0 (not selected), initialise the allSpecialsFiltered1 for the rest of the type of filters 
-        // //var allSpecialsFiltered1 = masterEstablishments.establishmentSpecials;
-        // //console.log(allSpecialsFiltered1);
-
-        // //Markers
-        // //allMarkersFiltered1 = markers;
-        // //var allMarkersFiltered2 = allMarkersFiltered1;
-
-        // //Incase a filter in the sequence or all filters .length is 0 (not selected), initialise the allSpecialsFiltered1 for the rest of the type of filters 
-        // var filteredEstablishments = masterEstablishments;
-
-        // //Filter masterEstablishments based on the special category filter
-        // if(specialCategories.length >= 1){
-
-        //     //var establishments;
-        //     //var allEstablishmentsFiltered1
-
-        //     console.log("Test");
-        //     filteredEstablishments =
-        //     masterEstablishments.reduce( (result, e) => {
-        //         const len = 
-        //             e.establishmentSpecials
-        //             .filter((x) => specialCategories.includes(x.Category));
-
-        //         if(len.length > 0)
-        //             return [ ...result, {...e, establishmentSpecials: len}];
-
-        //         return result; 
-        //     }, []);
-
-
-
-        //     //For all Establishments
-        //     //for(var i=0;i<masterEstablishments.length;i++){
-        //         //Filter out Catorgory from establishmentSpecials where Category is not found in specialCategories
-        //         //establishments = masterEstablishments[i].establishmentSpecials.filter(x => specialCategories.includes(x.Category));
-
-        //         //var specialCategories = ["Breakfast Special"];
-        //         //establishments = masterEstablishments.filter(e => e.establishmentSpecials.some(x => specialCategories.includes(x.Category)))
-
-
-        //         //establishments = masterEstablishments.filter(establishment => establishment.establishmentSpecials.find(x => specialCategories.establishmentSpecials.includes(x.Category)));
-
-        //         //const result = roles.filter(role => role.groups.find(group => user.groups.includes(group.id)));
-        //         //console.log(result);
-                
-        //         // establishments = masterEstablishments.filter((element) => element.establishmentSpecials.some((subElement) => subElement.specialCategories.includes(subElement.Category)))
-        //         // .map(element => {
-        //         //     return Object.assign({}, element, {subElements : element.establishmentSpecials.filter(subElement => subElement.specialCategories.includes(subElement.Category))});
-                
-        //         //   }); 
-        //     //}
-
-        //     // establishments = masterEstablishments;
-        //     // establishments.map((element) => {
-        //     //     return {...element, establishmentSpecials: element.establishmentSpecials.some((subElement) => specialCategories.includes(subElement.Category))}
-        //     //   })
-
-        //     // let establishments = masterEstablishments
-        //     // .filter((element) => 
-        //     // element.establishmentSpecials.some((subElement) => subElement.specialCategories.includes(subElement.Category)))
-        //     // .map(element => {
-        //     // let newElt = Object.assign({}, element); // copies element
-        //     // return newElt.establishmentSpecials.filter(subElement => subElement.specialCategories.includes(subElement.Category));
-        //     // });
-
-        //     // console.log("Filtered establishments");
-        //     //console.log(establishments);
-
-        //     //For all Establishments
-        //     //for(var i=0;i<masterEstablishments.length;i++){
-        //         //allEstablishmentsFiltered1 = masterEstablishments.filter(x => allSpecialsFiltered.includes(x.establishmentSpecials));
-        //      //   }
-        //     //console.log(allEstablishmentsFiltered1);
-
-        //      //var allSpecialsFiltered1 = masterEstablishments[1].establishmentSpecials.filter(x => specialCategories.includes(x.Category));
-        //      //console.log(allSpecialsFiltered1);
-        //      //var allMarkersFiltered2 = allMarkersFiltered1.filter(x => specialCategories.includes(x.category));
-        // }
-        // //Filter filteredEstablishments based on the cusine type filter
-        // if(cusineTypes.length >= 1){
-        //      var filteredEstablishments = filteredEstablishments.filter(x => cusineTypes.includes(x.Cuisine_Type));
-        //      //var allMarkersFiltered2 = allMarkersFiltered2.filter(x => cusineTypes.includes(x.cusine_type));
-             
-        // }
-        // //Filter allSpecialsFiltered1 based on the establish type filter
-        // if(establishmentTypes.length >= 1){
-        //     var filteredEstablishments = filteredEstablishments.filter(x => establishmentTypes.includes(x.Establishment_Type));
-        //     //var allMarkersFiltered2 = allMarkersFiltered2.filter(x => establishmentTypes.includes(x.establishment_type));
-        // }
-        // //Filter filteredEstablishments based on the establish type filter
-        // if(typeOfSpecials.length >= 1){
-        //     //var filteredEstablishments = filteredEstablishments.filter(x => typeOfSpecials.includes(x.Type_Of_Special));
-        //     //var allMarkersFiltered2 = allMarkersFiltered2.filter(x => typeOfSpecials.includes(x.type_of_special));
-        //     filteredEstablishments =
-        //     filteredEstablishments.reduce( (result, e) => {
-        //         const len = 
-        //             e.establishmentSpecials
-        //             .filter((x) => typeOfSpecials.includes(x.Type_Of_Special));
-
-        //         if(len.length > 0)
-        //             return [ ...result, {...e, establishmentSpecials: len}];
-
-        //         return result; 
-        //     }, []);
-        // }
-
-        // console.log(filteredEstablishments);
-
-        // //Display all the special's details
-        // for(var i =0;i<filteredEstablishments.length;i++){
-        //     //Display the establishment details
-        //     document.getElementById('rpList').innerHTML += 
-        //     // "<hr style='width:20%'>" +
-        //     "<b>" + filteredEstablishments[i].Establishment_Type + "</b>" + "<br>" + 
-        //     filteredEstablishments[i].Name + "<br>" + 
-        //     filteredEstablishments[i].Address + "<br>" + 
-        //     filteredEstablishments[i].Cuisine_Type + "<br>" + "<br>";
-
-        //     //For every special
-        //     for(var a=0;a<filteredEstablishments[i].establishmentSpecials.length;a++){
-
-        //         //Display the special details
-        //         document.getElementById('rpList').innerHTML +=
-        //         "<b>" + "Special".fontcolor("#29a381") + "</b>" + "<br>" + 
-        //         filteredEstablishments[i].establishmentSpecials[a].Category + "<br>" + 
-        //         filteredEstablishments[i].establishmentSpecials[a].Description + "<br>" + "<br>";
-        //     }
-
-        //     //Display break point for the next establishment
-        //     document.getElementById('rpList').innerHTML += "<hr style='width:20%'>";
-        // }
-
-        // // //Create query builder
-        // // var queryBuilder = Backendless.DataQueryBuilder.create();
-
-        // // // var objectId = [];
-
-        // // // objectId in ("Establishment"[establishmentSpecials = 'Breakfast Special'])
-        // // // .then( function( objectArray ) {
-
-        // // //     console.log(objectArray);
-        // // // })
-
-        // // specialCategories = ["Breakfast Special"];
-        // // //Where suburb = Rose Bay and establishmentSpecials category = 
-        // // queryBuilder.setWhereClause( "Suburb = 'Rose Bay'and establishmentSpecials.Category IN (" + "'" + specialCategories + "'" + ")"); //( "Suburb = " + "'" + suburb + "'" + "and establishmentSpecials.Category = 'Breakfast Special'");//, AND, establishmentSpecials.Category = 'Breakfast Special');//, {"suburb": suburb}; //( "Suburb = 'Rose Bay'" );
-  
-        // // Backendless.Data.of( "Establishment" ).find( queryBuilder )
-        // // .then( function( objectArray ) {
-        // //     console.log(objectArray);
-        // // })
-        // // .catch( function( error ) {
-        // // });
     }
 
     //Function for the cusine type filter
@@ -498,65 +320,180 @@
         document.getElementById('rpList').innerHTML = "";
 
         //Reference to the special category, cusine type, establishment type and type of special filter selections
+        var startTime = $('#timePeriodStartFilter').val();
+        var endTime = $('#timePeriodEndFilter').val();
         var specialCategories = $('#specialCategoryFilter').val();
         var cusineTypes = $('#cusineTypeFilter').val();
         var establishmentTypes = $('#establishmentTypeFilter').val();
         var typeOfSpecials = $('#typeOfSpecialFilter').val();
 
-        //console.log("Establishments");
-        //console.log(masterEstablishments);
-
-        // var establishments = {
-        //     Address: "594 New South Head Rd",
-        //     Establishment_Type: "Restaurant",
-        //     establishmentSpecials: {
-        //         Category: "Breakfast Special",
-        //         Description: "$2 Waffles"
-        //         },
-        //     Address: "333 Garden Rd",
-        //     Establishment_Type: "Restaurant",
-        //     establishmentSpecials: {
-        //         Category: "Dinner Special",
-        //         Description: "$3 Chips"
-        //         }
-        //     }
-
-        // var establishments = [ {address: "55 Garden rd"},
-        //     [{Category: "Breakfast Special"}, {Category: "Dinner Special"}]
-        //   ];
-
-
-
-        //specials = [{Category: "Breakfast Special"}, {Category: "Dinner Special"}]
-
-        //establishments.push(specials);
-
-
-
-    
-        //console.log("establishmentst");
-        //console.log(establishments);
-
-        //Incase a filter in the sequence or all filters .length is 0 (not selected), initialise the allSpecialsFiltered1 for the rest of the type of filters 
-        //var allSpecialsFiltered1 = masterEstablishments.establishmentSpecials;
-        //console.log(allSpecialsFiltered1);
-
-        //Markers
-        //allMarkersFiltered1 = markers;
-        //var allMarkersFiltered2 = allMarkersFiltered1;
-
-        //Incase a filter in the sequence or all filters .length is 0 (not selected), initialise the allSpecialsFiltered1 for the rest of the type of filters 
+        //Incase a filter in the sequence or all filters .length is 0 (not selected), initialise the filteredEstablishments for the rest of the type of filters 
         var filteredEstablishments = masterEstablishments;
 
-        //Filter masterEstablishments based on the special category filter
-        if(specialCategories.length >= 1){
+        //Filter filteredEstablishments based on the start time filter
 
-            //var establishments;
-            //var allEstablishmentsFiltered1
+        // //Filter
+        // //Start: 18:30, End: 20:30
+        // //Special
+        // //Start: 17:00, End: 18:00
+        // //If special ending time is greater than filter starting time AND special starting time is less than filter end time, then they are overlapping 
+        // if((1080 > 1110) && (1020 < 1230)){
+        //     console.log("Special can be showen as the special is overlapping the filter");
+        // }else{
+        //     console.log("Special cannot be showen as the special is not overlapping the filter");
+        // }
+        // //Filter
+        // //Start: 18:30, End: 20:30
+        // //Special
+        // //Start: 19:00, End: 21:00
+        // //If special ending time is greater than filter starting time AND special starting time is less than filter end time, then they are overlapping 
+        // if((1260 > 1110) && (1140 < 1230)){
+        //     console.log("Special can be showen as the special is overlapping the filter");
+        // }else{
+        //     console.log("Special cannot be showen as the special is not overlapping the filter");
+        // }
+        //Filter
+        //Start: 18:30, End: 20:30
+        //Special
+        //Start: 19:00, End: 21:00
 
-            console.log("Test");
+        var filterStartTime = ((startTime.substring(0, 2) * 60) + +startTime.substring(3, 5));
+        var filterEndTime = ((endTime.substring(0, 2) * 60) + +endTime.substring(3, 5));
+        console.log(filterStartTime);
+        console.log(filterEndTime);
+
+        //Array for holding the establishments 
+        var tempEstablishments = [];
+        //Array for holding temp specials that are allowed to be shown
+        var tempSpecials = [];
+        //Array for holding the specials object Ids which are are used to filter out all the specials which are not allowed to be displayed in respect to time period
+        var specialObjectIds = [];
+        
+        //If special ending time is greater than filter starting time AND special starting time is less than filter end time, then they are overlapping 
+        //For every establishment
+        for(var i=0;i<filteredEstablishments.length;i++){
+
+            //Save the establishment 
+            //var tempfilteredEstablishments = filteredEstablishments;
+            //tempEstablishments.push(tempfilteredEstablishments[i].establishmentSpecials.splice(0));
+            //Remove establishmentSpecials
+
+            //array.splice(index, 1);
+
+            //For every special in the establishment
+            for(var a=0;a<filteredEstablishments[i].establishmentSpecials.length;a++){
+
+                //Get the Start_Time and End_Time
+                var specialStartTime = filteredEstablishments[i].establishmentSpecials[a].Start_Time;
+                var specialEndTime = filteredEstablishments[i].establishmentSpecials[a].End_Time;
+                //Convert to minutes
+                specialStartTime = ((specialStartTime.substring(0, 2) * 60) + +specialStartTime.substring(3, 5));
+                specialEndTime = ((specialEndTime.substring(0, 2) * 60) + +specialEndTime.substring(3, 5));
+
+                //Find how many specials each establishment has
+                //var amountOfSpecials = filteredEstablishments[i].establishmentSpecials.length;
+
+                //If special ending time is greater than filter starting time AND special starting time is less than filter end time, then they are overlapping 
+                if((specialEndTime  > filterStartTime) && (specialStartTime < filterEndTime)){
+                    //Displays ones allowed to show to console
+                    //console.log("Allowed to show");
+                    //console.log(filteredEstablishments[i].establishmentSpecials[a]);
+
+                    //Save the allowed specials
+                    tempSpecials.push(filteredEstablishments[i].establishmentSpecials[a]);
+
+                    //Save the special's object Id
+                    specialObjectIds.push(filteredEstablishments[i].establishmentSpecials[a].objectId);
+                }else{
+                    //Delete these specials
+                }
+            }
+        }
+
+        //Filter based on time peroid
+        // if(tempSpecials.length >= 1){
+        //     filteredEstablishments =
+        //     filteredEstablishments.reduce( (result, e) => {
+        //         const len = 
+        //             e.establishmentSpecials
+        //             .filter((x) => specialCategories.includes(x.Category));
+
+        //         if(len.length > 0)
+        //             return [ ...result, {...e, establishmentSpecials: len}];
+
+        //         return result; 
+        //     }, []);
+        // }
+
+        //console.log(specialCategories);
+        //console.log(tempSpecials);
+        console.log("Specials that are allowed to be shown");
+        console.log(tempSpecials);
+        console.log("objectIds of specials that are allowed to be shown");
+        console.log(specialObjectIds);
+
+        //Filter based on time period
+        if(specialObjectIds.length >= 1){
             filteredEstablishments =
-            masterEstablishments.reduce( (result, e) => {
+            filteredEstablishments.reduce( (result, e) => {
+                const len = 
+                    e.establishmentSpecials
+                    .filter((x) => specialObjectIds.includes(x.objectId));
+
+                if(len.length > 0)
+                    return [ ...result, {...e, establishmentSpecials: len}];
+
+                return result; 
+            }, []);
+        }
+
+        // console.log("Filtered specials main");
+        // console.log(filteredEstablishments);
+
+        //console.log("Temp establishments");
+        //console.log(tempEstablishments);
+        // // const Moment = require('moment');
+        // // const MomentRange = require('moment-range');
+        // // const moment = MomentRange.extendMoment(Moment);
+
+        // var range  = moment.range(new Date(startTime.substring(0, 2), startTime.substring(3, 5)), new Date(endTime.substring(0, 2), endTime.substring(3, 5))); //Filter
+        // var range2 = moment.range(new Date(07, 30), new Date(09, 30)); //Special
+
+        // // var range  = moment.range(new Date(06, 00), new Date(08, 00)); //Filter
+        // // var range  = moment.range(06, 08); //Filter
+        // // var range2 = moment.range(07,08); //Special
+        // console.log(range2.overlaps(range));
+
+        // // console.log(range);
+        // // console.log(range);
+        // //console.log(startTime);
+        // console.log(startTime.substring(0, 2)); //startTime[0].substring(3, 4)
+        // console.log(startTime.substring(3, 5));
+        // console.log(endTime.substring(0, 2))//endTime[0].substring(3, 4));
+        // console.log(endTime.substring(3, 5));
+        // console.log(startTime);
+        // console.log(endTime);
+
+
+
+
+        // filteredEstablishments =
+        // filteredEstablishments.reduce( (result, e) => {
+        //     const len = 
+        //         e.establishmentSpecials
+        //         .filter((range2.overlaps(range)));
+
+        //     if(len.length > 0)
+        //         return [ ...result, {...e, establishmentSpecials: len}];
+
+        //     return result; 
+        // }, []);
+
+
+        //Filter filteredEstablishments based on the special category filter
+        if(specialCategories.length >= 1){
+            filteredEstablishments =
+            filteredEstablishments.reduce( (result, e) => {
                 const len = 
                     e.establishmentSpecials
                     .filter((x) => specialCategories.includes(x.Category));
@@ -566,71 +503,17 @@
 
                 return result; 
             }, []);
-
-
-
-            //For all Establishments
-            //for(var i=0;i<masterEstablishments.length;i++){
-                //Filter out Catorgory from establishmentSpecials where Category is not found in specialCategories
-                //establishments = masterEstablishments[i].establishmentSpecials.filter(x => specialCategories.includes(x.Category));
-
-                //var specialCategories = ["Breakfast Special"];
-                //establishments = masterEstablishments.filter(e => e.establishmentSpecials.some(x => specialCategories.includes(x.Category)))
-
-
-                //establishments = masterEstablishments.filter(establishment => establishment.establishmentSpecials.find(x => specialCategories.establishmentSpecials.includes(x.Category)));
-
-                //const result = roles.filter(role => role.groups.find(group => user.groups.includes(group.id)));
-                //console.log(result);
-                
-                // establishments = masterEstablishments.filter((element) => element.establishmentSpecials.some((subElement) => subElement.specialCategories.includes(subElement.Category)))
-                // .map(element => {
-                //     return Object.assign({}, element, {subElements : element.establishmentSpecials.filter(subElement => subElement.specialCategories.includes(subElement.Category))});
-                
-                //   }); 
-            //}
-
-            // establishments = masterEstablishments;
-            // establishments.map((element) => {
-            //     return {...element, establishmentSpecials: element.establishmentSpecials.some((subElement) => specialCategories.includes(subElement.Category))}
-            //   })
-
-            // let establishments = masterEstablishments
-            // .filter((element) => 
-            // element.establishmentSpecials.some((subElement) => subElement.specialCategories.includes(subElement.Category)))
-            // .map(element => {
-            // let newElt = Object.assign({}, element); // copies element
-            // return newElt.establishmentSpecials.filter(subElement => subElement.specialCategories.includes(subElement.Category));
-            // });
-
-            // console.log("Filtered establishments");
-            //console.log(establishments);
-
-            //For all Establishments
-            //for(var i=0;i<masterEstablishments.length;i++){
-                //allEstablishmentsFiltered1 = masterEstablishments.filter(x => allSpecialsFiltered.includes(x.establishmentSpecials));
-             //   }
-            //console.log(allEstablishmentsFiltered1);
-
-             //var allSpecialsFiltered1 = masterEstablishments[1].establishmentSpecials.filter(x => specialCategories.includes(x.Category));
-             //console.log(allSpecialsFiltered1);
-             //var allMarkersFiltered2 = allMarkersFiltered1.filter(x => specialCategories.includes(x.category));
         }
         //Filter filteredEstablishments based on the cusine type filter
         if(cusineTypes.length >= 1){
-             var filteredEstablishments = filteredEstablishments.filter(x => cusineTypes.includes(x.Cuisine_Type));
-             //var allMarkersFiltered2 = allMarkersFiltered2.filter(x => cusineTypes.includes(x.cusine_type));
-             
+             var filteredEstablishments = filteredEstablishments.filter(x => cusineTypes.includes(x.Cuisine_Type));  
         }
-        //Filter allSpecialsFiltered1 based on the establish type filter
+        //Filter allSpecialsFiltered1 based on the establishment type filter
         if(establishmentTypes.length >= 1){
             var filteredEstablishments = filteredEstablishments.filter(x => establishmentTypes.includes(x.Establishment_Type));
-            //var allMarkersFiltered2 = allMarkersFiltered2.filter(x => establishmentTypes.includes(x.establishment_type));
         }
-        //Filter filteredEstablishments based on the establish type filter
+        //Filter filteredEstablishments based on the special type type filter
         if(typeOfSpecials.length >= 1){
-            //var filteredEstablishments = filteredEstablishments.filter(x => typeOfSpecials.includes(x.Type_Of_Special));
-            //var allMarkersFiltered2 = allMarkersFiltered2.filter(x => typeOfSpecials.includes(x.type_of_special));
             filteredEstablishments =
             filteredEstablishments.reduce( (result, e) => {
                 const len = 
@@ -654,7 +537,8 @@
             "<b>" + filteredEstablishments[i].Establishment_Type + "</b>" + "<br>" + 
             filteredEstablishments[i].Name + "<br>" + 
             filteredEstablishments[i].Address + "<br>" + 
-            filteredEstablishments[i].Cuisine_Type + "<br>" + "<br>";
+            filteredEstablishments[i].Cuisine_Type + "<br>" + 
+            '<img class="rpImage" src="' + filteredEstablishments[i].Image + '"' + '>' +  "<br>" +  "<br>";
 
             //For every special
             for(var a=0;a<filteredEstablishments[i].establishmentSpecials.length;a++){
@@ -663,34 +547,14 @@
                 document.getElementById('rpList').innerHTML +=
                 "<b>" + "Special".fontcolor("#29a381") + "</b>" + "<br>" + 
                 filteredEstablishments[i].establishmentSpecials[a].Category + "<br>" + 
-                filteredEstablishments[i].establishmentSpecials[a].Description + "<br>" + "<br>";
+                filteredEstablishments[i].establishmentSpecials[a].Description + "<br>" + 
+                tConvert(filteredEstablishments[i].establishmentSpecials[a].Start_Time) + "<br>" +
+                tConvert(filteredEstablishments[i].establishmentSpecials[a].End_Time) + "<br>" + "<br>";
             }
 
             //Display break point for the next establishment
             document.getElementById('rpList').innerHTML += "<hr style='width:20%'>";
         }
-
-        // //Create query builder
-        // var queryBuilder = Backendless.DataQueryBuilder.create();
-
-        // // var objectId = [];
-
-        // // objectId in ("Establishment"[establishmentSpecials = 'Breakfast Special'])
-        // // .then( function( objectArray ) {
-
-        // //     console.log(objectArray);
-        // // })
-
-        // specialCategories = ["Breakfast Special"];
-        // //Where suburb = Rose Bay and establishmentSpecials category = 
-        // queryBuilder.setWhereClause( "Suburb = 'Rose Bay'and establishmentSpecials.Category IN (" + "'" + specialCategories + "'" + ")"); //( "Suburb = " + "'" + suburb + "'" + "and establishmentSpecials.Category = 'Breakfast Special'");//, AND, establishmentSpecials.Category = 'Breakfast Special');//, {"suburb": suburb}; //( "Suburb = 'Rose Bay'" );
-  
-        // Backendless.Data.of( "Establishment" ).find( queryBuilder )
-        // .then( function( objectArray ) {
-        //     console.log(objectArray);
-        // })
-        // .catch( function( error ) {
-        // });
     }
 
     //Function to show the list
@@ -770,6 +634,19 @@
 
          console.log(suburb);
      }
+
+        //Function to convert 24 hour to 12 hour
+    function tConvert (time) {
+        // Check correct time format and split into components
+        time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time]; //(:[0-5]\d)
+
+        if (time.length > 1) { // If time format correct
+            time = time.slice (1);  // Remove full string match value
+            time[5] = +time[0] < 12 ? ' AM' : ' PM'; // Set AM/PM
+            time[0] = +time[0] % 12 || 12; // Adjust hours
+        }
+        return time.join (''); // return adjusted time or original string
+}
 
 
 
