@@ -1,0 +1,14 @@
+/* NAV BAR */
+.nav-top{
+    height: 80px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+/* Logo */
+.brand-logo{
+    margin-top: 15px;
+    margin-left: 5%;
+}
+.nav-logo{
+    height: 60px;
+}

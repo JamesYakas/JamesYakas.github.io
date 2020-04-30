@@ -1,19 +1,23 @@
-/* Admin heading */
-.adminHeading{
-    text-align: center;
+/* Cuisine heading */
+.cuisineHeading{
+    /* text-align: center; */
+    position: relative;
+    left: 10%;
+    width: 500px;
     /* margin : 0 auto; */
+    margin-top: 50px;
     margin-bottom: 50px;
 
     /* border: solid;
     border-width: 1px;
-    border-color: black;  */
+    border-color: black; */
 }
 .country-tab-big-wrapper{
 
     margin-left: 33%;
 
 
-   
+
     /* border: solid;
     border-width: 1px;
     border-color: black; */
@@ -29,7 +33,7 @@
     border-width: 1px;
     border-color: black; */
     background-color: #f4f4f4;
-    
+
 }
 /* List boxes wrapper */
 .listboxesAndFormWrapper{
@@ -54,7 +58,7 @@
 
 
 
-    
+
     /* border: solid;
     border-width: 1px;
     border-color: black;  */
@@ -64,7 +68,7 @@
 
     border: solid;
     border-width: 1px;
-    border-color: #e7e7e7; 
+    border-color: #e7e7e7;
     background-color: #f3f5f6;
 
     margin-bottom: -10px;
@@ -73,14 +77,14 @@
 .search-establishment-table{
     border: solid;
     border-width: 1px;
-    border-color: #e7e7e7; 
+    border-color: #e7e7e7;
     border-top:none;
 }
 /* Specials heading */
 .specials-heading{
     border: solid;
     border-width: 1px;
-    border-color: #e7e7e7; 
+    border-color: #e7e7e7;
     background-color: #f3f5f6;
 }
 #specialListBox{
@@ -89,7 +93,7 @@
 
     border: solid;
     border-width: 1px;
-    border-color: #e7e7e7;  
+    border-color: #e7e7e7;
     border-top: none;
 
 }
@@ -97,7 +101,7 @@
 /* #formHeading{
     border: solid;
     border-width: 1px;
-    border-color: #e7e7e7; 
+    border-color: #e7e7e7;
     background-color: #f3f5f6;
 } */
 /* Display specials form */
@@ -113,23 +117,23 @@
 /* margin-left: 35%; */
 /* position: relative;
 left: 100px; */
-    
+
     width: 500px;
-    
+
     border: solid;
     border-width: 1px;
-    border-color: #e7e7e7;  
+    border-color: #e7e7e7;
 
     /* text-align: center; */
     /* display: inline-block; */
 
     /* margin: auto; */
-    
+
 
     /* left: 80%;  */
-    
 
-    
+
+
 }
 /* The special details form */
 #formSpecialDetails{
@@ -156,12 +160,12 @@ left: 100px; */
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
-  
+
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
   }
-  
+
 .tooltip:hover .tooltiptext {
     visibility: visible;
   }
@@ -174,9 +178,9 @@ left: 100px; */
     /* width: 500px; */
 
     position: relative;
-    margin-bottom: -5px; 
+    margin-bottom: -5px;
     /* -27px; */
-    
+
 }
 
 /* .validate-text{ */
@@ -193,13 +197,13 @@ left: 100px; */
     /* border: solid;
     border-width: 1px;
     border-color: black;  */
-   
+
 
 }
 #displayNumFound{
     border: solid;
     border-width: 1px;
-    border-color: black; 
+    border-color: black;
 }
 
 /* Add special sub heading */
@@ -248,7 +252,7 @@ left: 100px; */
     margin-bottom: 40px;
 
     font-size: 20px;
-    
+
 }
 /* Search establishment ID */
 #searchEstablishmentID{
@@ -275,8 +279,8 @@ left: 100px; */
 
 /* Modal update */
 .modal-update{
-    overflow: visible;
-    /* max-height: 100% !important;  */
+    /* overflow: visible; */
+    /* max-height: 100% !important; */
 }
 
 /* Modal add */
@@ -294,6 +298,7 @@ left: 100px; */
     backface-visibility: hidden !important;
     overflow: auto;
 }
+
 #add_cusine_type{
     height: 50px;
 }
@@ -302,7 +307,7 @@ left: 100px; */
     /* height: 100%; */
     /* overflow: visible */
     /* max-height: 100% !important */
-} 
+}
 
 /*color row even*/
 /* table.striped>tbody>tr:nth-child(even) {
@@ -326,36 +331,77 @@ table.striped>tbody>tr:nth-child(odd) {
 /* Table */
 #tbl{
     position: relative;
-    top: -35px;
-    overflow-y:scroll;
-    height:440px;
+    top: 20px;
+    left: 10%;
+
+    height:540px;
     margin-bottom: -35px;
     display:block;
 
-    width: 500px;
-    
+    width: 1500px;
+    /* 1500px */
+    /* width: 80%;  */
+
     border: 1px solid #e7e7e7;
+    background-color: #fff;
+    overflow-y:scroll;
+    /* overflow:auto */
 }
 
 table#tbl {
-    border-collapse: collapse;   
+    border-collapse: collapse;
+
 }
 #tbl tr {
     /*background-color: #eee;*/ /* #eee */
     border-top: 1px solid #fff;
 }
 #tbl tr:hover {
-    background-color: #ccc;
+    /* background-color: #ccc; */
 }
 #tbl th { /* #tbl th */
     background-color: #fff;
 }
 #tbl th, #tbl td {
-    padding: 3px 5px;
-    width: 400px; /* Maybe delete */
+    padding: 3px 10px;
+    /* 3px 5px; */
+    width: 400px;
+    /* Maybe delete  maybe replace with it's own ids*/
 }
 #tbl td:hover {
-    cursor: pointer;
+    /* cursor: pointer; */
+}
+.tbl-cuisine{
+    width: 80%;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+.tbl-update{
+    text-align: right;
+    /* padding-left: -20px; */
+    /* position: relative;
+    left: -285px; */
+    width: 10%;
+    position: relative;
+    left: -3px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
+}
+.tbl-delete{
+    text-align: right;
+    /* padding-left: -20px; */
+    /* position: relative;
+    left: -285px; */
+    width: 10%;
+    position: relative;
+    left: -8px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
 }
 .selected-row {
     /* background: blue; */
@@ -386,7 +432,7 @@ table#tbl {
 #h5workingAnimMessage{
   position: fixed;
   left: 47.35%;
-  top: 56%;  
+  top: 56%;
   display: none;
 }
 
@@ -540,10 +586,10 @@ vertical-align: bottom;
 .image-wrapper{
     text-align: center;
     /* margin-top: -20px; */
-    
+
     border: solid;
     border-width: 1px;
-    border-color: black;    
+    border-color: black;
 }
 /* Image Debug */
 .image-debug{
@@ -665,6 +711,123 @@ vertical-align: bottom;
     background-color: #faa61a;
 } */
 
+/* Create */
+.create{
+    position: relative;
+    left: 10%;
+
+}
+/* MODAL ADD */
+.modal-content-add-cuisine-heading{
+    padding: 49px 19px 19px 0px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.modal-add-cuisine-heading-message{
+    position: relative;
+    /* left: 50px; */
+    margin-left: 35px;
+    margin-top: -36px;
+    color: black;
+    font-size: 25px;
+}
+/* Footer Register button */
+.modal-add-cuisine-confirm{
+    /* position: relative;
+    left: -20px; */
+    border: solid;
+    border-width: 1px;
+    border-color: #749dc0;
+    color: white;
+    background-color: #337ab7;
+}
+/* Footer Cancel button */
+.modal-add-cuisine-cancel{
+    position: relative;
+    left: -20px;
+    background-color: white;
+    border: solid;
+    border-width: 1px;
+    border-color: #cccccc; 
+    
+}
+/* MODAL-DELETE */
+/* Heading */
+.modal-content-delete-cuisine-heading{
+    background-color: #fc8181;
+    padding: 19px 19px 19px 19px;
+    border-bottom: 1px solid #db6f6f;
+}
+/* Heading message */
+.modal-delete-cuisine-heading-message{
+    position: relative;
+    /* left: 50px; */
+    margin-left: 35px;
+    margin-top: -36px;
+    color: white;
+    font-size: 25px;
+}
+/* Message */
+.modal-delete-cuisine-message{
+    padding: 19px 19px 19px 19px;
+}
+/* Footer */
+.modal-footer{
+    background-color: 	#f4f4f4 !important;
+    border-top: 1px solid #e5e5e5;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+}
+/* Footer Delete button */
+.modal-delete-cuisine-confirm{
+    position: relative;
+    left: -20px;
+    border: solid;
+    border-width: 1px;
+    border-color: #c9302c;
+    color: white;
+    background-color: #c9302c;
+}
+/* Footer Cancel button */
+.modal-delete-cuisine-cancel{
+    border: solid;
+    border-width: 1px;
+    border-color: #cccccc; 
+    background-color: white;
+}
+/* MODAL UPDATE */
+.modal-content-update-cuisine-heading{
+    padding: 49px 19px 19px 0px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.modal-update-cuisine-heading-message{
+    position: relative;
+    /* left: 50px; */
+    margin-left: 35px;
+    margin-top: -36px;
+    color: black;
+    font-size: 25px;
+}
+/* Footer Register button */
+.modal-update-cuisine-confirm{
+    /* position: relative;
+    left: -20px; */
+    border: solid;
+    border-width: 1px;
+    border-color: #749dc0;
+    color: white;
+    background-color: #337ab7;
+}
+/* Footer Cancel button */
+.modal-update-cuisine-cancel{
+    position: relative;
+    left: -20px;
+    background-color: white;
+    border: solid;
+    border-width: 1px;
+    border-color: #cccccc; 
+    
+}
 body{
     background-color: #f4f4f4;
 }

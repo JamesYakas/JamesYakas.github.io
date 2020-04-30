@@ -3,8 +3,8 @@
     <head>
         <title>Admin</title>
         <script src="//api.backendless.com/sdk/js/latest/backendless.min.js"></script>
-        <link rel="stylesheet" href="CSS/materialize.min.css">
-        <link rel="stylesheet" href="CSS/adminmain2.css">
+        <link rel="stylesheet" href="../CSS/materialize.min.css">
+        <link rel="stylesheet" href="../CSS/adminmain2.css">
     </head>
 
     <body>
@@ -14,15 +14,15 @@
             console.log(checkStatus);
             if(checkStatus != "logged_in"){
                 //Re-direct to admin page
-                window.location.href = "admin.html";       
+                window.location.href = "../admin.html";       
             }
         </script>
         <!-- NAVBAR -->
         <nav>
             <div class="nav-wrapper nav-sidenav">
-                <a href="index.html" class="brand-logo"><img class="nav-logo" src="images/happylocal-logo-transparent.png" ></a>
+                <a href="../index.html" class="brand-logo"><img class="nav-logo" src="../images/happylocal-logo-transparent.png" ></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="logout-wrapper" onclick="logoutUser()"><img class="nav-logout-logo" src="images/logout.png">Logout</a></li>
+                    <li><a class="logout-wrapper" onclick="logoutUser()"><img class="nav-logout-logo" src="../images/logout.png">Logout</a></li>
                 </ul>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a class="" id="userEmail"></a></li>
@@ -32,10 +32,10 @@
         <!-- SIDE NAV -->
         <ul id="slide-out" class="sidenav sidenav-fixed nav-sidenav"><br><br>
             <li><a class="white-text selected-sidenav" href="#!">Establishments</a></li>
-            <li><a class="white-text" href="#!">Cuisines</a></li>
-            <li><a class="white-text" href="#!">Admin</a></li>
+            <li><a class="white-text" href="cuisines.html">Cuisines</a></li>
+            <li><a href="admin-management.html" class="white-text" onclick="adminDebug()">Admin</a></li>
         </ul>
-        <!-- <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           
         <div class="main-section">
               
@@ -100,7 +100,7 @@
                                     <!-- Name -->
                                     <div class="row">
                                         <div class="input-field col s4 admin-input">
-                                            <input type="text" name="name" id="name" class="validate blue-grey-text darken-4-text" disabled>
+                                            <input type="text" name="name" id="name" class="validate validate-text" disabled>
                                             <label style="font-size: 12px;" class="label1" for="name">Name</label>
                                             
                                         </div>
@@ -108,29 +108,29 @@
                                     <!-- Address -->
                                     <div class="row">
                                         <div class="input-field col s6 admin-input">
-                                            <input type="text" name="address" id="address" class="validate blue-grey-text darken-4-text" disabled>
+                                            <input type="text" name="address" id="address" class="validate" disabled>
                                             <label style="font-size: 12px;" class="label1" for="address">Address</label>
                                         </div>
                                     </div>
                                     <!-- Suburb & Country -->
                                     <div class="row">
                                         <div class="input-field col s4 admin-input">
-                                            <input type="text" name="suburb" id="suburb" class="validate blue-grey-text darken-4-text" disabled>
+                                            <input type="text" name="suburb" id="suburb" class="validate" disabled>
                                             <label style="font-size: 12px;" class="label1" for="suburb">Suburb</label><br>
                                         </div>
                                         <div class="input-field col s4 admin-input">
-                                            <input type="text" name="country" id="country" class="validate blue-grey-text darken-4-text" disabled>
+                                            <input type="text" name="country" id="country" class="validate" disabled>
                                             <label style="font-size: 12px;" class="label1" for="country">Country</label><br>
                                         </div>
                                     </div>
                                     <!-- Establishment type and Cusine type -->
                                     <div class="row">
                                         <div class="input-field col s4 admin-input">
-                                            <input type="text" name="establishmentType" id="establishmentType" class="validate blue-grey-text darken-4-text" disabled>
+                                            <input type="text" name="establishmentType" id="establishmentType" class="validate" disabled>
                                             <label style="font-size: 12px;" class="label1" for="establishmentType">Establishment Type</label><br>
                                         </div>
                                         <div class="input-field col s4 admin-input">
-                                            <input type="text" name="cusineType" id="cusineType" class="validate blue-grey-text darken-4-text" disabled>
+                                            <input type="text" name="cusineType" id="cusineType" class="validate" disabled>
                                             <label style="font-size: 12px;" class="label1" for="cusineType">Cusine type</label><br>
                                         </div>
                                     </div>
@@ -157,18 +157,18 @@
                                     <!-- Days of week -->
                                     <div class="row">
                                         <div class="input-field col s12 admin-input">
-                                            <input type="text" name="daysOfWeek" id="daysOfWeek" class="validate grey-text darken-4-text" disabled>
+                                            <input type="text" name="daysOfWeek" id="daysOfWeek" class="validate" disabled>
                                             <label style="font-size: 12px;" class="label1" for="daysOfWeek">Days of the week</label><br>
                                         </div>
                                     </div>                                
                                     <!-- Time period -->
                                     <div class="row">
                                         <div class="input-field col s6 admin-input">
-                                            <input type="text" name="startTime" id="startTime" class="validate grey-text darken-4-text" disabled>
+                                            <input type="text" name="startTime" id="startTime" class="validate" disabled>
                                             <label style="font-size: 12px;" class="label1" for="startTime">Start time</label><br>
                                         </div>
                                         <div class="input-field col s6 admin-input">
-                                            <input type="text" name="endTime" id="endTime" class="validate grey-text darken-4-text" disabled>
+                                            <input type="text" name="endTime" id="endTime" class="validate" disabled>
                                             <label style="font-size: 12px;" class="label1" for="endTime">End time</label><br>
                                         </div>
                                     </div>
@@ -187,14 +187,14 @@
                                     <!-- Category -->
                                     <div class="row">
                                         <div class="input-field col s4 admin-input">
-                                            <input type="text" name="category" id="category" class="validate grey-text darken-4-text" disabled>
+                                            <input type="text" name="category" id="category" class="validate" disabled>
                                             <label style="font-size: 12px;" class="label1" for="category">Special category</label><br>
                                         </div>
                                     </div>
                                     <!-- Type of special -->
                                     <div class="row">
                                         <div class="input-field col s4 admin-input">
-                                            <input type="text" name="typeOfSpecial" id="typeOfSpecial" class="validate grey-text darken-4-text" disabled>
+                                            <input type="text" name="typeOfSpecial" id="typeOfSpecial" class="validate" disabled>
                                             <label style="font-size: 12px;" class="label1" for="typeOfSpecial">Type of special</label><br>
                                         </div>
                                     </div>
@@ -205,14 +205,14 @@
                                         <div class="input-field col s16 admin-input"> <!-- tooltip -->
                                             <!-- <span class="tooltiptext">Tooltip text</span> -->
                                             <!-- <div class="tooltip"> -->
-                                                <textarea id="description" class="materialize-textarea description grey-text darken-4-text" disabled></textarea>
+                                                <textarea id="description" class="materialize-textarea description" disabled></textarea>
                                                 <label style="font-size: 12px;" class="label1" for="description">Description</label><br>
                                         </div>
                                     </div>
                                     <!-- Description - Full text (for update form) -->
                                     <div class="row description-full-text" style="display: none;" >
                                         <div class="input-field col s16 admin-input">
-                                                <textarea id="descriptionFullText" class="materialize-textarea grey-text darken-4-text" disabled></textarea>
+                                                <textarea id="descriptionFullText" class="materialize-textarea" disabled></textarea>
                                                 <label style="font-size: 12px;" class="label1" for="descriptionFullText">Description</label><br>
                                         </div>
                                     </div>
@@ -347,7 +347,7 @@
                                     </div> -->
                                     <div class="input-field col s4">
                                         <select id="add_cusine_type" size="5">
-                                            <option value="" disabled selected>Choose your cuisine type</option>
+                                            <!-- <option value="" disabled selected>Choose your cuisine type</option>
                                             <option value="Australian">Australian</option>
                                             <option value="American">American</option>
                                             <option value="British">British</option>
@@ -364,7 +364,7 @@
                                             <option value="Spanish">Spanish</option>
                                             <option value="Thai">Thai</option>
                                             <option value="Turkish">Turkish</option>
-                                            <option value="Vietnamese">Vietnamese</option>
+                                            <option value="Vietnamese">Vietnamese</option> -->
                                         </select>
                                         <label>Cuisine Type</label>
                                     </div>
@@ -557,7 +557,7 @@
                                         </div> -->
                                         <div class="input-field col s4 filter" >
                                             <select id="update_cusine_type">
-                                                <option value="" disabled selected>Choose your cuisine type</option>
+                                                <!-- <option value="" disabled selected>Choose your cuisine type</option>
                                                 <option value="Australian">Australian</option>
                                                 <option value="American">American</option>
                                                 <option value="British">British</option>
@@ -574,7 +574,7 @@
                                                 <option value="Spanish">Spanish</option>
                                                 <option value="Thai">Thai</option>
                                                 <option value="Turkish">Turkish</option>
-                                                <option value="Vietnamese">Vietnamese</option>
+                                                <option value="Vietnamese">Vietnamese</option> -->
                                             </select>
                                             <label>Cuisine type</label>
                                         </div>
@@ -710,10 +710,10 @@
 
         </div>
         <!-- <script src="jquery-3.4.1.min.js"></script>
-        <script src="JavaScript/Admin2/adminFunctions.js"></script> -->
-        <script src="jquery-3.4.1.min.js"></script>
-        <script src="JavaScript/Admin2/adminFunctions.js"></script>
-        <script src="JavaScript/Materialize/materialize.min.js"></script>
+        <script src="JavaScript/Admin/adminFunctions.js"></script> -->
+        <script src="../jquery-3.4.1.min.js"></script>
+        <script src="../JavaScript/Admin/adminFunctions.js"></script>
+        <script src="../JavaScript/Materialize/materialize.min.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
 </html>
