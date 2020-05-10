@@ -403,6 +403,11 @@ table#tbl {
     border-color: black;  */
 
 }
+/* table body */
+#myTable tr:hover td{
+    background-color: lightgray;
+
+}
 .selected-row {
     /* background: blue; */
     color: black;

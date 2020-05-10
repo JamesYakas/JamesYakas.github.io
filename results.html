@@ -134,8 +134,8 @@
             <label>Time to drink/dine</label>
           </div>
           <!-- Cuisine Type -->
-          <div class="input-field col s12 filter" >
-            <select id="cusineTypeFilter" multiple onchange="cusineTypeFilter()" class="materialSelect">
+          <div class="input-field col s12 filter" id="cusineTypeFilterWrapper">
+            <select id="cusineTypeFilter" multiple onchange="cusineTypeFilter()" class="materialSelect" disabled>
               <!-- <option value="" disabled>Any</option>
               <option value="Australian">Australian</option>
               <option value="American">American</option>
@@ -192,7 +192,7 @@
 
     <!-- Alternate between list and map -->
     <div id="rpMapBtnsWrapper">
-      <button class="waves-effect waves-light btn  list-map-btn" id="rpbtnList" onclick="btnShowList()"><img class="btnListImg"src="images/list.png"/>List</button>
+      <button class="waves-effect waves-light btn list-map-btn" id="rpbtnList" onclick="btnShowList()"><img class="btnListImg"src="images/list.png"/>List</button>
       <button class="waves-effect waves-light btn list-map-btn" id="rpBtnMap" onclick="btnShowMap()"><img class="btnMapImg"src="images/map.png"/>Map</button>
       <!-- <button id="testing" onclick="testing()">Testing</button> -->
     </div>

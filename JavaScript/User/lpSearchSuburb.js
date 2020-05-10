@@ -36,15 +36,15 @@ function lpSearchSuburb(){
     //Get user's suburb
     var suburb = document.getElementById('lpInputSearchSuburb').value
 
-    //RETRIEVE SPECIALS FROM THE DB BASED ON USER'S SUBURB
+    //Retrieve establishments and their specials from the db based on user's suburb
     var queryBuilder = Backendless.DataQueryBuilder.create();
-    //Set the relations to get and where clause
+    //Set the relations and the where clause
     queryBuilder.setRelated( [ "establishmentSpecials"] );
-    queryBuilder.setWhereClause( "Suburb = " + "'" + suburb + "'");//, {"suburb": suburb}; //( "Suburb = 'Rose Bay'" );
+    queryBuilder.setWhereClause( "Suburb = " + "'" + suburb + "'");
 
     return Backendless.Data.of( "Establishment" ).find( queryBuilder )
     .then( function( objectArray ) {
-        // console.log(objectArray);
+        //Store the array to session storage to use on the results page
         return sessionStorage.setItem('suburbResults', JSON.stringify(objectArray));
     })
     .then(() => {

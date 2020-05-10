@@ -357,6 +357,11 @@ table#tbl {
 #tbl tr:hover {
     /* background-color: #ccc; */
 }
+/* table body */
+#myTable tr:hover td{
+    background-color: lightgray;
+
+}
 #tbl th { /* #tbl th */
     background-color: #fff;
 }
