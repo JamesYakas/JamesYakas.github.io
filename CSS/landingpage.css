@@ -18,6 +18,7 @@ body{
     /* margin-left: 75%; */
 }
 .logo-wrapper{
+    position: relative;
     height: 110px;
 }
 .nav-logo{
