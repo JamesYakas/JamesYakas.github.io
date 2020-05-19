@@ -23,11 +23,12 @@ body{
 .nav-logo{
     /* height: 60px; */
     /* Use this when remove materilize nav */
-    position: relative;
-    left: 75%;
+    /* position: relative;
+    left: 75%; */
+    float: right;
+    
     margin-top: 20px;
     margin-bottom: 25px;
-    /* max-width: 100%; */
 
 
 }
@@ -43,6 +44,7 @@ body{
 .heading{
     /* position: relative;
     top: -20px; */
+    clear: both;
     
     /* Set a margin for the bottom for the outer div box */
     /* margin-bottom: 50px;  */
