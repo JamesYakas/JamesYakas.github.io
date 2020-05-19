@@ -17,6 +17,9 @@ body{
     margin-top: 25px;
     /* margin-left: 75%; */
 }
+.logo-wrapper{
+    position: relative;
+}
 .nav-logo{
     /* height: 60px; */
     /* Use this when remove materilize nav */
@@ -24,7 +27,7 @@ body{
     left: 75%;
     margin-top: 20px;
     margin-bottom: 25px;
-    max-width: 100%;
+    /* max-width: 100%; */
 
 
 }
