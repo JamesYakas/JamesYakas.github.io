@@ -26,6 +26,8 @@ body{
     /* position: relative;
     left: 75%; */
     float: right;
+    position: relative;
+    left: -25%;
     
     margin-top: 20px;
     margin-bottom: 25px;
