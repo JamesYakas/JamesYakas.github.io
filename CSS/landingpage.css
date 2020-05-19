@@ -18,7 +18,7 @@ body{
     /* margin-left: 75%; */
 }
 .logo-wrapper{
-    position: relative;
+    height: 110px;
 }
 .nav-logo{
     /* height: 60px; */
@@ -46,7 +46,7 @@ body{
 .heading{
     /* position: relative;
     top: -20px; */
-    clear: both;
+    /* clear: both; */
     
     /* Set a margin for the bottom for the outer div box */
     /* margin-bottom: 50px;  */
