@@ -73,6 +73,7 @@ body{
 
     height: 525px;
     width: 775px;
+    /* Max width 660px etc? */
 
     /* border: solid; */
     background-color: #d9d9d9;
@@ -105,6 +106,7 @@ body{
 
     height: 135px;
     width: 567px;
+    /* Max width 500px etc? */
 
 
     /* padding-left: 200px; */
@@ -181,6 +183,7 @@ body{
 
     height: 135px;
     width: 695px;
+    /* Max width 660px etc? */
     cursor: pointer;
 
     border: 0; 
