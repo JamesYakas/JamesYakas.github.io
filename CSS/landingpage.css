@@ -26,6 +26,7 @@ body{
     /* Use this when remove materilize nav */
     /* position: relative;
     left: 75%; */
+    max-width: 50%;
     float: right;
     position: relative;
     left: -25%;
