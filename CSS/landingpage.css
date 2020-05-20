@@ -19,6 +19,7 @@ body{
 }
 .logo-wrapper{
     position: relative;
+    display: block;
     height: 110px;
 }
 .nav-logo{
