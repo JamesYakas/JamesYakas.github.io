@@ -59,7 +59,7 @@ body{
     border-width: 1px;
     border-color: black; */
     background-color: #E63594;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 /* Heading Img */
 .main-message{
