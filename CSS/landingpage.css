@@ -18,6 +18,7 @@ body{
     /* margin-left: 75%; */
 }
 .logo-wrapper{
+    /* position: relative; */
     height: 110px;
 }
 .nav-logo{
@@ -28,12 +29,25 @@ body{
     float: right;
     position: relative;
     left: -25%;
+    /* max-width: 25%; */
     
     margin-top: 20px;
     margin-bottom: 25px;
 
 
 }
+
+/* @media only screen and (min-width: 320px) and (max-width: 414px){
+    .nav-logo{
+        width: 20%;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    .nav-logo{
+        width: 20%;
+    }
+} */
+
 /* Main section */
 #mainSection{
     /* border: solid;
@@ -58,31 +72,30 @@ body{
     border-width: 1px;
     border-color: black; */
     background-color: #E63594;
-    /* overflow: hidden; */
 }
 /* Heading Img */
 .main-message{
     /* width: 700px; */
     /* max-width: 100%; */
     /* width: 68.0%; */
-    max-width: 90%;
+    /* max-width: 639px; */
     margin-top: 70px;
 }
+
 /* Search outer div */
 #searchOuterDiv{
     margin: 0 auto;
     margin-top: 40px;
 
     height: 525px;
-    max-width: 90%;
     width: 775px;
-
     /* Max width 660px etc? */
 
     /* border: solid; */
     background-color: #d9d9d9;
     
 }
+
 #lpSearchContents{
     /* margin-top: 10px; */
     /* position: relative;
@@ -126,47 +139,7 @@ body{
     top: 135px;
     left: 34px;
     width: 567px;
-    max-width: 50%;
 }
-
-/* Position placeholder */
-::-webkit-input-placeholder {
-    text-align: center;
-    color: #888F91;
-    /* color: #888F91;
-    font-size: 30px;
-    font-weight: bold; */
- }
- 
- :-moz-placeholder { /* Firefox 18- */
-    text-align: center;  
-    color: #888F91;
- }
- 
- ::-moz-placeholder {  /* Firefox 19+ */
-    text-align: center;  
-    color: #888F91;
- }
- 
- :-ms-input-placeholder {  
-    text-align: center; 
-    color: #888F91;
- }
-/* Remove placeholder on focus */
- input:focus::placeholder {
-    color: transparent;
-  }
- /* label focus color */
- .input-field input[type=text]:focus + label {
-    color: #E63594 !important;
-    /* #EAE02D */
-}
-/* label underline focus color */
-.input-field input[type=text]:focus {
-    border-bottom: 1px solid #E63594 !important;
-    box-shadow: 0 1px 0 0 #E63594 !important;
-  }
-
 
 /* Input img magnifying glass */
 #imgMagnifyingGlass{
@@ -210,3 +183,99 @@ body{
     background-color: #E63594;
     font-family: Helvetica !important;
 }
+
+@media only screen and (min-width: 320px) and (max-width: 414px){
+    /* .logo-wrapper{
+        height: 60px;
+    } */
+    .nav-logo{
+        width: 20%;
+    }
+    .main-message{
+        width: 80%;
+    }
+    #searchOuterDiv{
+        width: 85%;
+    }
+    #inputSearchSuburb{
+        height: 60px;
+        font-size: 15px;
+    }
+    .input-search{
+        width: 55%;
+        top: 50px;
+        left: 20px;
+    }
+    #imgMagnifyingGlass{
+        top: -34px;
+        left: -45px;
+        width: 21%;
+    }
+    #searchButton{
+        width: 76%;
+        height: 80px;
+        top: 50px;
+        left: 20px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 768px){
+    .nav-logo{
+        width: 20%;
+    }
+    .main-message{
+        width: 80%;
+    }
+    #searchOuterDiv{
+        width: 85%;
+    }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1024px){
+    .nav-logo{
+        width: 20%;
+    }
+    #searchOuterDiv{
+        width: 75%;
+    }
+}
+
+
+
+/* Position placeholder */
+::-webkit-input-placeholder {
+    text-align: center;
+    color: #888F91;
+    /* color: #888F91;
+    font-size: 30px;
+    font-weight: bold; */
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+    color: #888F91;
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+    color: #888F91;
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+    color: #888F91;
+ }
+/* Remove placeholder on focus */
+ input:focus::placeholder {
+    color: transparent;
+  }
+ /* label focus color */
+ .input-field input[type=text]:focus + label {
+    color: #E63594 !important;
+    /* #EAE02D */
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #E63594 !important;
+    box-shadow: 0 1px 0 0 #E63594 !important;
+  }
+
+
