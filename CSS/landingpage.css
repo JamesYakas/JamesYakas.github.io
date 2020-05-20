@@ -126,6 +126,7 @@ body{
     top: 135px;
     left: 34px;
     width: 567px;
+    max-width: 90%;
 }
 
 /* Position placeholder */
