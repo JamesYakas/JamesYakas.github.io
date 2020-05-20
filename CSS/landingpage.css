@@ -52,7 +52,7 @@ body{
     /* Set a margin for the bottom for the outer div box */
     /* margin-bottom: 50px;  */
     height: 335px;
-
+    max-width: 639px;
     text-align: center;
 
     /* border: solid;
