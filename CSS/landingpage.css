@@ -75,6 +75,7 @@ body{
 
     height: 525px;
     width: 775px;
+    max-width: 90%;
     /* Max width 660px etc? */
 
     /* border: solid; */
