@@ -65,6 +65,7 @@ body{
     /* Set a margin for the bottom for the outer div box */
     /* margin-bottom: 50px;  */
     height: 335px;
+    
     /* max-width: 639px; */
     text-align: center;
 
@@ -185,39 +186,53 @@ body{
 }
 
 @media only screen and (min-width: 320px) and (max-width: 414px){
-    /* .logo-wrapper{
-        height: 60px;
-    } */
+    .logo-wrapper{
+        height: 75px;
+    }
     .nav-logo{
-        width: 20%;
+        width: 33%;
+        left: -4%;
+    }
+    .heading{
+        height: 135px;
     }
     .main-message{
         width: 80%;
+        margin-top: 25px;
     }
     #searchOuterDiv{
         width: 85%;
+        height: 220px;
+        margin-top: -5px;
     }
     #inputSearchSuburb{
         height: 60px;
-        font-size: 15px;
+        font-size: 13px;
     }
     .input-search{
-        width: 55%;
-        top: 50px;
-        left: 20px;
+        width: 65%;
+        top: 55px;
+        left: 15px;
     }
     #imgMagnifyingGlass{
-        top: -34px;
-        left: -45px;
-        width: 21%;
+        top: -28px;
+        left: -23px;
+        /* width: 21%; */
+        width: 57px;
     }
     #searchButton{
-        width: 76%;
-        height: 80px;
-        top: 50px;
-        left: 20px;
+        width: 86%;
+        height: 50px;
+        top: -5px;
+        left: 15px;
+        font-size: 19px;
     }
 }
+/* @media only screen and (orientation: landscape) and (min-width: 568px) and (max-width: 667px){
+    .main-message{
+        width: 100%;
+    }
+} */
 @media only screen and (min-width: 768px) and (max-width: 768px){
     .nav-logo{
         width: 20%;
