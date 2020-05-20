@@ -27,9 +27,9 @@ body{
     /* position: relative;
     left: 75%; */
     max-width: 50%;
-    float: right;
+    /* float: right; */
     position: relative;
-    left: -25%;
+    left: 75%;
     
     margin-top: 20px;
     margin-bottom: 25px;
