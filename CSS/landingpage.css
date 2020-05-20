@@ -185,7 +185,7 @@ body{
     font-family: Helvetica !important;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 414px){
+@media only screen and (min-width: 320px) and (max-width: 320px){
     .logo-wrapper{
         height: 75px;
     }
@@ -197,11 +197,12 @@ body{
         height: 135px;
     }
     .main-message{
-        width: 80%;
+        width: 79%;
         margin-top: 25px;
     }
     #searchOuterDiv{
-        width: 85%;
+        /* width: 85%; */
+        width: 275px;
         height: 220px;
         margin-top: -5px;
     }
@@ -210,13 +211,20 @@ body{
         font-size: 13px;
     }
     .input-search{
-        width: 65%;
+        width: 65.1%;
+        /* width: 177px; */
         top: 55px;
         left: 15px;
     }
     #imgMagnifyingGlass{
+        float: left;
+        /* left: 193px; */
+        left: 70.9%;
         top: -28px;
-        left: -23px;
+        /* left: -23px; */
+        /* left: -8.3%; */
+        /* left: -22px; */
+        /* width: 57px; */
         /* width: 21%; */
         width: 57px;
     }
@@ -228,20 +236,206 @@ body{
         font-size: 19px;
     }
 }
+@media only screen and (min-width: 360px) and (max-width: 360px){
+    .logo-wrapper{
+        height: 75px;
+    }
+    .nav-logo{
+        width: 33%;
+        left: -4%;
+    }
+    .heading{
+        height: 135px;
+    }
+    .main-message{
+        width: 73%;
+        margin-top: 25px;
+    }
+    #searchOuterDiv{
+        /* width: 85%; */
+        width: 275px;
+        height: 220px;
+        margin-top: 0px;
+    }
+    #inputSearchSuburb{
+        height: 60px;
+        font-size: 13px;
+    }
+    .input-search{
+        width: 65.1%;
+        /* width: 177px; */
+        top: 55px;
+        left: 15px;
+    }
+    #imgMagnifyingGlass{
+        float: left;
+        /* left: 193px; */
+        left: 70.9%;
+        top: -28px;
+        /* left: -23px; */
+        /* left: -8.3%; */
+        /* left: -22px; */
+        /* width: 57px; */
+        /* width: 21%; */
+        width: 57px;
+    }
+    #searchButton{
+        width: 86%;
+        height: 50px;
+        top: -5px;
+        left: 15px;
+        font-size: 19px;
+    }
+}
+@media only screen and (min-width: 375px) and (max-width: 375px){
+    .logo-wrapper{
+        height: 75px;
+    }
+    .nav-logo{
+        width: 31%;
+        left: -4%;
+    }
+    .heading{
+        height: 135px;
+    }
+    .main-message{
+        width: 71%;
+        margin-top: 25px;
+    }
+    #searchOuterDiv{
+        /* width: 85%; */
+        width: 280px;
+        height: 220px;
+        margin-top: 0px;
+    }
+    #inputSearchSuburb{
+        height: 60px;
+        font-size: 13px;
+    }
+    .input-search{
+        width: 65.1%;
+        /* width: 177px; */
+        top: 55px;
+        left: 15px;
+    }
+    #imgMagnifyingGlass{
+        float: left;
+        /* left: 193px; */
+        left: 70.9%;
+        top: -28px;
+        /* left: -23px; */
+        /* left: -8.3%; */
+        /* left: -22px; */
+        /* width: 57px; */
+        /* width: 21%; */
+        width: 57px;
+    }
+    #searchButton{
+        width: 86%;
+        height: 50px;
+        top: -5px;
+        left: 15px;
+        font-size: 18px;
+    }
+}
+@media only screen and (min-width: 411px) and (max-width: 414px){
+    .logo-wrapper{
+        height: 75px;
+    }
+    .nav-logo{
+        width: 29%;
+        left: -4%;
+    }
+    .heading{
+        height: 145px;
+    }
+    .main-message{
+        width: 71.5%;
+        margin-top: 25px;
+    }
+    #searchOuterDiv{
+        /* width: 85%; */
+        width: 315px;
+        height: 220px;
+        margin-top: 0px;
+    }
+    #inputSearchSuburb{
+        height: 60px;
+        font-size: 13px;
+    }
+    .input-search{
+        width: 67.7%;
+        /* width: 177px; */
+        top: 55px;
+        left: 15px;
+    }
+    #imgMagnifyingGlass{
+        float: left;
+        /* left: 193px; */
+        left: 72.4%;
+        top: -28px;
+        /* left: -23px; */
+        /* left: -8.3%; */
+        /* left: -22px; */
+        /* width: 57px; */
+        /* width: 21%; */
+        width: 57px;
+    }
+    #searchButton{
+        width: 86%;
+        height: 50px;
+        top: -5px;
+        left: 15px;
+        font-size: 18px;
+    }
+}
 /* @media only screen and (orientation: landscape) and (min-width: 568px) and (max-width: 667px){
     .main-message{
         width: 100%;
     }
 } */
 @media only screen and (min-width: 768px) and (max-width: 768px){
+    .logo-wrapper{
+        height: 125px;
+    }
     .nav-logo{
-        width: 20%;
+        width: 27%;
+        left: -4%;
     }
     .main-message{
         width: 80%;
     }
     #searchOuterDiv{
         width: 85%;
+    }
+    #inputSearchSuburb{
+        height: 120px;
+        font-size: 28px;
+    }
+    .input-search{
+        width: 67.9%;
+        /* width: 177px; */
+        top: 145px;
+        left: 35px;
+    }
+    #imgMagnifyingGlass{
+        float: left;
+        /* left: 193px; */
+        left: 73.4%;
+        top: 2px;
+        /* left: -23px; */
+        /* left: -8.3%; */
+        /* left: -22px; */
+        /* width: 57px; */
+        /* width: 21%; */
+        width: 112px;
+    }
+    #searchButton{
+        width: 85.3%;
+        height: 130px;
+        top: 60px;
+        left: 35px;
+        font-size: 35px;
     }
 }
 @media only screen and (min-width: 1024px) and (max-width: 1024px){
