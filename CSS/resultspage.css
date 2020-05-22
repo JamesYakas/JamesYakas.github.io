@@ -1,1 +1,806 @@
-.nav-top{height:80px;margin-bottom:10px;background-color:#fff}#navBar{margin-bottom:10px}.brand-logo{margin-top:15px;margin-left:5%}.nav-logo{height:60px}.top{margin:0 auto;width:980px}#rpHeadingOuterWrapper{margin-bottom:15px;text-align:center}#rpDisplaySuburb{display:inline-block;vertical-align:top;float:left;margin-left:15px;font-size:25px}.research-wrapper{float:right}#rpRe-Search{position:relative;top:-15px;display:inline-block;margin-right:90px;width:120px;height:50px}#rpRe-Search2{width:220px}#rpReSearchInputDiv{display:inline-block;vertical-align:top;float:right}#rpImgMagnifyingGlass{text-align:center;vertical-align:top;display:inline-block}.tabs .tab a{font-size:25px;color:#000!important;text-transform:none!important}.tabs .tab a:hover{color:#e83094!important}.tabs .tab a:focus.active{color:#000;background-color:#fafafa}.tabs .indicator{background-color:#00c853}.bigFilterWrapper{text-align:center}.filterWrapper{margin:0 auto;display:block;display:inline-block}.filter{float:left;margin-left:20px}#rpNumOfSpecialsFound{margin:auto;margin-bottom:-13px;width:550px;font-size:25px}#rpList{text-align:center;margin:auto;width:550px}.rpImage{width:320px;height:125px}.rpSpecial{display:inline-block;border:solid;border-width:1px;border-color:#000}.rpDays{display:inline-block;border:solid;border-width:1px;border-color:#000}.establishment-wrapper{cursor:pointer}.tbl-wrapper{text-align:center}.tbl-special{width:65%}.tbl-days{width:35%}.tbl-special-th{padding:5px 0 5px 12px;background-color:#e8e8e8;border-radius:0;border:0!important}.tbl-days-th{padding:5px 0 5px 12px;background-color:#e8e8e8;border-radius:0;border:0!important}table.striped>tbody>tr:nth-child(even){background-color:#f8f8f8}.cellTopCSS{vertical-align:top;text-align:center;vertical-align:middle;border-radius:0;border:0!important;font-style:italic;font-size:18px}.cellCSS{vertical-align:top;padding:0 0 0 12px;border-radius:0;border:0!important}.cellBottomCSS{vertical-align:top;padding:0 0 20px 12px;border-radius:0;border:0!important}.rowBottomCSS{padding:0 0 20px 0}.category{font-weight:500}.time-period{font-weight:500}.daysAbbreviated{letter-spacing:-.05em;font-weight:500;color:#8a8a8a}#rpBtnMapRevealSuburbs{text-align:center;margin:0 auto}#rpGoogleMap{text-align:center;margin:0 auto;margin-top:20px;height:700px;width:70%}.list-map-btn{background-color:#d3d3d3}.list-map-btn:hover{background-color:#20bf27!important}.list-map-btn:visited{background-color:#22aa1e}.list-map-btn:focus{background-color:#22aa1e}#rpMapBtnsWrapper{margin-bottom:50px;text-align:center}.btnListImg{position:relative;top:3px;left:-8px;width:18px}.btnMapImg{position:relative;top:3px;left:-8px;width:20px}.header{cursor:pointer}
+body{
+    /* background-color: #f5f5f5; */
+    font-family: Helvetica !important;
+}
+button{
+    font-family: Helvetica !important;
+}
+input{
+    font-family: Helvetica !important;
+}
+/* input-field{
+    font-family: Helvetica !important;
+} */
+/* NAV BAR */
+.nav-top{
+    height: 80px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+/* #navBar{
+    margin-bottom: 10px;
+} */
+.nav-bar{
+    /* margin-top: 20px; */
+    /* float: right; */
+    /* position: relative;
+    left: 25%; */
+    /* margin-left: 70%; */
+}
+/* Logo */
+.brand-logo{
+    /* margin-top: 55px; */
+    /* margin-left: 5%; */
+    
+}
+.nav-logo{
+    /* height: 60px; */
+    /* margin-left: 50%; */
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: 70%;
+    width: 192px;
+}
+/* TOP */
+.top{
+    margin : 0 auto;
+    /* text-align: center; */
+    width: 980px;
+    background-color: #d9d9d9;
+    /* width: 76.8%; */
+    /* margin-left: 0px; */
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+}
+
+/* Heading outter wrapper */
+#rpHeadingOuterWrapper{
+    background-color: #d9d9d9;
+    /* height: 65px; */
+    /* margin-bottom: 10px; */
+
+    /* text-align: center; */
+
+
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+/* Display users suburb */
+#rpDisplaySuburb{
+    /* position: relative;
+    top: 50px; */
+    /* text-align: center; */
+    /* margin-left: -23%; */
+    /* display: inline-block; */
+    /* vertical-align: top; */
+    float: left;
+    margin-left: 70px;
+    margin-top: 15px;
+    /* vertical-align: middle; */
+    /* margin-left: 15px; */
+
+    font-size: 25px;
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
+
+}
+.display-suburb{
+    color: #888F91;
+    font-size: 26px;
+}
+/* Not used */
+.research-wrapper{
+    /* float: right; */
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+}
+/* Research div */
+#rpRe-Search{
+    position: relative;
+    top: -5px;
+    /* margin-left: 5%; */
+    display: inline-block;
+    margin-right: 50px;
+    /* float: right; */
+
+    width: 120px;
+    height: 50px;
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+
+}
+#rpRe-Search2{
+    width: 175px;
+     
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+/* rpRe-SearchInputDiv */
+#rpReSearchInputDiv{
+    /* display: inline-block;
+    vertical-align: top; */
+    /* float: right; */
+    color: #545454;
+
+
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #545454;
+    opacity: 0.8; /* Firefox */
+  }
+/* img magnifying glass */
+#rpImgMagnifyingGlass{
+     /* position: relative;
+    top: 10px;
+    left: 275px; */
+    /* position: relative;
+    left: -20%; */
+    /* text-align: center; */
+    width: 40px;
+    vertical-align: top;
+    margin-top: 10px;
+    margin-right: 40px;
+    /* float: right; */
+    /* Center */
+    /* margin : 0 auto; */
+    /* display: inline-block; */
+    /* display: block; */
+    /* float: right; */
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;  */
+}
+/* TAB BTNS */
+.tab-btns-wrapper{
+    text-align: center;
+    width: 150px;
+    /* width: 974px; */
+    /* height: 100px; */
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+    /* margin-left: 12px; */
+    /* font-family: Helvetica !important; */
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+}
+.tab-btns{
+    /* display:inline-block; */
+    /* width: 48.5%; */
+    /* width: 470px; */
+    /* width: 49.79%; */
+    /* text-align: center; */
+    width: 489px;
+    /* width: 487px; */
+    /* height: 65px; */
+    height: 65px;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    background-color: #E63594;
+    color: white;
+    margin-left: 0px;
+    position: relative;
+    left: 0px;
+    /* font-family: Helvetica !important; */
+    font-weight: bold;
+    /* font-size: 25px; */
+    font-size: 25px;
+    
+}
+/* .tab-btns-drink{ */
+    /* border-top: #e681b5 solid 1px;
+    border-bottom: #e681b5 solid 1px; */
+    /* #e681b5 */
+/* } */
+.tab-btns-food{
+    margin-left: -3px;
+    background-color: #888F91;
+    /* width: 49.9%; */
+}
+.tab-drink-text{
+    /* display: inline-block; */
+    
+    
+    width: 69px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+    }
+.tab-drink-img{
+    /* display: inline-block;
+    position: relative;
+    left: 35px; */
+    /* display: inline-block; */
+    vertical-align: middle;
+    width: 40px;
+    /* top: 10px; */
+    margin-left: 25px;
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+}
+.tab-food-text{
+    /* display: inline-block; */
+    /* position: relative; */
+    width: 69px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+}
+.tab-food-img{
+    /* display: inline-block;
+    width: 35px;
+    position: relative;
+    left: 35px; */
+    /* top: 10px; */
+    /* margin-left: 25px; */
+    vertical-align: middle;
+    width: 50px;
+    /* top: 10px; */
+    margin-left: 25px;
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+}
+.tab-btns:focus{
+    background-color: #E63594;
+}
+/* TABS */
+.tabs{
+    height: 55px;
+    width: 800px;
+    margin-bottom: 20px;
+    background-color: #E63594;
+}
+.tabs .tab {
+    /* height: 1000px; */
+    /* height: 1000px !important; */
+}
+.tabs .tab a {
+    /* width: 500px; */
+    /* height: 1000px !important; */
+    text-align: center;
+    font-size: 25px;
+    color: white !important;
+    background-color: #E63594 !important;
+    text-transform: none !important;
+    /* color: rgba(38, 166, 154, 0.7); */
+    /*Custom Text Color*/
+  }
+
+  .tabs .tab a:hover {
+    color: white !important;
+    /* color:#26a69a; */
+    /*Custom Color On Hover*/
+  }
+
+  .tabs .tab a:focus.active {
+    /* color:#26a69a; */
+    /*Custom Text Color While Active*/
+    background-color: #E63594; /* white */
+    /* background-color: rgba(38, 166, 154, 0.2); */
+    /*Custom Background Color While Active*/
+  }
+
+  .tabs .indicator {
+    background-color:#00c853;
+    /* background-color:#26a69a; */
+    /*Custom Color Of Indicator*/
+  }
+  /* ul li:hover a {
+    background-color: #13118C;
+    color: grey; 
+    width: 100%;
+  } */
+  .selected{
+      
+  }
+
+/* Filter Wrapper */
+.bigFilterWrapper{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+    /* background-color: #d9d9d9; */
+
+
+    /* margin-left: 45px; */
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+
+
+}
+.filterWrapper{
+        /* Center */
+        /* position: relative;
+        left: 50%; */
+        /* margin : 0 auto;
+        display:block; */
+        /* position: relative;
+        margin : 0 auto;
+        display:block;
+        text-align: center;
+        display:inline-block; */
+        /* justify-content:center; */
+
+
+        /* margin : 0 auto; */
+        /* display:block; */
+        display:inline-block;
+        /* margin-left: -45px; */
+        /* margin-left: -50px; */
+        position: relative;
+        /* left: -5px; */
+        margin-bottom: -5px;
+        
+        /* border: solid;
+        border-width: 1px;
+        border-color: black; */
+
+}
+/* Filters */
+.filter{
+    float: left;
+    margin-left: 20px;
+    /* width: 200px; */
+
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+
+}
+/* Number of specials found */
+#rpNumOfSpecialsFound{
+    /* text-align: center; */
+    margin: auto;
+    margin-bottom: -13px;
+    width: 550px;
+    font-size: 25px;
+    color: #545454;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;     */
+
+}
+/* Results/Specials */
+#rpList{
+    text-align: center;
+    margin: auto;
+    width: 545px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+}
+.est-name{
+    margin-right: 16px;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    color: #545454;
+}
+.est-name-underline{
+    clear: both;
+    margin-top: 4px;
+    border: 1px solid #545454;
+    opacity: 0.7;
+    width: 41%;
+    float: right;
+}
+.est-details{
+    margin-top: -5px;
+}
+.est-detail{
+    font-weight: bold;
+    color: #545454;
+}
+
+.rpImage{
+    /* border-radius: 50%; */
+    width: 545px;
+    height: 120px;
+}
+.rpSpecial{
+    display: inline-block;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+}
+.rpDays{
+    display: inline-block;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+}
+/* ESTABLISHMENT PORTION */
+.establishment-wrapper{
+    cursor: pointer;
+    /* margin-top: -20px; */
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;   */
+    /* background-color: #f8f8f8; */
+}
+/* TABLE */
+/* The table wrapper */
+.tbl-wrapper{
+    text-align: center;
+}
+/* The table */
+#tbl{
+    /* border-collapse: separate;
+    border-spacing: 1px 0px; */
+    /* width: 500px; */
+    /* display: inline-block; */
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+    /* border-collapse: collapse; */
+}
+#tbl td{
+
+}
+/* Headings */
+.tbl-special{
+    width: 43%;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+}
+.tbl-days{
+    width: 57%;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+}
+.tbl-special-th{
+    padding: 5px 0px 5px 12px;
+    background-color: #e8e8e8;
+    border-radius: 0;
+    border: 0px!important;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+}
+.tbl-days-th{
+    padding: 5px 0px 5px 12px;
+    background-color: #e8e8e8;
+    border-radius: 0;
+    border: 0px !important;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;   */
+}
+/*color row odd*/
+table.striped>tbody>tr:nth-child(odd) {
+    background-color: white;
+}
+/*color row even*/
+table.striped>tbody>tr:nth-child(even) {
+    background-color: white;
+     /* color: black; */
+     /* border: 1px black solid; */
+}
+/* cell */
+.cellTopSpecialCSS{
+    vertical-align: top;
+    padding: 20px 0px 30px 24px;
+    /* text-align: center; */
+    /* padding-left: 50%; */
+    vertical-align: middle;
+    /* width: 50%; */
+    border-radius: 0;
+    /* column-span: 2; */
+    /* background-color: lightgray; */
+    border: 0px !important;   
+    font-weight: 500;
+    font-size: 19px;
+    color: #545454; 
+    /* font-weight: bold; */
+    /* font-weight: 900px !important; */
+}
+
+.cellTopCSS{
+    vertical-align: top;
+    /* padding: 0px 0px 0px 12px; */
+    /* text-align: center; */
+    /* padding-left: 50%; */
+    text-align: center; 
+    vertical-align: middle;
+    padding-top: 60px;
+    padding-bottom: 0px;
+    /* width: 50%; */
+    border-radius: 0;
+    /* column-span: 2; */
+    /* background-color: lightgray; */
+    border: 0px !important;   
+    font-style: italic;
+    font-weight: bold;
+    font-size: 18px;
+    color: #545454; 
+    /* font-weight: bold; */
+    /* font-weight: 900px !important; */
+}
+
+/* Cell - bottom */
+.cellBottomCSS{
+    vertical-align: top;
+    padding: 0px 0px 34px 24px;
+    border-radius: 0;
+    /* background-color: lightgray; */
+    /* border: 0px !important; */
+    border-bottom: solid 2px rgba(136, 143, 145);
+    /* Added from time peroid and days abbreviated css */
+    font-weight: 500;
+    font-size: 19px;
+    color: #545454; 
+}
+.cellCSS{
+    vertical-align: top;
+    padding: 0px 0px 0px 12px;
+    border-radius: 0;
+    /* background-color: lightgray; */
+    border: 0px !important;
+}
+
+/* Row */
+.rowBottomCSS{
+    padding: 0px 0px 20px 0px;
+}
+/* Category */
+.category{
+    font-weight: 500;
+}
+/* Time Period */
+.time-period{
+    /* font-weight: 500;
+    font-size: 18px;
+    color: #545454;  */
+}
+.time-img{
+    width: 26px;
+    float: left;
+    margin-right: 16px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+
+}
+.cocktail-small-img{
+    width: 26px;
+    float: left;
+    margin-right: 16px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+
+}
+.hamburger-small-img{
+    width: 32px;
+    float: left;
+    margin-right: 16px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black; */
+
+}
+/* Days Abbreviated */
+.daysAbbreviated{
+    /* font-weight: 900px; */
+     /* color: #FF3399;  */
+     /* letter-spacing: 0.0625em; */
+     letter-spacing: 0.25em;
+     /* font-weight: 500;
+     font-size: 18px;
+     color: #545454; */
+}
+.calander-img{
+    width: 23px;
+    float: left;
+    margin-left: 36px;
+    margin-right: 16px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: black;    */
+}
+/* Cell Vert Position */
+/* .cellVertPosition{
+    padding: 0;
+
+} */
+/* Map Button to reveal all suburbs */
+#rpBtnMapRevealSuburbs{
+    text-align: center;
+    margin : 0 auto;
+}
+/* Google Map */
+#rpGoogleMap{
+    text-align: center;
+    margin : 0 auto;
+
+    margin-top: 20px;
+
+    height: 700px;
+    width: 70%;
+
+    /* Hidden by default */
+    /* display: none; */
+}
+/* BUTTONS */
+/* Button colour */
+/* .initListBtnColour{
+    background-color: #20bf27 !important
+} */
+.list-map-btn{
+    background-color: lightgray;
+    /* background-color: #b03b81; */
+    /* padding: 10px 10px 10px 10px;
+    border-radius: 2px; */
+/* font-size: 2em; */
+}
+/* .list-map-btn:visited{
+    background-color:red;
+} */
+.list-map-btn:hover {
+    background-color: rgba(230, 53, 147, 0.733) !important;
+    /* background-color: #b03b81c9 !important; */
+ }
+ /* .list-map-btn:active{
+    background-color:pink;
+} */
+.list-map-btn:visited{
+    background-color:#E63594;
+    /* background-color:#b03b81c9; */
+}
+.list-map-btn:focus{
+    background-color:#E63594;
+    /* background-color:#b03b81c9; */
+}
+/* Map button wrapper */
+#rpMapBtnsWrapper{
+    margin-bottom: 50px;;
+
+    text-align: center;
+}
+/* Button list image */
+.btnListImg{
+    position: relative;
+    top: 3px;
+    left: -8px;
+
+    width: 18px;
+}
+/* Button map image */
+.btnMapImg{
+    position: relative;
+    top: 3px;
+    left: -8px;
+
+    width: 20px;
+}
+/* State */
+/* #currentState{
+    font-family: "Hind Vadodara", "Helvetica Neue", Helvetica, sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+} */
+
+.header
+{
+    cursor:pointer;
+}
+
+ /* label focus color */
+ .input-field input[type=text]:focus + label {
+    color: #545454 !important;
+    /* #EAE02D */
+}
+/* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #545454 !important;
+    box-shadow: 0 0px 0 0 #545454 !important;
+  }
+
+  
+
+
+   /* label color */
+   /* .input-field label {
+    color: #000 !important;
+  } */
+  /* label focus color */
+  /* .input-field input[type=text]:focus + label {
+    color: #000 !important;
+  } */
+  /* label underline focus color */
+  /* .input-field input[type=text]:focus {
+    border-bottom: 1px solid #000 !important;
+    box-shadow: 0 1px 0 0 #000 !important;
+  } */
+  /* valid color */
+  /* .input-field input[type=text].valid {
+    border-bottom: 1px solid #000 !important;
+    box-shadow: 0 1px 0 0 #000 !important;
+  } */
+  /* invalid color */
+  /* .input-field input[type=text].invalid {
+    border-bottom: 1px solid #000 !important;
+    box-shadow: 0 1px 0 0 #000 !important;
+  } */
+  /* icon prefix focus color */
+  /* .input-field .prefix.active {
+    color: #000 ;
+  } */
+
+/* Select  filters headings*/
+.select-dropdown{
+    color: #545454;
+}
+/* .apply-select-colour{
+    color: #E63594 !important;
+} */
+/* .dropdown--multiple-content li > a, .dropdown-content li > span {
+    color: #E63594 !important;
+} */
+
+[type="checkbox"]:checked+span:not(.lever):before {
+
+    border-right: 2px solid #E63594 !important;
+    border-bottom: 2px solid #E63594 !important;
+
+}
+
+/* Select  filters options includes multi*/
+/* ul.dropdown-content.select-dropdown li span {
+    color: #545454 !important; 
+} */
+/* ul.dropdown--multiple-content.select-dropdown li span input[type=checkbox] {
+    color: #E63594 !important; 
+} */
+/* .dropdown--multiple-content li > a, .dropdown-content li > span > input[type=checkbox] {
+    color: #E63594 !important;
+} */
+
+/* Select  filters option doesn't include multi*/
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #545454 !important;
+}
+
+/* .dropdown-content li>span {
+    color: #000 !important;
+  }
+  
+  .dropdown-content li>a {
+    color: #000 !important;
+  }
+  
+  .select-content li>span {
+    color: #000 !important;
+  }
+  
+  .select-content li>a {
+    color: #000 !important;
+  } */
