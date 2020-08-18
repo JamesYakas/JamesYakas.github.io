@@ -165,7 +165,7 @@ sign_up_facebook.addEventListener('click', e => {
 
             /* make the API call */
             FB.api(
-                "/{person-id}/",
+                response.authResponse.userID, //"/{person-id}/"
                 function (response) {
                     if (response && !response.error) {
                         /* handle the result */
