@@ -189,7 +189,7 @@ sign_up_facebook.addEventListener('click', e => {
         } else {
             console.log('User cancelled login or did not fully authorize.');
         }
-    });
+    }, {scope: 'public_profile,email'});
 
 
 
