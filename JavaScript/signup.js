@@ -155,7 +155,7 @@ sign_up_facebook.addEventListener('click', e => {
             FB.api('/me', function (response) {
                 console.log('Good to see you, ' + response.name + '.');
 
-                Backendless.UserService.loginWithFacebookSdk(facebookFieldsMapping,
+                Backendless.UserService.loginWithFacebookSdk(response,
                     true)
                     .then(function (result) {
                         console.log(result)
@@ -168,6 +168,10 @@ sign_up_facebook.addEventListener('click', e => {
         } else {
             console.log('User cancelled login or did not fully authorize.');
         }
+    });
+
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
     });
 
 });
