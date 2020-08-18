@@ -160,6 +160,7 @@ sign_up_facebook.addEventListener('click', e => {
                 console.log('Good to see you, ' + response.name + '.');
 
                 console.log(response);
+                console.log(response.accessToken);
                 console.log(response.name);
                 console.log(response.first_name);
                 console.log(response.email);
