@@ -165,6 +165,11 @@ sign_up_facebook.addEventListener('click', e => {
                 console.log(response.email);
                 console.log(response.impersonate_token);
 
+                FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response);
+                    console.log(statusChangeCallback(response));
+                });
+
 
                 // //"email":response.email, 
                 // var facebookFieldsMapping = {"name":response.name, "accessToken":response.id};
