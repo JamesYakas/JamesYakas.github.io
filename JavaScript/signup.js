@@ -166,7 +166,8 @@ sign_up_facebook.addEventListener('click', e => {
                 console.log(response.impersonate_token);
                 console.log(response.impersonate_token);
 
-                var facebookFieldsMapping = {"name":response.first_name, "email":response.email, "accessToken":response.impersonate_token};
+                //"email":response.email, 
+                var facebookFieldsMapping = {"name":response.name, "accessToken":response.id};
                 console.log(facebookFieldsMapping);
 
                 Backendless.UserService.loginWithFacebookSdk(facebookFieldsMapping,
