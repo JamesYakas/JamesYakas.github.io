@@ -159,6 +159,7 @@ sign_up_facebook.addEventListener('click', e => {
             FB.api('/me', function (response) {
                 console.log('Good to see you, ' + response.name + '.');
 
+                console.log(response);
                 console.log(response.name);
                 console.log(response.first_name);
                 console.log(response.email);
