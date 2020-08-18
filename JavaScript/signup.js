@@ -166,8 +166,9 @@ sign_up_facebook.addEventListener('click', e => {
                 console.log(response.impersonate_token);
 
                 FB.getLoginStatus(function(response) {
-                    statusChangeCallback(response);
-                    console.log(statusChangeCallback(response));
+                    // statusChangeCallback(response);
+                    // console.log(statusChangeCallback(response));
+                    console.log(response);
                 });
 
 
