@@ -147,11 +147,11 @@ sign_up_facebook.addEventListener('click', e => {
     //     // handle the response 
     // });
 
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
+    // FB.getLoginStatus(function(response) {
+    //     statusChangeCallback(response);
+    // });
 
-    var facebookFieldsMapping = {"name":"first_name", "email":"email", "accessToken":"impersonate_token"};
+    var facebookFieldsMapping = {"name":"first_name", "email":"email", "accessToken":'{access-token}'};
 
     FB.login(function (response) {
         if (response.authResponse) {
