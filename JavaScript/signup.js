@@ -156,11 +156,11 @@ sign_up_facebook.addEventListener('click', e => {
     FB.login(function (response) {
         if (response.authResponse) {
             console.log('Welcome!  Fetching your information.... ');
+            console.log(response.authResponse);
+            console.log(response.authResponse.accessToken);
             FB.api('/me', function (response) {
                 console.log('Good to see you, ' + response.name + '.');
 
-                console.log(response.authResponse);
-                console.log(response.authResponse.accessToken);
                 console.log(response.name);
                 console.log(response.first_name);
                 console.log(response.email);
