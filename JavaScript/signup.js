@@ -153,37 +153,48 @@ sign_up_facebook.addEventListener('click', e => {
 
     //var facebookFieldsMapping = {"name":response.first_name, "email":response.email, "accessToken":response.impersonate_token};
 
-    FB.login(function (response) {
-        if (response.authResponse) {
-            console.log('Welcome!  Fetching your information.... ');
-            FB.api('/me', function (response) {
-                console.log('Good to see you, ' + response.name + '.');
+    // FB.login(function (response) {
+    //     if (response.authResponse) {
+    //         console.log('Welcome!  Fetching your information.... ');
+    //         FB.api('/me', function (response) {
+    //             console.log('Good to see you, ' + response.name + '.');
 
-                console.log(response);
-                console.log(response.name);
-                console.log(response.first_name);
-                console.log(response.email);
-                console.log(response.impersonate_token);
-                console.log(response.impersonate_token);
+    //             console.log(response);
+    //             console.log(response.name);
+    //             console.log(response.first_name);
+    //             console.log(response.email);
+    //             console.log(response.impersonate_token);
+    //             console.log(response.impersonate_token);
 
-                //"email":response.email, 
-                var facebookFieldsMapping = {"name":response.name, "accessToken":response.id};
-                console.log(facebookFieldsMapping);
+    //             //"email":response.email, 
+    //             var facebookFieldsMapping = {"name":response.name, "accessToken":response.id};
+    //             console.log(facebookFieldsMapping);
 
-                Backendless.UserService.loginWithFacebookSdk(response.id,
-                    true)
-                    .then(function (result) {
-                        console.log(result)
-                    })
-                    .catch(function (error) {
-                        console.log(error)
-                    });
+    //             Backendless.UserService.loginWithFacebookSdk(response.id,
+    //                 true)
+    //                 .then(function (result) {
+    //                     console.log(result)
+    //                 })
+    //                 .catch(function (error) {
+    //                     console.log(error)
+    //                 });
                 
-            });
-        } else {
-            console.log('User cancelled login or did not fully authorize.');
-        }
-    });
+    //         });
+    //     } else {
+    //         console.log('User cancelled login or did not fully authorize.');
+    //     }
+    // });
+    //"first_name":"first_name", "email":"email"
+    var facebookFieldsMapping = {"name":"name", "email":"email"};
+
+    Backendless.UserService.loginWithFacebookSdk(facebookFieldsMapping,
+        true)
+        .then(function (result) {
+            console.log(result)
+        })
+        .catch(function (error) {
+            console.log(error)
+        });
 
 
 
