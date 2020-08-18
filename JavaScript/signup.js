@@ -185,7 +185,7 @@ sign_up_facebook.addEventListener('click', e => {
     //     }
     // });
     //"first_name":"first_name", "email":"email"
-    var facebookFieldsMapping = {"name":"name", "email":"email"};
+    var facebookFieldsMapping = {"name":"name", "email":"email", "impersonate_token":"accessToken"};
 
     Backendless.UserService.loginWithFacebookSdk(facebookFieldsMapping,
         true)
