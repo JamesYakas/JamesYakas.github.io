@@ -147,17 +147,21 @@ sign_up_facebook.addEventListener('click', e => {
     //     // handle the response 
     // });
 
+    var facebookFieldsMapping = {"name":"first_name", "email":"email"};
+
     FB.login(function (response) {
         if (response.authResponse) {
             console.log('Welcome!  Fetching your information.... ');
             FB.api('/me', function (response) {
                 console.log('Good to see you, ' + response.name + '.');
 
-                Backendless.UserService.loginWithFacebookSdk(response,
+                Backendless.UserService.loginWithFacebookSdk(facebookFieldsMapping,
                     true)
                     .then(function (result) {
+                        console.log(result)
                     })
                     .catch(function (error) {
+                        console.log(error)
                     });
                 
             });
