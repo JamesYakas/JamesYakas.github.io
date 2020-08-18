@@ -159,8 +159,8 @@ sign_up_facebook.addEventListener('click', e => {
             FB.api('/me', function (response) {
                 console.log('Good to see you, ' + response.name + '.');
 
-                console.log(response);
-                console.log(response.accessToken);
+                console.log(response.authResponse);
+                console.log(response.authResponse.accessToken);
                 console.log(response.name);
                 console.log(response.first_name);
                 console.log(response.email);
@@ -190,7 +190,7 @@ sign_up_facebook.addEventListener('click', e => {
         } else {
             console.log('User cancelled login or did not fully authorize.');
         }
-    }, {scope: 'public_profile,email'});
+    }); //, {scope: 'public_profile,email'}
 
 
 
