@@ -159,10 +159,11 @@ sign_up_facebook.addEventListener('click', e => {
             FB.api('/me', function (response) {
                 console.log('Good to see you, ' + response.name + '.');
 
+                console.log(response.name);
                 console.log(response.first_name);
                 console.log(response.email);
                 console.log(response.impersonate_token);
-                console.log(response.access-token);
+                console.log(response.impersonate_token);
 
                 var facebookFieldsMapping = {"name":response.first_name, "email":response.email, "accessToken":response.impersonate_token};
                 console.log(facebookFieldsMapping);
