@@ -158,19 +158,38 @@ sign_up_facebook.addEventListener('click', e => {
             console.log('Welcome!  Fetching your information.... ');
             console.log(response.authResponse);
             console.log(response.authResponse.accessToken);
+
+
+
+            // Graph API
+
+            /* make the API call */
+            FB.api(
+                "/{person-id}/",
+                function (response) {
+                    if (response && !response.error) {
+                        /* handle the result */
+                        console.log(response);
+                    }
+                }
+            );
+
+
             FB.api('/me', function (response) {
                 console.log('Good to see you, ' + response.name + '.');
 
                 console.log(response.name);
-                console.log(response.first_name);
-                console.log(response.email);
-                console.log(response.impersonate_token);
+                console.log(response);
+                //console.log(response.first_name);
+                //console.log(response.email);
+                //console.log(response.impersonate_token);
 
-                FB.getLoginStatus(function(response) {
-                    // statusChangeCallback(response);
-                    // console.log(statusChangeCallback(response));
-                    console.log(response);
-                });
+                // FB.getLoginStatus(function(response) {
+                //     // statusChangeCallback(response);
+                //     // console.log(statusChangeCallback(response));
+                //     console.log(response);
+                // });
+
 
 
                 // //"email":response.email, 
@@ -185,7 +204,7 @@ sign_up_facebook.addEventListener('click', e => {
                 //     .catch(function (error) {
                 //         console.log(error)
                 //     });
-                
+
             });
         } else {
             console.log('User cancelled login or did not fully authorize.');
@@ -211,11 +230,11 @@ sign_up_facebook.addEventListener('click', e => {
 });
 
 
-log_out_facebook.addEventListener('click', e => { 
+log_out_facebook.addEventListener('click', e => {
 
-    FB.logout(function(response) {
+    FB.logout(function (response) {
         // Person is now logged out
         console.log(response);
-     });
+    });
 
 });
