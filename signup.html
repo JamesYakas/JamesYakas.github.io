@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <!-- Database and CSS scripts -->
+    <script src="//api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+
+<body>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '248919979435326',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v8.0'
+            });
+        };
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=248919979435326&autoLogAppEvents=1"
+        nonce="fNpyPLPv"></script>
+
+    <div id="login-box">
+        <div class="left-box">
+            <h1> Sign Up</h1>
+
+            <!-- <input type="text" name="username" placeholder="Username"/> -->
+            <input id="email" type="text" name="email" placeholder="Email" />
+            <input id="password" type="password" name="password" placeholder="Password" />
+
+            <input id="password_2" type="password" name="password2" placeholder="Retype password" />
+
+            <input id="sign_up" type="submit" name="signup-button" value="Sign Up" />
+
+            <p id="error_message"></p>
+
+        </div>
+        <div class="right-box">
+            <span class="signinwith">Sign up with<br />Social Network </span>
+
+            <button class="social facebook" id="sign_up_facebook">Log in with Facebook</button>
+
+            <div class="fb-login-button" data-size="" data-button-type="" data-layout="" data-auto-logout-link=""
+                data-use-continue-as="" data-width=""></div>
+
+            <button class="social twitter">Log in with Twitter</button>
+            <button class="social google">Log in with Google+</button>
+
+
+        </div>
+        <div class="or">OR</div>
+    </div>
+
+    <script src="JavaScript/signup.js"></script>
+</body>
+
+</html>

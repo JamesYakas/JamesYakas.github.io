@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Price Tracker</title>
+  <!-- Database and CSS scripts -->
+  <script src="//api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+  <!-- Heading -->
+  <div class="heading center">Custom Price Tracker</div>
+
+  <!-- Shop Heading -->
+  <div class="shop-heading center">Shop</div>
+
+  <div class="center">
+    <input type="text" id="addItemInput">
+    <button class="addBtns" onclick="addItem()">Add Item</button>
+    <input type="text" id="addShopInput">
+    <button class="addBtns" onclick="addShop()">Add Shop or Category</button>
+  </div>
+
+  <!-- Table outer wrapper -->
+  <!-- <div class="tbl-outter-wrapper"> -->
+  <!-- Item Heading -->
+  <!-- <div class="item-heading">Item</div> -->
+  <!-- Table -->
+  <!-- <div class="tbl-wrapper"> -->
+  <!-- <div class="item-heading">Item</div> -->
+  <!-- <span class="item-heading">Item</span> -->
+  <table id='tbl' border=1>
+    <!-- <colgroup>
+                <col span="1" class="tbl-item-th">
+                <col span="1" class="tbl-shop-th">
+            </colgroup> -->
+    <!-- Column Headings -->
+    <thead>
+      <tr>
+        <!-- <th class="tbl-item-th">Item</th> -->
+        <!-- <th class="tbl-shop-th">Shop</th> -->
+      </tr>
+      <!-- <tr>
+                  <th class="tbl-item-th">Item</th>
+                </tr> -->
+    </thead>
+    <!-- Table body -->
+    <tbody id="myTable"></tbody>
+  </table>
+  <!-- </div> -->
+  <!-- </div> -->
+
+  <!-- No shop or item has been added -->
+  <div id="noShopItemAdded"></div>
+
+  <script src="JavaScript/main.js"></script>
+</body>
+
+</html>
