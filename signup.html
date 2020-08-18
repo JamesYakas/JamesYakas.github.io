@@ -12,6 +12,7 @@
 
 <body>
 
+    <!-- SDK - Basic setup -->
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -24,6 +25,7 @@
     </script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
+    <!-- FB Login Button -->
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=248919979435326&autoLogAppEvents=1"
@@ -47,13 +49,18 @@
         <div class="right-box">
             <span class="signinwith">Sign up with<br />Social Network </span>
 
+            <!-- FB Login button - Custom -->
             <button class="social facebook" id="sign_up_facebook">Log in with Facebook</button>
 
+            <!-- FB Login button -->
             <div class="fb-login-button" data-size="" data-button-type="" data-layout="" data-auto-logout-link=""
                 data-use-continue-as="" data-width=""></div>
 
             <button class="social twitter">Log in with Twitter</button>
             <button class="social google">Log in with Google+</button>
+
+            <!-- FB Log Out button -->
+            <button class="social facebook" id="log_out_facebook">Log out Facebook</button>
 
 
         </div>
