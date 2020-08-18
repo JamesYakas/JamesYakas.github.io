@@ -170,7 +170,7 @@ sign_up_facebook.addEventListener('click', e => {
                 var facebookFieldsMapping = {"name":response.name, "accessToken":response.id};
                 console.log(facebookFieldsMapping);
 
-                Backendless.UserService.loginWithFacebookSdk(facebookFieldsMapping,
+                Backendless.UserService.loginWithFacebookSdk(response.id,
                     true)
                     .then(function (result) {
                         console.log(result)
