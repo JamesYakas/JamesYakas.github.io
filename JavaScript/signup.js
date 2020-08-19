@@ -159,6 +159,7 @@ sign_up_facebook.addEventListener('click', e => {
             console.log(response.authResponse);
             console.log(response.authResponse.accessToken);
 
+            var facebookFieldsMapping = { "{response.authResponse.name}": "name", "{response.authResponse.accessToken}": "accessToken" };
 
 
             // Graph API
@@ -205,11 +206,23 @@ sign_up_facebook.addEventListener('click', e => {
                 //         console.log(error)
                 //     });
 
+                //var facebookFieldsMapping = {"name":response.name, "accessToken":response.id};
+                //var facebookFieldsMapping = {"{response.name}":name, "{response.authResponse.accessToken}":accessToken};
+
+                Backendless.UserService.loginWithFacebookSdk(facebookFieldsMapping,
+                    stayLoggedIn)
+                    .then(function (result) {
+                        console.log(result);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
             });
         } else {
             console.log('User cancelled login or did not fully authorize.');
         }
-    }, {scope: 'public_profile,email'});
+    }, { scope: 'public_profile,email' });
 
 
 
