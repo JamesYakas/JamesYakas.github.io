@@ -159,8 +159,8 @@ sign_up_facebook.addEventListener('click', e => {
             console.log(response.authResponse);
             console.log(response.authResponse.accessToken);
 
-            var facebookFieldsMapping = { "{response.authResponse.name}": "name", "{response.authResponse.accessToken}": "accessToken" };
-            var accessToken = response.authResponse.accessToken;
+            var facebookFieldsMapping = { "{response.authResponse.name}": "name", "{response.authResponse.userID}": "email" };
+            var options = {"accessToken":response.authResponse.accessToken};
 
             // Graph API
 
@@ -210,7 +210,7 @@ sign_up_facebook.addEventListener('click', e => {
                 //var facebookFieldsMapping = {"{response.name}":name, "{response.authResponse.accessToken}":accessToken};
 
                 Backendless.UserService.loginWithFacebookSdk(facebookFieldsMapping,
-                    true, accessToken)
+                    true, options)
                     .then(function (result) {
                         console.log(result);
                     })
