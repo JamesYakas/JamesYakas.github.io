@@ -66,6 +66,7 @@ function pageOnLoad() {
 
     // Create a query and set the relations.
     var queryBuilder = Backendless.DataQueryBuilder.create().setWhereClause("ownerId = " + "'" + userData.id + "'");
+    queryBuilder.setPageSize( 100 );
     queryBuilder.setRelated(["item",
         "shop"]);
 
@@ -73,7 +74,7 @@ function pageOnLoad() {
     queryBuilder.setSortBy(["shop.created", "item.created"]);
 
     // Set page size to 100
-    queryBuilder.setPageSize(100);
+    // queryBuilder.setPageSize(100);
 
     // Retrieve the results from the Stock table
     Backendless.Data.of("Stock").find(queryBuilder)

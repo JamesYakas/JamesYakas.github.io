@@ -86,47 +86,17 @@ body {
   text-align: center;
 }
 
-/* Heading */
-/* .heading {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  font-size: 55px;
-} */
-
-/* Shop Heading */
-/* .shop-heading {
-  font-weight: bold;
-  font-size: 150%;
-  margin-bottom: 20px;
-  border: solid black 1px;
-} */
-
-/* Add item and shop buttons */
-.addBtns {
+/* The user inputs section */
+.user-inputs-sec {
   margin-bottom: 20px;
   margin-top: 100px;
 }
 
-/* Item Heading */
-.item-heading {
-  font-weight: bold;
-  font-size: 150%;
-  /* margin-bottom: 20px; */
-  /* text-align: center; */
-  float: left;
-  /* margin-left: 30%; */
-  border: solid black 1px;
-  /* vertical-align: middle; */
-  /* display: inline-block; */
-  /* vertical-align: middle; */
-  display: block;
-
-  /* position: absolute;
-    top: 50%;
-    transform: translateY(-50%); */
-  /* overflow: hidden;
-    white-space: nowrap; */
-}
+/* Add item and shop buttons */
+/* .addBtns {
+  margin-bottom: 20px;
+  margin-top: 100px;
+} */
 
 /* Table Outter Wrapper */
 .tbl-outter-wrapper {
@@ -168,6 +138,13 @@ body {
 }
 
 table {
+  /* position: relative;
+  top: 200px; */
+  /* position: sticky;
+  top: 200px; */
+
+  /* z-index: -3; */
+
   font-family: arial, sans-serif;
   border-collapse: collapse;
   /* width: 95%; */
@@ -237,11 +214,10 @@ tr:first-child td {
 /* No shop or item has been added */
 #noShopItemAdded {
   text-align: center;
-  height: 2000px;
 }
 
 /* 320 */
-@media only screen and (min-width: 320px) and (max-width: 360px) {
+@media only screen and (min-width: 0px) and (max-width: 360px) {
   .nav {
     height: 40px;
   }
@@ -264,14 +240,83 @@ tr:first-child td {
     font-size: 10px;
   }
 
+  .user-inputs-sec {
+    margin-top: 70px;
+  }
+
   .inputs {
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    width: 55vw;
+  }
+
+  .addBtns {
+    /* margin-left: 10px; */
+    font-size: 60%;
     float: left;
     margin-left: 10px;
   }
 
-  .addBtns {
+  table {
+    font-size: 60%;
+  }
+
+  .catHdingBtn {
+    font-size: 60%;
+  }
+}
+
+/* 360-384 */
+@media only screen and (min-width: 360px) and (max-width: 384px) {
+
+  .nav {
+    height: 40px;
+  }
+
+  .logo {
     margin-left: 10px;
+  }
+
+  /* User's email */
+  #users_email {
+    top: 55%;
+    margin-right: 5px;
+    font-size: 55%;
+  }
+
+  .logout-btn {
+    top: 40%;
+    margin-right: 2%;
+
     font-size: 10px;
+  }
+
+  .user-inputs-sec {
+    margin-top: 70px;
+  }
+
+  .inputs {
     float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    width: 55vw;
+  }
+
+  .addBtns {
+    /* margin-left: 10px; */
+    font-size: 60%;
+    float: left;
+    margin-left: 10px;
+  }
+
+  table {
+    font-size: 60%;
+  }
+
+  .catHdingBtn {
+    font-size: 60%;
   }
 }
