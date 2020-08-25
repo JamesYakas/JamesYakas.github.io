@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <!-- Database and CSS scripts -->
+    <script src="//api.backendless.com/sdk/js/latest/backendless.min.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <!-- SDK - Basic setup -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '248919979435326',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v8.0'
+            });
+        };
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+
+    <div id="login-box">
+        <div class="left-box">
+            <h1> Login</h1>
+
+            <input id="email" type="text" name="email" placeholder="Email" />
+
+            <input id="password" type="password" name="password" placeholder="Password" />
+
+            <input id="login" type="submit" name="login-button" value="Login" />
+
+            <p id="error_message"></p>
+
+        </div>
+        <div class="right-box">
+            <span class="signinwith">Login with<br />Social Network </span>
+
+            <!-- FB Login button - Custom -->
+            <button class="social facebook" id="sign_up_facebook">Log in with Facebook</button>
+
+            <button class="social twitter">Log in with Twitter</button>
+
+            <button class="social google">Log in with Google+</button>
+
+
+        </div>
+        <div class="or">OR</div>
+    </div>
+
+    <script src="JavaScript/login.js"></script>
+</body>
+
+</html>

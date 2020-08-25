@@ -29,6 +29,10 @@ var valueUpdated = false
  * When DOM content is loaded
  */
 document.addEventListener('DOMContentLoaded', function () {
+
+    // Display the user's email
+    document.getElementById("users_email").innerHTML = "Signed in as: " + userData.email;
+
     //Load the javascript components
     pageOnLoad();
 });
@@ -61,7 +65,7 @@ function pageOnLoad() {
     var prevShop = "";
 
     // Create a query and set the relations.
-    var queryBuilder = Backendless.DataQueryBuilder.create()
+    var queryBuilder = Backendless.DataQueryBuilder.create().setWhereClause("ownerId = " + "'" + userData.id + "'");
     queryBuilder.setRelated(["item",
         "shop"]);
 
@@ -90,7 +94,8 @@ function pageOnLoad() {
                 const getshops = new Promise((resolve, reject) => {
 
                     // Sort shops by date created
-                    var queryBuilderShops = Backendless.DataQueryBuilder.create();
+                    var queryBuilderShops = Backendless.DataQueryBuilder.create().setWhereClause("ownerId = " + "'" + userData.id + "'");
+                    queryBuilderShops.setPageSize( 100 ); //.setOffset( 0 );
                     queryBuilderShops.setSortBy(["created"]);
 
                     Backendless.Data.of("Shops").find(queryBuilderShops)
@@ -104,7 +109,7 @@ function pageOnLoad() {
                 const getItems = new Promise((resolve, reject) => {
 
                     // Sort items by date created
-                    var queryBuilderItems = Backendless.DataQueryBuilder.create();
+                    var queryBuilderItems = Backendless.DataQueryBuilder.create().setWhereClause("ownerId = " + "'" + userData.id + "'");
                     queryBuilderItems.setSortBy(["created"]);
 
                     Backendless.Data.of("Items").find(queryBuilderItems)
@@ -641,6 +646,10 @@ function pageOnLoad() {
         .catch(function (error) {
             console.log(error);
         });
+
+    // Clear the add Item or shop input if one was just added
+    document.getElementById("add_item_input").value = '';
+    document.getElementById("add_shop_input").value = '';
 }
 
 /**
@@ -868,7 +877,7 @@ function addItem() {
         const createItem = new Promise((resolve, reject) => {
 
             // Get the Add Item input text
-            let addItem = document.getElementById('addItemInput').value;
+            let addItem = document.getElementById('add_item_input').value;
 
             var item = {
                 name: addItem
@@ -1006,7 +1015,7 @@ function addItem() {
         const createItemNoRelation = new Promise((resolve, reject) => {
 
             // Get the Add Item input text
-            let addItem = document.getElementById('addItemInput').value;
+            let addItem = document.getElementById('add_item_input').value;
 
             var item = {
                 name: addItem
@@ -1041,7 +1050,7 @@ function addShop() {
         const createShop = new Promise((resolve, reject) => {
 
             // Get the Add Item input text
-            let addShop = document.getElementById('addShopInput').value;
+            let addShop = document.getElementById('add_shop_input').value;
             console.log(addShop);
 
             // Create the shop object
@@ -1168,7 +1177,7 @@ function addShop() {
         const createShopNoRelation = new Promise((resolve, reject) => {
 
             // Get the Add Shop input text
-            let addShop = document.getElementById('addShopInput').value;
+            let addShop = document.getElementById('add_shop_input').value;
 
             var shop = {
                 name: addShop
@@ -1488,3 +1497,40 @@ function focusIn(e) {
     }
 
 }
+
+/**
+ * Logout the current user
+ */
+logout_user.addEventListener('click', e => {
+    console.log("logout user");
+
+    logoutUser();
+
+    function userLoggedOut() {
+        console.log("user has been logged out");
+
+
+        // Re-direct to the index
+        window.location.href = "index.html";
+
+        // Store user state to local storage
+        //localStorage.setItem("userStatus", "logged_out");
+        localStorage.setItem('userData', JSON.stringify({
+            status: false
+        }));
+    }
+
+    function gotError(err) // see more on error handling
+    {
+        console.log("error message - " + err.message);
+        console.log("error code - " + err.statusCode);
+    }
+
+    function logoutUser() {
+        Backendless.UserService.logout()
+            .then(userLoggedOut)
+            .catch(gotError);
+    }
+
+
+});

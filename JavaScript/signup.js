@@ -92,6 +92,17 @@ sign_up.addEventListener('click', e => {
         function userRegistered(user) {
             console.log("user has been registered");
             document.getElementById("error_message").innerHTML = "user has been registered";
+
+            console.log(user);
+
+            localStorage.setItem('userData', JSON.stringify({
+                status: true,
+                email: email,
+                id: user.ownerId
+            }));
+    
+            // Re-direct to the main page
+            window.location.href = "main.html";
         }
 
         // When there is an error in the registration 
@@ -114,6 +125,8 @@ sign_up.addEventListener('click', e => {
     } else {
         document.getElementById("error_message").innerHTML = errMsg;
     }
+
+
 
 
 });
@@ -160,7 +173,7 @@ sign_up_facebook.addEventListener('click', e => {
             console.log(response.authResponse.accessToken);
 
             var facebookFieldsMapping = { "{response.authResponse.name}": "name", "{response.authResponse.userID}": "email" };
-            var options = {"accessToken":response.authResponse.accessToken};
+            var options = { "accessToken": response.authResponse.accessToken };
 
             // Graph API
 

@@ -12,17 +12,63 @@
 
 <body>
 
+  <!-- Validate user login status -->
+  <script>
+
+    //If not logged in, re-direct to index page
+    // if (localStorage.getItem("userStatus") != "logged_in") {
+    //   window.location.href = "index.html";
+    // }
+
+    var userData = JSON.parse(localStorage.getItem('userData'));
+
+    console.log(userData);
+    //If not logged in, re-direct to index page
+    if (userData.status != true) {
+      window.location.href = "index.html";
+    }
+    //else {
+
+      // Display user's email
+
+      // Create <p> to display user's email
+      // var para = document.createElement("p"); //Create div
+      // para.Id = "users_email";
+      // para.innerHTML = userData.email;
+
+      // // Append the para
+      // document.body.appendChild(para); //Add to bottom of <body> tag
+
+      //document.getElementById("users_email").innerHTML = userData.email;
+
+    //}
+  </script>
+
+  <!-- Nav -->
+  <div class="nav">
+
+    <!-- Logo -->
+    <img class="logo" src="images/logo.png" alt="">
+
+    <!-- Logout button -->
+    <button class="logout-btn" id="logout_user">Logout</button>
+
+    <!-- User's email -->
+    <span id="users_email"></span>
+
+  </div>
+
   <!-- Heading -->
-  <div class="heading center">Custom Price Tracker</div>
+  <!-- <div class="heading center">Custom Price Tracker</div> -->
 
   <!-- Shop Heading -->
-  <div class="shop-heading center">Shop</div>
+  <!-- <div class="shop-heading center">Shop</div> -->
 
   <div class="center">
-    <input type="text" id="addItemInput">
+    <input type="text" class="inputs" id="add_item_input">
     <button class="addBtns" onclick="addItem()">Add Item</button>
-    <input type="text" id="addShopInput">
-    <button class="addBtns" onclick="addShop()">Add Shop or Category</button>
+    <input type="text" class="inputs" id="add_shop_input">
+    <button class="addBtns" id="add_shop" onclick="addShop()">Add Shop or Category</button>
   </div>
 
   <!-- Table outer wrapper -->

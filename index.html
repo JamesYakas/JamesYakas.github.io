@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Price Tracker</title>
-    <link rel="stylesheet" href="css/index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Price Tracker</title>
+  <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
-    <div class="Header">
-        <div class="Header-background"></div>
-        <div class="Header-content">
-          <div class="Header-hero">
-            <h1>Customer Price Tracker <br/> </h1>
-            <p>You'll be blown away with all it does</p>
-            <button class="Button" onclick="window.location.href='signup.html'">Sign up</button>
-            <button class="Button">Login</button> <br> <br>
-            <button class="Button">Skip</button>
-          </div>
-          <div class="Header-visuals">
-            <div class="Iphone"></div>
-          </div>
-        </div>
+
+  <script>
+
+    var userData = JSON.parse(localStorage.getItem('userData'));
+
+    //If logged in
+    if (userData.status == true) {
+
+      // Re-direct to the main page
+      window.location.href = "main.html";
+    }
+  </script>
+
+  <div class="Header">
+    <div class="Header-background"></div>
+    <div class="Header-content">
+      <div class="Header-hero">
+        <h1>Customer Price Tracker <br /> </h1>
+        <p>You'll be blown away with all it does</p>
+        <button class="Button" id="signup_btn" onclick="window.location.href='signup.html'">Sign up</button>
+        <button class="Button" onclick="window.location.href='login.html'">Login</button> <br> <br>
+        <button class="Button">Skip</button>
       </div>
+      <div class="Header-visuals">
+        <div class="Iphone"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="JavaScript/index.js"></script>
 </body>
+
 </html>
