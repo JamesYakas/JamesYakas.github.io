@@ -1,25 +1,110 @@
+/* Reset page defaults */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav */
+.nav {
+  height: 60px;
+  position: fixed;
+  top: 0;
+
+  width: 100%;
+
+  /* margin-bottom: 15px; */
+
+  background-color: #eef2f5;
+
+  /* Bottom border shadow */
+  -webkit-box-shadow: 0px 1px 1px #bdbcbd;
+  -moz-box-shadow: 0px 1px 1px #bdbcbd;
+  box-shadow: 0px 1px 1px #bdbcbd;
+}
+
+/* Logo */
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+
+  margin-left: 50px;
+}
+
+/* Email and logout button wrapper */
+.email-logout-wrapper {
+  float: right;
+  border: solid black 1px;
+  /* height: 45px; */
+  /* height: 100%; */
+  /* line-height: 50px; */
+
+  /* Vertically align */
+  margin: 0;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+
+  margin-right: 2%;
+}
+
+/* User's email */
+#users_email {
+  float: right;
+  position: relative;
+  top: 45%;
+
+  margin-right: 15px;
+
+  font-size: 100%;
+}
+
+/* Logout Button */
+.logout-btn {
+  float: right;
+  position: relative;
+  top: 40%;
+
+  margin-right: 30px;
+
+  border: none;
+  color: white;
+
+  padding: 5px 7px 5px 7px;
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 100%;
+  border-radius: 10px;
+
+  background-color: lightcoral;
+}
+
 /* Center */
 .center {
   text-align: center;
 }
 
 /* Heading */
-.heading {
+/* .heading {
   margin-top: 50px;
   margin-bottom: 50px;
-}
+  font-size: 55px;
+} */
 
 /* Shop Heading */
-.shop-heading {
+/* .shop-heading {
   font-weight: bold;
   font-size: 150%;
   margin-bottom: 20px;
   border: solid black 1px;
-}
+} */
 
 /* Add item and shop buttons */
 .addBtns {
   margin-bottom: 20px;
+  margin-top: 100px;
 }
 
 /* Item Heading */
@@ -85,7 +170,7 @@
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 95%;
+  /* width: 95%; */
   margin-left: auto;
   margin-right: auto;
   table-layout: fixed;
@@ -145,11 +230,48 @@ tr:first-child td {
 }
 
 /* Category Heading Button */
-.catHdingBtn{
+.catHdingBtn {
   float: right;
 }
 
 /* No shop or item has been added */
-#noShopItemAdded{
+#noShopItemAdded {
   text-align: center;
+  height: 2000px;
+}
+
+/* 320 */
+@media only screen and (min-width: 320px) and (max-width: 360px) {
+  .nav {
+    height: 40px;
+  }
+
+  .logo {
+    margin-left: 10px;
+  }
+
+  /* User's email */
+  #users_email {
+    top: 55%;
+    margin-right: 5px;
+    font-size: 55%;
+  }
+
+  .logout-btn {
+    top: 40%;
+    margin-right: 2%;
+
+    font-size: 10px;
+  }
+
+  .inputs {
+    float: left;
+    margin-left: 10px;
+  }
+
+  .addBtns {
+    margin-left: 10px;
+    font-size: 10px;
+    float: left;
+  }
 }
